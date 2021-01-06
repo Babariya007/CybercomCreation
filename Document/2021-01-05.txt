@@ -3,7 +3,7 @@ i have use Collage ID and microsoft provide for some more benifits in student ID
 
 --> so at the morning to noon i have search and whatch in youtube for this solustion then i have resolve it. I have login 
 my new account in git bash but in remote time access or push time it's genarate error this URL not found. Finally i got the solustion
-in my git base i have check then show my new id then push file in my Demo repository.
+in my git base i have check then show my new id then push file in my Demo repository. I have also genarate SSH key.
 
 --> then after i have prectice to Clone, Commit, add, push, pull, create Branch, Merge Branch, status ect...
 

@@ -18,7 +18,7 @@
 	- git reset --hard
 
 -->  I have also Learn gitignore. It use for our some file in localy but not push on git repository then we write that file name on gitignore
-	- cat .gitignore
+	- touch .gitignore
 
 -->  Mirrorig repository It is use for copy of our repository like as Mirror
 	- git push origin --mirror git@github.com:Babariya007/testing.git

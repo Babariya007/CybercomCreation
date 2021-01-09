@@ -13,10 +13,8 @@ caption {
 }
 
 .center {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	left: 50%;
+	display: flex;
+	justify-content: center;
 }
 
 .card {
@@ -31,6 +29,20 @@ caption {
 	padding-top: 60%;
 }
 
+.col-md-3 {
+	height: 342px;
+	width: 223px;
+	margin-left: 10px;
+	margin-right: 10px;
+	padding-left: 3px;
+	padding-top: 2px;
+	border: solid 1px;
+}
+
+.card-body {
+	height: 315px;
+}
+
 .caption {
 	text-align: center;
 	background-color: #D3D3D3;
@@ -39,7 +51,7 @@ caption {
 
 /* padding */
 .pt-50 {
-	padding-top: 400px;
+	padding-top: 50px;
 }
 
 /*margin*/

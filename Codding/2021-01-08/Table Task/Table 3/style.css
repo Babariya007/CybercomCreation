@@ -1,0 +1,44 @@
+table {
+	border: solid rgba(204, 204, 196, 1.0) 5px;
+}
+
+th, td, th {
+	border: solid 1px;
+	padding: 2px;
+}
+
+.txt-cen {
+	text-align: center;
+}
+
+.txt-right {
+	text-align: right;
+}
+
+.bg-red {
+	background-color: red;
+}
+
+.bg-green {
+	background-color: green;
+}
+
+.bg-som {
+	background-color: #ebe3ca;
+}
+
+.txt-white {
+	color: white;
+}
+
+.txt-yellow {
+	color: #CDCD00;
+}
+
+.pd {
+	padding: 0 50px 0 12px;
+}
+
+.wi-30 {
+	width: 30%;
+}

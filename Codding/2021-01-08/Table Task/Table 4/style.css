@@ -1,0 +1,13 @@
+table {
+	border: solid 10px;
+	border-collapse: collapse;
+}
+
+tr, td {
+	border: solid;
+	padding: 10px 30px 10px 30px;
+}
+
+.hidden {
+	visibility: hidden;
+}

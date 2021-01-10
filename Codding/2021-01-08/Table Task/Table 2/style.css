@@ -1,0 +1,25 @@
+table, tr, td, th {
+	border: solid 1px;
+}
+
+td {
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+div {
+	display: flex;
+	justify-content: center;
+}
+
+hr {
+	width: 550px;
+}
+
+.style {
+	color: #9932CC;
+	text-decoration: underline;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Nested Table</title>
+	<style type="text/css">
+
+		table, tr, td, th {
+			border: solid 1px;
+		}
+
+		.center {
+			text-align: center;
+		}
+
+		.bold {
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<table style="border-collapse: collapse;">
+		<tr>
+			<th rowspan="2" colspan="2" class="center">CI</th>
+			<th rowspan="2" class="center">All<br>Genders</th>
+			<th class="center">By Gender</th>
+		</tr>
+		<tr>
+			<td>
+				<table style="border: solid 2px;margin: 5px;">
+					<tr>
+						<th>Males</th>
+						<th>Females</th>
+					</tr>
+					<tr>
+						<td>9215604</td>
+						<td>4512358</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td class="bold">Rural</td>
+			<td>6521458</td>
+			<td>4215389</td>
+			<td class="center">4152348</td>
+		</tr>
+	</table>
+</body>
+</html>

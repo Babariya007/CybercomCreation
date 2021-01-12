@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Practice</title>
+	<style type="text/css">
+		.center {
+			display: flex;
+			justify-content: center;
+		}
+	</style>
+</head>
+<body class="center">
+	<form>
+		<table>
+			<tr>
+				<h1 class="center">HTML Simple Form</h1>
+				<hr>
+			</tr>
+			<tr>
+				<td>First Name</td>
+				<td>: </td>
+				<td><input type="text" name="First Name"></td>
+			</tr>
+			<tr>
+				<td>Last Name</td>
+				<td>: </td>
+				<td><input type="text" name="Last Name"></td>
+			</tr>
+			<tr>
+				<td>Gender</td>
+				<td>: </td>
+				<td>
+					<input type="radio" name="Gender">Male
+					<input type="radio" name="Gender">Female
+				</td>
+			</tr>
+			<tr>
+				<td>Hobby</td>
+				<td>: </td>
+				<td>
+					<input type="checkbox" name="Music">Music
+					<input type="checkbox" name="Movie">Movie
+					<input type="checkbox" name="Reading">Reading
+				</td>
+			</tr>
+			<tr>
+				<td>Password</td>
+				<td>: </td>
+				<td><input type="text" name="password" style="-webkit-text-security: circle;"></td>
+			</tr>
+			<tr>
+				<td>Upload Resume</td>
+				<td>: </td>
+				<td><input type="file" name="pdf" accept=".pdf"></td>
+			</tr>
+			<tr>
+				<td></td>
+				<td></td>
+				<td>
+					<br>
+					<input type="reset" value="Reset">
+					<input type="submit" name="submit">					
+				</td>
+			</tr>
+		</table>
+</form>
+</body>
+</html>

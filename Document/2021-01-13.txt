@@ -1,0 +1,10 @@
+=> Today Complete all the videos with clear.
+=> Complete Javascript Task.
+=> Learn DOM, object and Event hendling.
+=> Today explore more about Local and Session Storage.
+=> Today i explore more HTML tags 
+	- Audio : Use Audio in webpage.
+	- Video : use Video in webpage.
+	- <blockquote></blockquote> : its use to some spase from left side of paregraph all line.
+	- <caption></caption> : it is use to caption of any items ex: img, video, tables, etc.
+	- <figcaption></figcaption> : it's also use to fig caption.

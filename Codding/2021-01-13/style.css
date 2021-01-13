@@ -1,0 +1,32 @@
+body {
+	background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
+}
+
+form {
+	padding: 60px;
+
+}
+
+.white{
+	background-color: #fff;
+}
+
+.border {
+	display: block;
+	width: 900px;
+	height: auto;
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+}
+
+.mt-50px {
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.mt-10 {
+	margin-top: 20px;
+}

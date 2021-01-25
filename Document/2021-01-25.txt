@@ -1,0 +1,18 @@
+=>  Today i go through all videos of the day and also Learn many things
+=>  We can use & insted of && and also use | insted of ||, but not use & or | because && or || are more efficient.
+=>  We can use multiple case on multiple condition
+	Ex: case 1:
+	    case 2: Console.WriteLine("Demo of Case");
+		    break;
+=>  In switch case we write break after the case, otherwise it's generate error.
+
+
+=>  Also some concepts Learn:
+	- Switch Statement
+	- Goto Statement
+	- While, do...while
+	- for, foreach
+	- How to create Methods
+	- difference between static and instance methods
+	- Value parameter, reference parameter, out parameter, parameter array, method parameters vs method arguments
+	- in namespace use also alias, different namespace members etc.

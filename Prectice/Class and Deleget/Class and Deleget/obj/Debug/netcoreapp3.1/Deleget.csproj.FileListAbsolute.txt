@@ -1,0 +1,13 @@
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\obj\Debug\netcoreapp3.1\Deleget.csprojAssemblyReference.cache
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\obj\Debug\netcoreapp3.1\Deleget.AssemblyInfoInputs.cache
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\obj\Debug\netcoreapp3.1\Deleget.AssemblyInfo.cs
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\obj\Debug\netcoreapp3.1\Deleget.csproj.CoreCompileInputs.cache
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\bin\Debug\netcoreapp3.1\Deleget.exe
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\bin\Debug\netcoreapp3.1\Deleget.deps.json
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\bin\Debug\netcoreapp3.1\Deleget.runtimeconfig.json
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\bin\Debug\netcoreapp3.1\Deleget.runtimeconfig.dev.json
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\bin\Debug\netcoreapp3.1\Deleget.dll
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\bin\Debug\netcoreapp3.1\Deleget.pdb
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\obj\Debug\netcoreapp3.1\Deleget.dll
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\obj\Debug\netcoreapp3.1\Deleget.pdb
+D:\CybercomCreation\Prectice\Class and Deleget\Class and Deleget\obj\Debug\netcoreapp3.1\Deleget.genruntimeconfig.cache

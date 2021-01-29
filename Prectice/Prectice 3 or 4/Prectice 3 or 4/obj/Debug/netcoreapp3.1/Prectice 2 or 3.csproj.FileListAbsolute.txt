@@ -1,0 +1,13 @@
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\bin\Debug\netcoreapp3.1\Prectice 2 or 3.exe
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\bin\Debug\netcoreapp3.1\Prectice 2 or 3.deps.json
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\bin\Debug\netcoreapp3.1\Prectice 2 or 3.runtimeconfig.json
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\bin\Debug\netcoreapp3.1\Prectice 2 or 3.runtimeconfig.dev.json
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\bin\Debug\netcoreapp3.1\Prectice 2 or 3.dll
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\bin\Debug\netcoreapp3.1\Prectice 2 or 3.pdb
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\obj\Debug\netcoreapp3.1\Prectice 2 or 3.csprojAssemblyReference.cache
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\obj\Debug\netcoreapp3.1\Prectice 2 or 3.AssemblyInfoInputs.cache
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\obj\Debug\netcoreapp3.1\Prectice 2 or 3.AssemblyInfo.cs
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\obj\Debug\netcoreapp3.1\Prectice 2 or 3.csproj.CoreCompileInputs.cache
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\obj\Debug\netcoreapp3.1\Prectice 2 or 3.dll
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\obj\Debug\netcoreapp3.1\Prectice 2 or 3.pdb
+C:\Users\Asus\source\repos\Prectice\Prectice 2 or 3\obj\Debug\netcoreapp3.1\Prectice 2 or 3.genruntimeconfig.cache

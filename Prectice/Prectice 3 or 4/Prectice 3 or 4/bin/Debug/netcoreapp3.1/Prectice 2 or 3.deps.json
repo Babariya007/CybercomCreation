@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Prectice 2 or 3/1.0.0": {
+        "runtime": {
+          "Prectice 2 or 3.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Prectice 2 or 3/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

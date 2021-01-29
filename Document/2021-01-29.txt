@@ -1,0 +1,16 @@
+=>  Complete all videos and learn conceps about
+	- Abstract Class, Properties and Method
+	- Sealed Keyword
+	- Inheritance in abstract Class
+	- Problem in Multiple Inheritance
+	- Delegates
+	- Multipal Delegates
+	- Lamda expression
+
+=>  A delegate is type safe function pointer that holds a refernce to a function.
+=>  Lambda expression to reduce the code
+=>  Diffrence between abstract class and interface
+=>  Multicast delegates we can use more than one method
+	- If Add delegate then we can use + or +=
+	- Or if Remove delegate then we can use - or -=
+=>  I have also this all prectice in today

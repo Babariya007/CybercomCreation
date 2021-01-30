@@ -1,0 +1,22 @@
+=>  Complete all the videos of today and learn
+	- Exception Handling
+	- Inner Exception
+	- Custom Exception
+	- Try, Catch and finally
+	- Nested Try Catch block
+	- Multiple catch blocks for paerticular Exception
+	- What is a Abuses in Exception Handling
+
+
+=>  Got the use of StreamReader class
+=>  In Exceton properties are
+	- Message : Show the Exception Message
+	- StackTrace : It is use for particular line number of Exception
+=>  We can also write on perticular Exeption. Ex.: FileNotFound exception, Arethmetic exception,DivideByZero exception etc...
+=>  We can also write perticular message for the user intraction
+=>  the finally block is run at every time and the programmer use to release the memory or resorce
+=>  The formate Exception is use to check the types Ex.: int, string etc...
+=>  The use of exception we can handle some errors we can not write for every contion code
+	Ex: If we create division program then the user also input large number, alfabets, put 0 in diviser and so on then we can not write all of those condition for codding we can simply use Exception and get the error message.
+	    And user also mey not know than exception then we can use a manually exception or we also crete custom Exception
+

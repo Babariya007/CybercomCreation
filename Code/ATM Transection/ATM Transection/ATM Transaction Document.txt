@@ -1,0 +1,27 @@
+-----------------------------------  ATM Transection  -----------------------------------------------
+- The user input only four digit PIN number.
+- Set amount and max withdrawal amount.
+- The ATM transaction are
+    1) Create Account
+    Name:
+    Mobile No:
+    Pin No:
+    Balance
+    Withdrawal Amount 
+2) Existing User
+
+- The both user are
+	- Check Balance.
+	- Cash withdrawal.
+	- Cash deposition.
+	- Quit.
+- The user are chose above transection for user requairement
+
+
+- First we give user input, the user select new account then the user able to create new account
+	- the user are enter name, mobileno, pin and diposit money
+	- the user anter all details corectlly then print one wellcome message and asked any more transection or not ? and user select option and give more transection
+
+- If user are existin then enter pin
+	- the user enter pin then check the user are available or not ?
+	- If user available then gives choise to transection

@@ -52,7 +52,7 @@ namespace ATM_Transection
             }
             set
             {
-                Regex regexPinNo = new Regex("^[0-9]{4}$"); // Regex To Validate Mobile Number
+                Regex regexPinNo = new Regex("^[0-9]{4}$"); // Regex To Validate Pin Number
                 if (regexPinNo.IsMatch(value))
                 {
                     this._Pin = value;

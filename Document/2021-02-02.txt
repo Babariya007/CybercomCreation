@@ -1,0 +1,37 @@
+=>  Today Completed all the videos and learn topics are
+	- Enums
+	- Type and Type Member
+	- Access Modifire
+	- create class Library
+	- Attributes
+	- Reflection
+	- Generics
+
+=>  I have learn in Enum GetName(), GetNames(), GetValue(), etc...
+=>  GetName return string and GetValue return number of position and position start with zero it's a array
+=>  The use of Enum is to coed is to readeble or more maintanable and easly understood other programmer
+	in enum type cast we can use same index number of itwms show
+	- Ex: enum Day and Month are created then we Month typecast with day.
+	  if Month month = (Month)Day.Wednesday; then its wednesday indexnumber and check in Month indexnumber and print month index number. in this result show April.
+=> i also learn create a region for use of proper codding structure and more redable
+
+=>  Also Learn Attribute and how to useful and how to create custome Attribute
+=>  In generate custamize error using ObsoleteAttribute. Ex: we if we use a sum for using passing manually parameter then it's generate error and show the message please use List<> insted of passing object in method
+=>  Learn from Early biding and late biding is in Early buiding is more prefreble because if any error ex: Speling mistake or any declaration then visual studio show before compilation but in late biding it's show the error at run time.
+
+=>  In reflection useing is Type class
+=>  using the reflection we can find methods, propertys, class, constructors etc... and we also find that return types
+=>  If we reflection of contuctor then we can use .ToString() to use of advantage is it's return the constructor and pass the perameters show
+
+=>  Generic is nothig but it is type indipended
+=>  If we passing any type of data for process, or differnt data type we have to create same code so to overcome using generics. Show the Example
+=>  public class Calculator<T>
+    {
+        public static bool AreEqual(T value1, T value2)
+        {
+            return value1.Equals(value2);
+        }
+    }
+=>  know about refrance equality
+
+=>  Aslo resolve my qustion for in Enum Why Conflict.

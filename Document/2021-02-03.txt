@@ -1,0 +1,61 @@
+=>  Today first complete all the videos and learn topics are
+	- Difference between Convert ToString and ToString
+	- Difference between String and StringBuilder
+	- Partial Classes
+	- Partial Method
+	- Indexers
+	- Optional Parameters
+	- method parameters optional using method overloading
+	- method parameters optional by using OptionalAttribute
+	- Code snippets in visual studio
+	- What is dictionary in c#
+	-collection class
+
+
+
+- In those topic i have learn :
+
+=>  Difference between String and StringBuilder
+	- System.String is immutable and StringBuilder is Mutable
+	- immutable is not change string after created but the Mutable string is modified/changeble string
+	- If we concate string using StringBuilder then use Append Method and the StringBuilder is using for System.Text namespace
+
+=>  The use of Partial class or structure using partial keyword
+	- is provide to single class into multipal files and all these files are combine to compile time
+	- The partial keyword is also used to split struct or interface into two or more files.
+
+=>  The use of Partial Method is also partial keyword
+	- The partial method is only teo part 
+	    - Defination
+	    - Implimentation
+	- The use of partial method do not multipal imlimentating declarations
+	- If we can not a impliment method then the C# complier is ignore that Method
+	- This is by default private and we can not use any access modifires
+	- Also use return type void because it's not any type of return in defination.
+
+=>  Indexser 
+	- There are two types of indexer. 1) int indexer and 2) string indexer
+	- Using the indexser allow object like an array or we can use object using [] brecket like as array
+	- using the indexser we can create special property just like geet and set, the get-set also use in indexer
+	- we can use all access modifire with indexer
+	- Indexer are also regular member of a class
+	- It can use create with this keyword
+
+=>  In Optional parameter the parameter array use last parameter other wise it's generate error
+
+=>  We can use two ways to use optional method.
+	- Using last parameter pram keyword
+	- And using in last optionalAttribute
+
+=>  The Code Snippet are handle are Code Snippet Manager
+
+=>  Dictionary
+	- Dictionary is a collection of key, value pairs.
+	- It is provides faast lookups for value using keys.
+	- The Key in dictionary is must be unique
+	- In dictionary TryGetValue(), Count(), Remove(), Clear(), Convert in to array
+=>  The List is increase size autometacly array is not increase size autometicaly
+
+=>  Collection class
+	- The List of Collection Class in functions is Contains(), Exists(), Find(), FindLast(), FindAll(), FindIndex(), FindLastIndex, Convert array to list,list to array and list to dictionary
+

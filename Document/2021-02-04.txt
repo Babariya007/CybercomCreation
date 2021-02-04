@@ -1,0 +1,58 @@
+=>  Today i have complete all of the videos and learn about
+	- generic list class and ranges
+	- Sort a list of simple types
+	- Sort a list of complex types
+	- Sort a list of complex types using Comparison delegate
+	- Methods of List collection class
+	- Use a dictionary over list
+	- Generic queue collection class
+	- Generic stack collection class
+	- Stack & Queue use in web application
+	- Learn Master Page
+
+
+=>  Today i learn about those topic
+=>  generic list class and ranges
+	- In one List class to another list class add record then we can use AddRange() function.
+	- If we Insert new data/Record then use the Insert(index,item0)
+	- In generic collection namespace also include List, Dictionary, Stack and Queue
+
+=>  Sort a list of simple types
+	- The C# provide sort function and we can use direct sort number using Sort() Function
+	- The C# provide also reverse function to we can use direct reverse of number without more coding. We simply use Reverse() function
+	- It's also work in alphabets
+
+=>  Sort a list of complex types
+	- In complex type of sorting we inherite IComparer<> to that class and then we can compare and sort or reverse(desending) data.
+	- We also create manually sorting using create a class
+		- We also able to use complex sorting using Lambda expression
+
+=>  Methods of List collection class
+	- TrueForAll(): It's return to true or false of all depending condiion in list match.
+	- AsReadOnly(): It is use for do not able to anyone add or remove data in list. It is wrape data only for read purpose.
+	- TrimExcess(): It is use to set the capacity to actual number of element in the list.It is use minimize Memory.
+
+=>  Use a dictionary over list
+	- Using the dictionary we can create more reusable or more redeble code
+
+=>  Generic queue collection class
+	- Using the queue we retrive data from queue as par insert. Because of first in first out data from queue
+	- If we can add data in queue then use a Enqueue() function
+	- We can retrive data from queue then use a Dequeue() function
+	- In dequeue we can retrive data then first remove data from queue then data retrive
+	- If we use foreach loop for retrive data then do not remove item in the queue
+	- we also use peak() method for retriving data without removing data in queue. But the disadvantage is every time return first position data
+	- The Contains method is use for find specific items find in the queue and it's return true or false
+	- It show to store data of capacity. If capacity is 4 and we add 5 data then incress cpacity 4 to 8 and so on increase capacity in double
+
+=>  stack collection class
+	- The stack present as Last in First out
+	- Add data in stack we can use push() function
+	- The Pop() is use for remove and retrive item of the stack
+	- The peak() and Contains also same as queue
+	- The Clear() is use to clear all the items from the stack
+
+=>  Also prectice of topics
+
+
+

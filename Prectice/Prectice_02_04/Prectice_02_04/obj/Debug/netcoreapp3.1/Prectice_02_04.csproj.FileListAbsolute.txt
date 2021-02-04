@@ -1,0 +1,13 @@
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\bin\Debug\netcoreapp3.1\Prectice_02_04.exe
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\bin\Debug\netcoreapp3.1\Prectice_02_04.deps.json
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\bin\Debug\netcoreapp3.1\Prectice_02_04.runtimeconfig.json
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\bin\Debug\netcoreapp3.1\Prectice_02_04.runtimeconfig.dev.json
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\bin\Debug\netcoreapp3.1\Prectice_02_04.dll
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\bin\Debug\netcoreapp3.1\Prectice_02_04.pdb
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\obj\Debug\netcoreapp3.1\Prectice_02_04.csprojAssemblyReference.cache
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\obj\Debug\netcoreapp3.1\Prectice_02_04.AssemblyInfoInputs.cache
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\obj\Debug\netcoreapp3.1\Prectice_02_04.AssemblyInfo.cs
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\obj\Debug\netcoreapp3.1\Prectice_02_04.csproj.CoreCompileInputs.cache
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\obj\Debug\netcoreapp3.1\Prectice_02_04.dll
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\obj\Debug\netcoreapp3.1\Prectice_02_04.pdb
+D:\CybercomCreation\Prectice\Prectice_02_04\Prectice_02_04\obj\Debug\netcoreapp3.1\Prectice_02_04.genruntimeconfig.cache

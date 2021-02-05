@@ -1,0 +1,20 @@
+=>  Today i have complete all of the videos and learn about
+	- Multithreading
+	- Advantages and disadvantages of multithreading
+	- Passing data to the Thread function in a type safe manner
+	- Retrieving data from Thread function using callback method
+	- Anonymous Method
+	- Lambda Expression
+	- Async and await
+
+
+=>  Threads are lightweight process. If we start the thread then we can use to Start() function.
+=>  In multipal theding the time sharing of execute the thered dicide by Opreting system we can not able to dicide.
+=>  Thread are executed by oprating system using time sharing. and its executed simultaneously.
+=>  If any process we can start some time afer or half execute and half some time after then we can use Sleap(). It's use to sleap that process for given time.
+=>  Anonymous function we can use with delegate. Without we can not use Anonymous function.
+=>  Anonymous function is use with delegate keyword.
+=>  Anonymous function not a static and instance member.
+=>  Lambda Expression is work link anonymous function
+=>  Async and wait is use for non-blocking application. async keyword ia a create asyncronus method and await keyword represent a suspention point
+=>  Also i have also prectice them.

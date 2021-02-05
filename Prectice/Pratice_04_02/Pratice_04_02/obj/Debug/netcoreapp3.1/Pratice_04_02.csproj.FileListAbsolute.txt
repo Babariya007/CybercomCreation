@@ -1,0 +1,13 @@
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\bin\Debug\netcoreapp3.1\Pratice_04_02.exe
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\bin\Debug\netcoreapp3.1\Pratice_04_02.deps.json
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\bin\Debug\netcoreapp3.1\Pratice_04_02.runtimeconfig.json
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\bin\Debug\netcoreapp3.1\Pratice_04_02.runtimeconfig.dev.json
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\bin\Debug\netcoreapp3.1\Pratice_04_02.dll
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\bin\Debug\netcoreapp3.1\Pratice_04_02.pdb
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\obj\Debug\netcoreapp3.1\Pratice_04_02.csprojAssemblyReference.cache
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\obj\Debug\netcoreapp3.1\Pratice_04_02.AssemblyInfoInputs.cache
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\obj\Debug\netcoreapp3.1\Pratice_04_02.AssemblyInfo.cs
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\obj\Debug\netcoreapp3.1\Pratice_04_02.csproj.CoreCompileInputs.cache
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\obj\Debug\netcoreapp3.1\Pratice_04_02.dll
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\obj\Debug\netcoreapp3.1\Pratice_04_02.pdb
+D:\CybercomCreation\Prectice\Pratice_04_02\Pratice_04_02\obj\Debug\netcoreapp3.1\Pratice_04_02.genruntimeconfig.cache

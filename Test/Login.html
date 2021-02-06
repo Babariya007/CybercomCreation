@@ -13,25 +13,25 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 
-<body>
+<body class="background-color">
     <div class="center mt-50px">
         <div class="border white">
             <h1 class="center mt-10">Login</h1>
             <form>
                 <div class="form-group">
                     <label for="firstName">Email Id</label>
-                    <input type="text" class="form-control" id="email" placeholder="Enter Email Id">
+                    <input type="text" class="form-control" id="email" placeholder="Enter Email Id" required>
                 </div>
                 <div class="form-group">
                     <label for="lastName">Password</label>
-                    <input type="text" class="form-control" id="pwd" placeholder="Enter Password">
+                    <input type="password" class="form-control" id="pwd" placeholder="Enter Password" required>
                 </div>
                 <div class="center">
                     <div>
-                        <button type="button" class="btn btn-primary" onclick="isValidAdmin()">Login</button>
+                        <button type="submit" class="btn btn-primary" id="btnLogin" onclick="isValidAdmin()">Login</button>
                     </div>&nbsp;&nbsp;&nbsp;
                     <div>
-                        <button type="button" class="btn btn-warning" style="color: white;">Register Now</button>
+                        <button type="button" class="btn btn-warning"><a href="Regitstration.html" style="color: white;">Register Now</a></button>
                     </div>
                 </div>
             </form>

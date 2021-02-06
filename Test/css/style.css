@@ -1,9 +1,18 @@
-body {
+.background-color {
     background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
 
 form {
     padding: 60px;
+}
+
+h4 a {
+    color: white;
+}
+
+li {
+    list-style-type: none;
+    padding-bottom: 10px;
 }
 
 .white {
@@ -28,4 +37,24 @@ form {
 
 .mt-10 {
     margin-top: 20px;
+}
+
+.pt-10 {
+    padding-top: 10px;
+}
+
+.pb-20 {
+    padding-bottom: 20px;
+}
+
+.pt-30 {
+    padding-top: 30px;
+}
+
+.left-panel-color {
+    background-color: #b45f06;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    color: white;
 }

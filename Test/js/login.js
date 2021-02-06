@@ -1,14 +1,15 @@
 function isValidAdmin() {
-    var email = document.getElementById("email").value;
+    var userEmail = document.getElementById("email").value;
     var password = document.getElementById("pwd").value;
 
-    const adminUser = JSON.parse(window.localStorage.getItem(email));
-    const adminEmail = adminUser.email;
-    const adminPassword = adminUser.password;
+    const adminUser = JSON.parse(window.localStorage.getItem(userEmail));
+    const adminEmail = adminUser.Email;
+    const adminPassword = adminUser.Password;
 
-    if (email == adminEmail && password == adminPassword) {
-        window.location.href = "dashbord.html"
-    } else {
+    if (userEmail != adminEmail && password != adminPassword) {
         alert("Incorect ID or Password");
+
+    } else {
+        window.location.href = "dashbord.html";
     }
 }

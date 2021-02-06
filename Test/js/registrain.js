@@ -17,8 +17,11 @@ function getInfo() {
 
     if (pwd === conpwd) {
         window.localStorage.setItem(email, JSON.stringify(userData));
-        window.location.href = "/Login.html";
+        window.location.href = "Login.html";
     } else {
         alert("Please check Password !!!");
     }
+
+    var display = JSON.parse(localStorage.getItem('email'))
+    console.log(display);
 }

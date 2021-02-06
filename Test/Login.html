@@ -20,17 +20,24 @@
             <form>
                 <div class="form-group">
                     <label for="firstName">Email Id</label>
-                    <input type="text" class="form-control" placeholder="Enter Email Id">
+                    <input type="text" class="form-control" id="email" placeholder="Enter Email Id">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Password</label>
-                    <input type="text" class="form-control" placeholder="Enter Password">
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter Password">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-danger">Reset</button>
+                <div class="center">
+                    <div>
+                        <button type="button" class="btn btn-primary" onclick="isValidAdmin()">Login</button>
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <div>
+                        <button type="button" class="btn btn-warning" style="color: white;">Register Now</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </body>
+<script src="js/login.js"></script>
 
 </html>

@@ -19,43 +19,58 @@
             <form>
                 <div class="form-group">
                     <label for="firstName">Name</label>
-                    <input type="text" class="form-control" placeholder="Enter Your Name">
+                    <input type="text" class="form-control" id="name" placeholder="Enter Your Name" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email Id</label>
-                    <input type="text" class="form-control" placeholder="Enter Email Id">
+                    <input type="text" class="form-control" id="email" placeholder="Enter Email Id" required>
                 </div>
                 <div class="form-group">
                     <label for="pwd">Password</label>
-                    <input type="text" class="form-control" placeholder="Enter Password">
+                    <input type="text" class="form-control" id="pwd" placeholder="Enter Password" required>
                 </div>
                 <div class="form-group">
                     <label for="conpwd">Confirm Password</label>
-                    <input type="text" class="form-control" placeholder="Reenter Password">
+                    <input type="text" class="form-control" id="conpwd" placeholder="Reenter Password" required>
                 </div>
                 <div class="form-group">
                     <label for="inputState">City</label>
-                    <select id="inputState" class="form-control">
-                      <option selected>Select City</option>
-                      <option>Jamnagar</option>
-                      <option>Ahemdabad</option>
-                      <option>Rajkot</option>
+                    <select id="city" class="form-control" required>
+                      <option disabled selected>Select City</option>
+                      <option value="Jamnagar">Jamnagar</option>
+                      <option value="Ahemdabad">Ahemdabad</option>
+                      <option value="Rajkot">Rajkot</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label for="inputState">State</label>
-                    <select id="inputState" class="form-control">
-                      <option selected>Select State</option>
-                      <option>Gujarat</option>
-                      <option>Maharastra</option>
-                      <option>Panjab</option>
+                    <select id="state" class="form-control" required>
+                      <option disabled selected>Select State</option>
+                      <option value="Gujarat">Gujarat</option>
+                      <option value="Maharastra">Maharastra</option>
+                      <option value="Panjab">Panjab</option>
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="form-group">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="check" required>
+                        <label class="form-check-label" for="gridCheck">
+                        Terms & Conditions
+                      </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" onclick="getInfo()">Submit</button>
                 <button type="reset" class="btn btn-danger">Reset</button>
+                <br><br>
+                <label>
+                    If Already Login ? <a href="Login.html"> Click Hear</a>
+                </label>
             </form>
         </div>
     </div>
 </body>
+
+<script src="js/registrain.js"></script>
 
 </html>

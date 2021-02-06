@@ -53,12 +53,12 @@
                         <input type="date" class="form-control" id="birthdate" placeholder="Enter Birthdate" required>
                     </div>
                 </div><br><br>
-                <button type="submit" class="btn wood-color">Add User</button>
+                <button type="submit" class="btn wood-color" id="btnAddUser" onclick="newUser()" onload="fechUser()">Add User</button>
             </form>
         </div>
         <div class="pt-30">
             <h4 class="pb-20">User List</h4>
-            <table class="table">
+            <table id="userTable" class="table">
                 <thead class="thead-dark">
                     <tr>
                         <th scope="col">Name</th>
@@ -75,10 +75,10 @@
                         <td>abhay@gmail.com</td>
                         <td>1234</td>
                         <td>11/02/1988</td>
-                        <td id="age"></td>
+                        <td id="age">28</td>
                         <td>
-                            <button type="button" class="btn btn-primary"> Update </button>
-                            <button type="button" class="btn btn-danger"> Delete </button>
+                            <button type="button" class="btn btn-primary" onclick="updateUser()"> Update </button>
+                            <button type="button" class="btn btn-danger" onclick="deleteUser()"> Delete </button>
                         </td>
                     </tr>
                 </tbody>

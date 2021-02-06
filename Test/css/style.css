@@ -59,8 +59,29 @@ li {
     padding-left: 300px;
 }
 
+.width {
+    width: 20rem;
+    margin-left: 20px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.color-1 {
+    background-color: hsl(31, 76%, 68%);
+}
+
+.color-2 {
+    background-color: violet;
+}
+
+.color-3 {
+    background-color: rgb(224, 168, 178);
+}
+
 .wood-color {
-    background-color: #b45f06;
+    background-color: #ecb171;
     color: white;
 }
 
@@ -70,4 +91,8 @@ li {
     position: fixed;
     z-index: 1;
     color: white;
+}
+
+.design {
+    padding: 15px 35px;
 }

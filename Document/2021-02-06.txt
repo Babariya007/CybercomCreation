@@ -1,0 +1,19 @@
+=>  Today, I revised all the videos of the introduction to C# videos for Console application.
+
+=>  I have revise all concepts like
+	- Object-Oriented Concepts
+	- Delegates
+	- Exception Handling
+	- Enums
+	- Access modifiers
+	- Reflection
+	- Generics
+	- Dictionary
+	- Thread
+	- Anonymouse Function
+	- Lambda Expression
+
+=>  Also learn Tuple, how to use tuple
+=>  Read w3schoole, sanfoundry topics.
+=>  Also implement some concepts.
+

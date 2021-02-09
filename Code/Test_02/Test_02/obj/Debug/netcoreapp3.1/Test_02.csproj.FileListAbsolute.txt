@@ -1,0 +1,13 @@
+D:\CybercomCreation\Code\Test_02\Test_02\obj\Debug\netcoreapp3.1\Test_02.csprojAssemblyReference.cache
+D:\CybercomCreation\Code\Test_02\Test_02\obj\Debug\netcoreapp3.1\Test_02.AssemblyInfoInputs.cache
+D:\CybercomCreation\Code\Test_02\Test_02\obj\Debug\netcoreapp3.1\Test_02.AssemblyInfo.cs
+D:\CybercomCreation\Code\Test_02\Test_02\obj\Debug\netcoreapp3.1\Test_02.csproj.CoreCompileInputs.cache
+D:\CybercomCreation\Code\Test_02\Test_02\bin\Debug\netcoreapp3.1\Test_02.exe
+D:\CybercomCreation\Code\Test_02\Test_02\bin\Debug\netcoreapp3.1\Test_02.deps.json
+D:\CybercomCreation\Code\Test_02\Test_02\bin\Debug\netcoreapp3.1\Test_02.runtimeconfig.json
+D:\CybercomCreation\Code\Test_02\Test_02\bin\Debug\netcoreapp3.1\Test_02.runtimeconfig.dev.json
+D:\CybercomCreation\Code\Test_02\Test_02\bin\Debug\netcoreapp3.1\Test_02.dll
+D:\CybercomCreation\Code\Test_02\Test_02\bin\Debug\netcoreapp3.1\Test_02.pdb
+D:\CybercomCreation\Code\Test_02\Test_02\obj\Debug\netcoreapp3.1\Test_02.dll
+D:\CybercomCreation\Code\Test_02\Test_02\obj\Debug\netcoreapp3.1\Test_02.pdb
+D:\CybercomCreation\Code\Test_02\Test_02\obj\Debug\netcoreapp3.1\Test_02.genruntimeconfig.cache

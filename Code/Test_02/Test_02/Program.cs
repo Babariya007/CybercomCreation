@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Test_02
 {
@@ -7,111 +10,137 @@ namespace Test_02
     {
         static void Main(string[] args)
         {
-            try
+            #region Select Option for Program Run
+            string con;
+            do
             {
-                #region Select Option for Program Run
-                Console.WriteLine("\n-------------------------------------------\n");
-                Console.WriteLine("Select the option which program to run");
-                Console.WriteLine("1.  String is Pelindrom or not");
-                Console.WriteLine("2.  Show Input is string or Digit");
-                Console.WriteLine("3.  Count 1's Enter number by User");
-                Console.WriteLine("5.  Create Binary Triangle");
-                Console.WriteLine("6.  Find Smallest Element in Metrix");
-                Console.WriteLine("7.  Celsius to Fahrenheit Conversion");
-                Console.WriteLine("8.  Reverse a String with Predefined Function");
-                Console.WriteLine("9.  Multilevel Inheritance");
-                Console.WriteLine("10. Multilevel Inheritance with Virtual Methods.");
-                Console.WriteLine("11. Value for Static Number");
-                Console.WriteLine("12. Convert 2D array into 1D array");
-                Console.WriteLine("13. Lower Bound and Upper Bound of an Array");
-                Console.WriteLine("14. DivideByZero Exception");
-                Console.WriteLine("15. Bubble Sort.");
-                Console.WriteLine("16. User-defined exception");
-                Console.WriteLine("17. Calculate Percentage using goto statement");
-                Console.WriteLine("18. Write Date and Time in txt file");
-                Console.WriteLine("19. Constructor overloading");
-                Console.WriteLine("20. Fibonacci Series");
-
-                int choseProgram = Convert.ToInt32(Console.ReadLine());
-
-                switch (choseProgram)
+                try
                 {
-                    case 1:
-                        Palindrome.IsPalindrome();
-                        break;
+                    int choseProgram;
+                    do
+                    {
+                        Console.WriteLine("\n-------------------------------------------\n");
+                        Console.WriteLine("Select the option which program to run");
+                        Console.WriteLine("1.  String is Pelindrom or not");
+                        Console.WriteLine("2.  Show Input is string or Digit");
+                        Console.WriteLine("3.  Count 1's Enter number by User");
+                        Console.WriteLine("4.  ATM Transection");
+                        Console.WriteLine("5.  Create Binary Triangle");
+                        Console.WriteLine("6.  Find Smallest Element in Metrix");
+                        Console.WriteLine("7.  Celsius to Fahrenheit Conversion");
+                        Console.WriteLine("8.  Reverse a String with Predefined Function");
+                        Console.WriteLine("9.  Multilevel Inheritance");
+                        Console.WriteLine("10. Multilevel Inheritance with Virtual Methods.");
+                        Console.WriteLine("11. Value for Static Number");
+                        Console.WriteLine("12. Convert 2D array into 1D array");
+                        Console.WriteLine("13. Lower Bound and Upper Bound of an Array");
+                        Console.WriteLine("14. DivideByZero Exception");
+                        Console.WriteLine("15. Bubble Sort.");
+                        Console.WriteLine("16. User-defined exception");
+                        Console.WriteLine("17. Calculate Percentage using goto statement");
+                        Console.WriteLine("18. Write Date and Time in txt file");
+                        Console.WriteLine("19. Constructor overloading");
+                        Console.WriteLine("20. Fibonacci Series");
 
-                    case 2:
-                        StringOrDigit();
-                        break;
+                        choseProgram = Convert.ToInt32(Console.ReadLine());
 
-                    case 3:
-                        Numberof1.number();
-                        break;
+                        switch (choseProgram)
+                        {
+                            case 1:
+                                Palindrome.IsPalindrome();
+                                break;
 
-                    case 4:
-                        Console.WriteLine("This Program is Not available right Now");
-                        break;
+                            case 2:
+                                StringOrDigit();
+                                break;
 
-                    case 5:
-                        BinaryTriangle.binaryTraingle();
-                        break;
+                            case 3:
+                                Numberof1.number();
+                                break;
 
-                    case 6:
-                        smallInMatrix();
-                        break;
+                            case 4:
+                                Console.WriteLine("This Program is Not available right Now");
+                                break;
 
-                    case 7:
-                        CalToFah.Temprature();
-                        break;
+                            case 5:
+                                BinaryTriangle.binaryTraingle();
+                                break;
 
-                    case 8:
-                        ReverseString();
-                        break;
+                            case 6:
+                                smallInMatrix();
+                                break;
 
-                    case 9:
-                        MultiLevelInheritance();
-                        break;
+                            case 7:
+                                CalToFah.Temprature();
+                                break;
 
-                    case 10:
-                        MultiLevelVirtualMethod();
-                        break;
+                            case 8:
+                                ReverseString();
+                                break;
 
-                    case 11:
-                        StaticNumber();
-                        break;
+                            case 9:
+                                MultiLevelInheritance();
+                                break;
 
-                    case 12:
-                        break;
+                            case 10:
+                                MultiLevelVirtualMethod();
+                                break;
 
-                    case 13: break;
+                            case 11:
+                                StaticNumber();
+                                break;
 
-                    case 14:
-                        DivideZero.DivideZeroException();
-                        break;
+                            case 12:
+                                ConvertArray.convertArray();
+                                break;
 
-                    case 15: break;
+                            case 13:
+                                LowerUpperBoundArray.BoundArray();
+                                break;
 
-                    case 16:
-                        userDifineException();
-                        break;
+                            case 14:
+                                DivideZero.DivideZeroException();
+                                break;
 
-                    case 17: break;
+                            case 15:
+                                BubbleSort.bubble();
+                                break;
 
-                    case 18: break;
+                            case 16:
+                                userDifineException();
+                                break;
 
-                    case 19: break;
+                            case 17:
+                                Percentage.per();
+                                break;
 
-                    case 20:
-                        Fibonacci.FibonacciSeries();
-                        break;
+                            case 18:
+                                DateTimeOntxt.textInFile();
+                                break;
+
+                            case 19:
+                                ConstructorOverloding();
+                                break;
+
+                            case 20:
+                                Fibonacci.FibonacciSeries();
+                                break;
+
+                            default:
+                                Console.WriteLine("Please enter 1 to 20 Number");
+                                break;
+                        }
+                    } while (!(choseProgram >= 1 && choseProgram <= 20));
                 }
-            }
-            catch
-            {
-                Console.WriteLine("Plese Chose Valid Number");
-            }
-            #endregion Select Option for Program Run
+                catch
+                {
+                    Console.WriteLine("Plese Chose Valid Number");
+                }
 
+                Console.WriteLine("\nDo you Continue Yes or No");
+                con = Convert.ToString(Console.ReadLine().ToUpper());
+            } while (con == "YES");
+            #endregion Select Option for Program Run
         }
 
         #region 2. Show Input is string or Digit Function
@@ -182,8 +211,6 @@ namespace Test_02
         }
         #endregion 11. Output of static Number
 
-        
-
         #region 16. User-defined exception
         public static void userDifineException()
         {
@@ -200,6 +227,14 @@ namespace Test_02
             }
         }
         #endregion 16. User-defined exception
+
+        #region 19. Constructor OverLoding
+        public static void ConstructorOverloding()
+        {
+            State s1 = new State();
+            State s2 = new State("Maharastra", "MH");
+        }
+        #endregion 19. Constructor OverLoding
 
     }
 
@@ -460,9 +495,52 @@ namespace Test_02
     }
     #endregion 10. Multilevel Inheritance with Virtual Methods
 
-    
+    #region 12. 2D Array into 1D Array
+    class ConvertArray
+    {
+        public static void convertArray()
+        {
+            int[,] array = new int[2, 3];
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write("Enter number Index {0},{1} : ", i, j);
+                    array[i, j] = Convert.ToInt32(Console.ReadLine());
+                }
+                Console.WriteLine();
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.WriteLine(array[i, j] + " ");
+                }
+            }
+
+        }
+    }
+    #endregion 12. 2D Array into 1D Array
 
     #region 13. Lower Bound and Upper Bound of an Array
+    class LowerUpperBoundArray
+    {
+        public static void BoundArray()
+        {
+            Array intArray = Array.CreateInstance(typeof(int), 5);
+
+            intArray.SetValue(12, 0);
+            intArray.SetValue(25, 1);
+            intArray.SetValue(28, 2);
+            intArray.SetValue(45, 3);
+            intArray.SetValue(59, 4);
+
+            Console.WriteLine("Lower Bound : " + intArray.GetLowerBound(0));
+            Console.WriteLine("Upper Bound : " + intArray.GetUpperBound(0));
+        }
+    }
     #endregion 13. Lower Bound and Upper Bound of an Array
 
     #region 14. DivideByZero Exception
@@ -490,6 +568,36 @@ namespace Test_02
     }
     #endregion 14. DivideByZero Exception
 
+    #region 15. Bubble Sort
+    class BubbleSort
+    {
+        public static void bubble()
+        {
+            int[] a = { 3, 0, 2, 5, -1, 4, 1 };
+            int t;
+
+            for (int p = 0; p <= a.Length - 2; p++)
+            {
+                for (int i = 0; i <= a.Length - 2; i++)
+                {
+                    if (a[i] > a[i + 1])
+                    {
+                        t = a[i + 1];
+                        a[i + 1] = a[i];
+                        a[i] = t;
+                    }
+                }
+            }
+            Console.WriteLine("\n" + "Sorted array :");
+            foreach (int aa in a)
+            {
+                Console.Write(aa + " ");
+            }
+            Console.WriteLine();
+        }
+    }
+    #endregion 15. Bubble Sort
+
     #region 16. User-defined exception
     public class InvalidAgeException : Exception
     {
@@ -512,6 +620,90 @@ namespace Test_02
         }
     }
     #endregion 16. User-defined exception
+
+    #region 17. calculating the percentage
+    class Percentage
+    {
+        public static void per()
+        {
+            int number, percentage, option;
+            float result;
+
+        label:
+            Console.WriteLine("Enter a number:");
+            number = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter how many Percentage to find:");
+            percentage = Convert.ToInt32(Console.ReadLine());
+
+            result = (float)(number * percentage) / 100;
+            Console.WriteLine("Percentage value is: {0}", result);
+            Console.Write("Calculate again press 1. Otherwise press any other Digit: ");
+
+            option = Convert.ToInt32(Console.ReadLine());
+            if (option == 1)
+            {
+                goto label;
+            }
+        }
+    }
+    #endregion 17. calculating the percentage
+
+    #region 18. Write Date and time in txt File
+    class DateTimeOntxt
+    {
+        public static object Now { get; private set; }
+
+        public static void textInFile()
+        {
+            try
+            {
+                string file = @"D:\CybercomCreation\Code\Test_02\Test_02\test.txt";
+
+                FileStream fs = new FileStream(file, FileMode.Create);
+                byte[] bdata = Encoding.Default.GetBytes(DateTime.Now.ToString());
+                fs.Write(bdata, 0, bdata.Length);
+                Console.WriteLine("Data Added successfully");
+                fs.Close();
+                string data;
+                FileStream fsread = new FileStream(file, FileMode.Open, FileAccess.Read);
+                using (StreamReader sr = new StreamReader(fsread))
+                {
+                    data = sr.ReadToEnd();
+                }
+                Console.WriteLine(data);
+            }
+            catch (FileNotFoundException fex)
+            {
+                Console.WriteLine(fex.Message);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Exception : " + ex.Message.ToString());
+            }
+        }
+    }
+    #endregion 18. Write Date and time in txt File
+
+    #region 19. Constructor OverLoding
+    class State
+    {
+        string StateName, StateCode;
+        public State()
+        {
+            StateName = "Gujarat";
+            StateCode = "GJ";
+            Console.WriteLine("State Name: {0} and Code: {1} ", StateName, StateCode);
+        }
+
+        public State(string name, string code)
+        {
+            StateName = name;
+            StateCode = code;
+            Console.WriteLine("State Name: {0} and Code: {1} ", StateName, StateCode);
+        }
+    }
+    #endregion 19. Constructor OverLoding
 
     #region 20. Fibonacci Series
     class Fibonacci

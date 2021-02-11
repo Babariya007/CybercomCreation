@@ -1,0 +1,47 @@
+=>  Today I have votch and learn from videos :
+	- Self join
+	- Different ways to replace NULL Value
+	- Coalesce function
+	- Union and union all
+	- Stored procedures
+	- Stored procedures with output parameters
+	- Stored procedure output parameters or return values
+	- Built in string functions
+	- LEFT, RIGHT, CHARINDEX and SUBSTRING functions
+	- Replicate, Space, Patindex, Replace and Stuff string functions
+	- Case Statement
+	- DateTime functions
+
+
+=>  Also i have learn this all things:
+=>  Salf join use to joining table with itself.
+
+=>  There are three waays to replace NULL valus
+	- ISNULL(), COALESCE(), CASE
+
+=>  Using the COALESCE() we can able to multipal null value replace.
+
+=>  The Union and UnionAll use to combine the result-set of two or more select queries.
+	- UNION remove duplicate rows, but UNION ALL dosen't remove duplicate rows
+	- UNION is slower then UNION ALL, because in UNION is perform distinct sort
+	- In union if we can retriv data one table two column and second table retrive data 3 column then it's generate error
+	- The Column values and column position are must be same position on query.
+
+=>  The Storeprocedure are execute three ways:
+	- using Exec keyword, Execute Keyword and gui base from SQL Server
+=>  We can use storeprocedure for insert, update, delete, select(View data) etc.
+	- We can also use retrive data for pass value as parametarise.
+
+=>  If the storeprocedure are encrepted then we can not able to view or add or edit of data
+=>  sp_help is use for get information of storeprocedure, tables, triggers etc.
+=>  sp_helptext is use for view storeprocedure text
+=>  sp_depends use to know dependancies of storeprocedure
+
+=>  Know about string functions. The string functions are :
+	- ASCII(), CHAR(), LTRIM(), RTRIM(), LOWER(), UPPER(), REVERSE(), LEN()
+
+=>  Datetime functions are :
+	- IsDate(), Day(), Month(), Year(), DateName(), DatePart(), DateAdd(), DateDiff() etc...
+=>  Also perform this all task in MySql Server.
+
+

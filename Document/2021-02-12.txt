@@ -1,0 +1,27 @@
+=>  Today i have learn from videos thos topics:
+	- Cast and Convert functions
+	- Mathematical functions
+	- Scalar user defined functions
+	- Inline table valued functions
+	- Multi statement table valued functions
+	- Schema Binding
+	- Temporary tables
+	- Indexes
+	- Clustered and nonclustered indexes
+	- Unique and Non Unique Indexes
+	- Views
+	- Updatable views
+
+=>  =>  The mathematical functions are:
+	- ABS(), CEILING(), FLOWER(), POWER(), SQUARE(), SQRT(), RAND(), ROUND(), LOG(), SIN(), COS(), EXP(), PI(), etc.
+	- In RAND() if we supplied seed value then it every time return same value.
+=>  In Scaler user difine function we use BEGIN and END BLOCK, but in Inline table function not use BEGIN END block.
+	- If in Inline Table function we can use BEGIN END block then it's return error. Inline table function use RETURN value.
+	- In table value function not use brgin end, but in multi statement table value function use bigin and end.
+
+=>  The types of index are:
+	- Clustered, Nonclustered, Unique, Filtered, xml, Full Text, Spatial, Columnstore, Index with include columns, Index on computed columns
+=>  The Clustered Index is only one Clustered Index to create each table. If we create second Clustered Index then it's generate error
+=>  The Primary key is use bydefault Unique Index
+=>  The view is a Morethen saved SQL query
+=>  Also perform those concepts.

@@ -1,0 +1,34 @@
+=>  Today i have complete all of videos and learn topics are:
+	- Indexed views
+	- Know about View limitations
+	- Triggers
+	- Insert or update trigger
+	- Instead of insert trigger
+	- Instead of update triggers
+	- Instead of delete triggers
+	- Derived tables and common table expressions
+	- common table expressions
+	- Update CTE
+	- Recursive CTE
+	- Database normalization
+	- Pivot
+
+
+=>  The view is a virtual table it dose not store any data by default.
+	- If we create index on view then we can now able to store data in view. It's caled indexed view.
+	- Konw about COUNT_BIG()
+
+=>  In view we can not create parameterise view.
+	- We can not able to create view for temporary table.
+
+=>  There are three types of trigger
+	- DML, DDL and Logon trigger
+	- DML is a Data Manupulation Lunguage. In DML Insert, Update and Delete eventes use.
+	- DML trigger are two types of trigger. 1) After trigger  2) Instead trigger
+	- The after trigger fire after the insert, update and delete and the Instead trigger is fire insted of the triggring action.
+	- DML trigger fire autometically to DML events(insert, update and delete)
+	- In trigger have a inserted and deleted are two special tables for Inserted table contain newly add data and deleted table contain deleted rows
+
+=>  CTE is called as Common Table Expression.
+=>  The common table expression is a temparary result set
+=>  Also prectice of them.

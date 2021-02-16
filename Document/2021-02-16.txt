@@ -1,0 +1,76 @@
+=>  Today i have learn from videos those topics:
+	- Error handling in databse
+	- Error handling using try-catch in database
+	- Transactions & Transactions Rollback
+	- ACID Tests
+	- Subqueries
+	- Correlated subquery
+	- Cursors in database
+	- Replacing cursors using joins
+	- List all tables from database using a query
+	- Writing re runnable scripts
+	- Alter database table columns without dropping table
+	- Optional parameters
+	- Merge statement
+	- Except operator
+	- Difference between except and not
+	- Intersect operator
+	- Difference between union intersect and except
+	- Cross apply and outer apply
+
+=>  We catch the error using @@ERROR or try-catch
+	- @@ERROR is cleared and reset each execution.
+	- This ia a check it immediately following the statement verified.
+
+=>  There are different types of sql server functions are:
+	- ERROR_NUMBER(), ERROR_MESSAGE(), ERROR_PROCEDURE(), ERROR_STATE(), ERROR_SEVERITY(), ERROR_LINE()
+	- This all are error information return only error of the catch block, if those function are write out of the catch bock then it's return null
+
+=>  Set transaction isolation level read uncommitted is use for if the transection is bigin and not commit then the other user show the data then we can use this.
+
+=>  The ACID property in database use the one transection and second transection at a time then it's work seprettly they do not interfiyer each other
+	- The transection is also Isolated it means the one transection is running then sql server blocked that row and other user can not show that details if without commit or rollback.
+	- It is also durable. meanse once a change is made, it is permanent. If a system failure occurs then it's restored original state once the system begins running again.
+
+=>  The subquery is a query in a another query
+
+=>  If the subquery depends on the outer query for its values, that sub query is a called as corre;ated subquery.
+
+=>  The correlated subquery can not be executed independently of the outer query.
+
+=>  There are four types of cursors:
+	- Forward-Only, static, keyset, dynamic
+
+=>  If we retrive all tables in database using query using sysobjects then use xtype are 'U'. U stands for User table
+	- Other xtypes are:
+		- AF: Aggregate Function
+		- C: check constraint
+		- F: Forain key
+		- PK: Primary Key
+		- S: System Table
+		- V: view
+		- P: Storeprocedure etc.
+
+=>  Re-runnable script nothing but if any one table are created and we create other table using quary then show the message already created
+	- there are two ways to check created or not table. 1) information_schema.table or 2) object_id('table_name')
+	- It is also apply in tables, columns,
+
+=>  In some time if we get some wrong datatype and we can edit using GUI base in that table then its's generate error at save time. It's solve two ways
+	- Using alter the table
+	- Second way is in tools->Options->Designers->uncheck Prevent saving change that require table re-creation
+
+=>  In store procedure we can create optional parameters base on requrements.
+	- In optional parameters use in Null or we can also pass any other values base on requrements.
+	- Ex: If our requrements is user are any one filter apply on data and we can show result for that one apply result and other parameters are not required to filter then the default value null
+
+=>  Merge use to merge two tables.
+
+=>  Except operator return unique rows from the left query table that aren't in the right query results.
+
+=>  Except filter duplicates and returns only Distinct rows from the left query that aren't in the right query result, where Not in dose not filter the duplicates
+	- Except operator expects the same number of columns in both queries, but notin compares a single column from the outer query with a single column from sub-query.
+
+=>  Intersect filters duplicates and returns only DISTINCT rows that are common between the left and right query, where inner join does not filter the duplicates.
+	- The Intersect also return null row but the inner join does not return null row
+
+

@@ -1,0 +1,71 @@
+=>  Today cover topics from videos are:
+	- DDL Triggers
+	- Server scoped ddl triggers
+	- Trigger execution order
+	- Logon Triggers
+	- Select into
+	- Difference between where and having
+	- Table valued parameters
+	- Send datatable as parameter to stored procedure
+	- Grouping Sets
+	- Grouping function
+	- GROUPING ID function
+	- Debugging - stored procedures
+	- Over clause
+	- Row Number function
+	- UNPIVOT operator
+	- Reverse PIVOT table
+	- Choose function
+	- IIF function
+	- EOMONTH function
+	- DATEFROMPARTS function
+	- Difference between DateTime and SmallDateTime
+	- DateTime2FromParts function
+	- Difference between DateTime and DateTime2
+
+=>  DDL triggers fire in response to DDL Event.
+	- DDL events - create, alter, drop, rename, etc
+
+=>  In trigger first fire server scop trigger then fire database trigger.
+	- We can also set which trigger fire first using system store procedure(sp_settriggerorder).
+
+=>  The logon trigger use for Tracking login activity, Restricting logins to sql server, Limiting number of session for a specific login
+
+=>  Select into is use to backup or copy of paerticular table in that database or external database.
+	- The advantage is a the table all column or perticular column and data are copy into other table using one query.
+	- 1 <> 1 is a Use of never true
+
+=>  In the where we can not use aggricate function and in having by able to use aggrigate function.
+
+=>  If we create user define data table then that query is
+	- Create Type emp as table
+	  (
+		Id int primary key,
+		Name varchar(50),
+		gender varchar(10)
+	  )
+
+=>  In debugging Step Over : is use for next line excecution
+	- Step intro: use for that refrance to point and that place goto debugging
+	- Step Out: use for execute storeprocedure, function etc and wait to execute to next line
+	- Run to Cursor: is use to if we know of process and that is correct then we goto other line then that line cursor to click and chose option
+	- watch window: show the values of vriables
+
+=>  The over clause combined with partition by is used to break up data into partitions.Specified function operates for each partition
+
+=>  UNPIVOT operator is use to convert columns into rows
+
+=>  The query of choose function : CHOOSE(index, value1, value2, etc)
+
+=>  If we can use if condition in database then we can write IIF(bool_expression, bool_expression true , bool_expression flase )
+
+=>  Use of the EOMonth is a find the lastdate of the given month.
+
+=>  DATEPART() is use for any part of the dte retrive.
+
+=>  DATEFROMPARTS function use for date value for the specified year, month and date
+
+=>  In DateTime2FromParts function have a two parts. Date part and time part.
+
+
+

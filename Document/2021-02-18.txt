@@ -1,0 +1,32 @@
+=>  Today i have cover topic from videos are:
+	- Sequence object
+	- Difference between sequence and identity
+	- Guid in database
+	- check GUID is null or empty
+	- Dynamic SQL
+	- Prevent sql injection with dynamic sql
+	- sql injection with dynamic sql
+	- Dynamic SQL in Stored Procedure
+	- Query plan cache
+	- exec vs sp executesql
+	- Quotename function
+	- Dynamic SQL vs Stored Procedure
+	- Dynamic sql output parameter
+	- Temporary tables in dynamic sql
+
+
+=>  Identity property does not have any option to automatically restart the identity values.
+	- Sequence object can have option to automatically restart the identity values using CYCLE option/keyword.
+
+=>  The GUID is a unique identifier
+	- GUID using NEWID() function
+
+=>  Dynamic SQL is a sql built from string at runtime
+
+=>  The QUOTENAME() function is use to protact database to SQL injection attect
+	- It's usefull for dynamic store procedure for protact database.
+	- It's convert vaalue suxh type of string
+
+=>  Prectice the daynamic query with procedure in my collage project.
+=>  The daynamic query is not beter then Procedure.
+

@@ -1,0 +1,4 @@
+=>  Today i have prectice database querys
+=>  Solved query by sir, error in create dynamic sql query from perform my project.
+=>  Also perform task given by sir.
+

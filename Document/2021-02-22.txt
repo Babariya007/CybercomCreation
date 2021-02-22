@@ -1,0 +1,31 @@
+=>  Today i have watch the videos and learn those Topics:
+	- SqlConnection
+	- ConnectionStrings in web.config file
+	- SqlCommand
+	- Injection and Preventing Injection
+	- stored procedure with output parameters
+	- SqlDataReader
+	- SqlDataAdapter
+	- DataSet
+
+=>  Today i have learn abot from those topics are:
+=>  A SqlConnection object represents a unique session to a SQL Server data source.
+
+=>  web.config file is a xml based configuration file used in ASP.NET based application to manage various settings that concerned with configuration of our website.
+	- if we want to change some configuration settings then do not need to restart our application to apply new changes, ASP.NET automatically detects the changes and applies them to the running ASP.NET application.
+	- In web.config file we can add setting to Connection String, Mail Setting Protocal, RDLC report configration setting etc.
+
+=>  DataReader is used to read the data from database.
+	- It is a read and forward only during connection.It is a connection oriented.
+	- Use of the ExecuteReader object to bind data to datareader.
+	- It is not use to update data in database.
+
+=>  DataAdapter is used to read the data from database and bind that data in dataset.
+	- It is not a connection oriented.
+
+=>  DataSet is a use hold multiple tables with data.
+
+=>  DataTable is represents a single table in the database.
+
+
+

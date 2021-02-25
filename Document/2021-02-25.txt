@@ -1,0 +1,17 @@
+=>  Today i have watch all the videos and learn about those topic:
+	- What is ASP.Net and there Life cycle
+	- Viewstate
+	- Session
+	- IsPostBack
+	- TextBox Controls
+	- Checkbox Controls
+	- Radio Button Controls
+	- Button Controls
+	- Hyperlink Control 
+        - Label Control
+        - Dropdown Control
+
+=>  Get more ideas about those to use in our projects and how to work it.
+
+
+

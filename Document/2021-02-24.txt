@@ -1,0 +1,6 @@
+=>  Today in a Prectice of create bank transection application
+=>  Firt i have create a this web application in ASP.Net 3-Tire architecture.
+	- But i have some mistack and don't know i have delete the csc.exe file then not run application.
+	- In this error some wast of my time.
+=>  Then i have create a Ado.Net application those project.
+=>  Today i have also learn about LINQ, Viewstate or Store procedure to which is more better.

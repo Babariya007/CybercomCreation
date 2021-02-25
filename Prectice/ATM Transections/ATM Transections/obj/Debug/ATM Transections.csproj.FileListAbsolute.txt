@@ -1,0 +1,5 @@
+D:\CybercomCreation\Prectice\ATM Transections\ATM Transections\bin\ATM Transections.dll
+D:\CybercomCreation\Prectice\ATM Transections\ATM Transections\bin\ATM Transections.pdb
+D:\CybercomCreation\Prectice\ATM Transections\ATM Transections\obj\Debug\ATM Transections.csprojResolveAssemblyReference.cache
+D:\CybercomCreation\Prectice\ATM Transections\ATM Transections\obj\Debug\ATM Transections.dll
+D:\CybercomCreation\Prectice\ATM Transections\ATM Transections\obj\Debug\ATM Transections.pdb

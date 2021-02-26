@@ -11,7 +11,10 @@ namespace ATM_Transections
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+            {
+                lblUserName.Text = Session["Name"].ToString();
+            }
         }
     }
 }

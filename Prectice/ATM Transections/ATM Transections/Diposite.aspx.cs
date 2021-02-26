@@ -23,20 +23,20 @@ namespace ATM_Transections
 
             using (SqlConnection objConn = new SqlConnection(connStr))
             {
+                objConn.Open();
                 SqlTransaction sqlTransection = objConn.BeginTransaction();
                 try
                 {
-                    objConn.Open();
                     SqlCommand objCmd = new SqlCommand();
                     objCmd.Connection = objConn;
+                    objCmd.Transaction = sqlTransection;
                     objCmd.CommandType = CommandType.StoredProcedure;
                     objCmd.CommandText = "PR_DipositeAmount_Update";
-                    objCmd.Parameters.AddWithValue("@Pin", Convert.ToInt32(Session["Pin"]));
+                    objCmd.Parameters.AddWithValue("@UserID", Convert.ToInt32(Session["UserID"]));
                     objCmd.Parameters.AddWithValue("@balance", txtDiposite.Text.Trim());
 
                     objCmd.ExecuteNonQuery();
                     sqlTransection.Commit();
-                    objConn.Close();
 
                     lblMessage.Text = "Transection Successfully...";
                     lblMessage.ForeColor = System.Drawing.Color.Green;
@@ -46,6 +46,11 @@ namespace ATM_Transections
                     sqlTransection.Rollback();
                     lblMessage.Text = "Transection Fail !";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
+                }
+                finally
+                { 
+                    if(objConn.State == ConnectionState.Open)
+                        objConn.Close();
                 }
             }
         }

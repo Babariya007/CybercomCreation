@@ -28,23 +28,23 @@ namespace ATM_Transections
 
             using (SqlConnection objConn = new SqlConnection(connStr))
             {
+                objConn.Open();
+                
                 try
                 {
                     SqlCommand objCmd = new SqlCommand();
                     objCmd.Connection = objConn;
                     objCmd.CommandType = CommandType.StoredProcedure;
                     objCmd.CommandText = "PR_WithdrowalAmount_Update";
-                    objCmd.Parameters.AddWithValue("@Pin", Convert.ToInt32(Session["Pin"]));
+                    objCmd.Parameters.AddWithValue("@UserID", Convert.ToInt32(Session["UserID"]));
                     objCmd.Parameters.AddWithValue("@balance", txtWithdrowal.Text);
 
-                    objConn.Open();
                     objCmd.ExecuteNonQuery();
-                    objConn.Close();
 
                     lblMessage.Text = "Transection Successfully...";
                     lblMessage.ForeColor = System.Drawing.Color.Green;
                 }
-                catch(SqlException sqlex)
+                catch (SqlException sqlex)
                 {
                     if (sqlex.Number == 501)
                     {
@@ -56,6 +56,11 @@ namespace ATM_Transections
                         lblMessage.Text = "Transection Fail !";
                         lblMessage.ForeColor = System.Drawing.Color.Red;
                     }
+                }
+                finally
+                { 
+                    if(objConn.State == ConnectionState.Open)
+                        objConn.Close();
                 }
             }
 

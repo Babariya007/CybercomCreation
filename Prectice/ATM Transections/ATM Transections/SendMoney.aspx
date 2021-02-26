@@ -8,12 +8,12 @@
 
         <div class="form-group row">
             <div class="col-sm-4">
-                <asp:Label ID="lblSenderName" runat="server" />
+                <h3><asp:Label ID="lblSenderName" runat="server" /></h3> Send to
             </div>
         </div>
         <div class="form-group row">
             <div class="col-sm-4">
-                <asp:TextBox ID="txtReciver" runat="server" class="form-control" placeholder="Enter Name Or Number" />
+                <asp:TextBox ID="txtReciver" runat="server" class="form-control" placeholder="Enter Reciver Name Or Number" />
                 <asp:RequiredFieldValidator ID="rfvReciver" runat="server" ControlToValidate="txtReciver" ErrorMessage="Please Select Reciver" InitialValue="-1" Display="Dynamic" ForeColor="Red" ValidationGroup="SendMoney" />
                 
             </div>

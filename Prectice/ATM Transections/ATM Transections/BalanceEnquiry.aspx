@@ -3,8 +3,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <h2>Balance Enquiry</h2>
+        <h2><asp:Label ID="lblUserName" runat="server" ></asp:Label></h2>
         <hr />
+        <div>
+        <h4>Balance Enquiry</h4>
+
+        </div>
     </div>
 
 </asp:Content>

@@ -14,7 +14,7 @@ namespace ATM_Transections
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtPin.Focus();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
@@ -42,7 +42,22 @@ namespace ATM_Transections
                     {
                         Session["Pin"] = drUser["Pin"].ToString();
                     }
-                    break;
+                    if (!drUser["UserID"].Equals(DBNull.Value))
+                    {
+                        Session["UserID"] = drUser["UserID"].ToString();
+                    }
+                    if (!drUser["Name"].Equals(DBNull.Value))
+                    {
+                        Session["Name"] = drUser["Name"].ToString();
+                    }
+                    if (!drUser["MobileNo"].Equals(DBNull.Value))
+                    {
+                        Session["MobileNo"] = drUser["MobileNo"].ToString();
+                    }
+                    if (!drUser["Balance"].Equals(DBNull.Value))
+                    {
+                        Session["Balance"] = drUser["Balance"].ToString();
+                    }
                 }
                 Response.Redirect("~/BalanceEnquiry.aspx");
             }

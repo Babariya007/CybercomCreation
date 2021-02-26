@@ -22,5 +22,7 @@
         </div>
         <br />
         <asp:Label ID="lblMessage" runat="server"></asp:Label>
+        <asp:Label ID="lblSession" runat="server"></asp:Label>
+
     </div>
 </asp:Content>

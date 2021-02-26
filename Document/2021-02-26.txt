@@ -1,0 +1,42 @@
+=>  Today i have complete videos and learn about those topic
+	- Data bind dropdownlist from the database
+	- dropdownlist with an XML file
+	- Mapping virtual path to physical path using Server MapPath method
+	- Retrieving selected item text, value and index in dropdownlist
+	- Cascading dropdown
+	- checkboxlist control
+	- checkboxlist, select or deselect all list items
+	- ListBox control
+	- radiobuttonlist control
+	- Bulleted list
+	- List controls
+	- Fileupload control
+	- Hidden field
+	- UseSubmitBehavior property of the Button control
+	- Wizard control templates
+
+
+=>  Also know about bind data in dropdown list get more imformation
+	- We can also write DataTextFild and DataValueFild in Design side.
+
+=>  If we can read in files then use Server.MapPath because it's return Physicl path.
+
+=>  Know about retrive data in multipale checkbox using CheckBoxList-ListItems
+	- It's same as dropdown list but some part is diffrent
+	- Also Know about those properties Select and Deselect
+
+=>  DropdownList, CheckBoxList, RadioButtonList, ListBox, BulletedList all are using one common ListControal class which is inherite those all list.
+
+=>  Hiddin fild is use for hide the data on clint side.
+	- But the disadvantage of hidden fild is it's show data on page source.
+	- For this reson do not use for confidential data.
+
+=> In Button Control we can use UseSubmitBehavior false property if you have enter data in text box then press enter save th data.
+	- This is usally use in if you have enter data in text box then press enter but you have logout.
+	- Those problem solve with UseSubmitBehavior property.
+
+=>  Know about Wizard Control and learn how to use it for some form filling application.
+
+
+
+

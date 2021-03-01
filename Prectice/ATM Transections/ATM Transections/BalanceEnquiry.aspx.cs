@@ -13,7 +13,10 @@ namespace ATM_Transections
         {
             if (!Page.IsPostBack)
             {
-                lblUserName.Text = Session["Name"].ToString();
+                if (Session["Name"] != null)
+                {
+                    lblUserName.Text = Session["Name"].ToString();
+                }
             }
         }
     }

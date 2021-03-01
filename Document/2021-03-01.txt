@@ -1,0 +1,35 @@
+=>  Today i have complete all the videos and cover topics are:
+	- Literal control
+	- Panel control
+	- Creating controls dynamically using panel control
+	- RequiredField validator control
+	- Rangevalidator control
+	- CompareValidator control
+	- RegularExpressionValidator control
+	- CustomValidator control
+	- ValidationSummary control
+	- Validation Groups
+	- Different page navigation techniques
+	- Response Redirect
+	- Server Transfer
+	- Server execute
+	- Opening new window using javascript
+	- Techniques to send data from one webform to another
+	- QueryString
+	- Cookies	
+	- Check cookies are enabled or disabled
+
+
+
+=>  Also i have learn topics are:
+=>  Using the panel control we have visible and hide componant as par requirement
+
+=>  We create a TextBox, Button, etc dinamiclly then the 3 ways to create:
+	- Using asp:Panel
+	- Between HTML Tag : Using Html tag we must write ID and runat="server"
+	- Using asp:PlaceHolder
+=>  Know about Cookies, Server Transfer, Server Execute, etc.
+=>  We have also work with velidation on our project.
+=>  Also Prectice of Cookies.
+
+

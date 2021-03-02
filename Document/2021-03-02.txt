@@ -1,0 +1,27 @@
+=>  Today i have learn those topics from videos
+	- Session state
+	- Cookie less sessions
+	- Inporc session
+	- StateServer session
+	- SQLServer session state
+	- Application state
+	- Exception handling
+	- Custom error
+	- Windows event viewer
+	- Sending mail using SMTP
+	- Tracing
+	- Application pools in IIS Security
+	- Anonymous authentication
+	- User controls
+	- Adding using user controls on a webform
+
+
+
+=>  Also Lerarn those topic:
+=>  Learn about Exception Handling, Multipal Exception Handling.
+=>  How to sand mail using .net application.
+=>  If generate error then Send mail Using ASP.Net
+	- I have also use this in our project. Some time after.
+=>  Know about User Controls. and how to work User Control.
+
+

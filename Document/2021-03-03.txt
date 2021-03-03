@@ -1,0 +1,14 @@
+=>  Today i have complete all of the videos and learn about those topic:
+	- Custom event
+	- User control custom events
+	- Loading user controls
+	- Navigating to a specific month and an year using asp.net calendar control
+	- Create Server control
+	- Add property and event in Server control
+	- AutoEventWireUp
+	- Image Slideshow
+
+=>  Also know about User control and Custome control
+=>  I have also learn about AJAX control in Timer and Update Panel.
+=>  Get the Idea How to reduce Load of Postback to server using Update Panel Control. so that is not Postback every time Full Page.
+

@@ -1,0 +1,21 @@
+=>  Today i have complete all of thee videos and learn about those topic:
+	- Upload Files
+	- Create Gallary with file upload
+	- Contact Us page with send data in mail
+	- Autocomplete textbox in search
+	- Master page
+	- Passing data from Content page to master page
+	- Passing data from master page to Content page
+	- Dynamic Master page
+	- How to apply Captcha
+	- Velidation in Captcha
+	- Save and retrive img from database
+	- Display data from 2 or more database table
+
+
+=>  Today i have lear from trom those topics:
+=>  Learn about Passing data from Content page to master page and Passing data from master page to Content page
+=>  Also learn about the how to use more then one master page
+	- Change master page theme on content page
+=>  Learn about apply the captcha and captcha velidation
+=>  Today i have learn new thing for me how to apply more then one column on dropdown list or use other purpose.

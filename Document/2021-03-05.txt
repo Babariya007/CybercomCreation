@@ -1,0 +1,16 @@
+=>  Today i have watch the videos and cover these topics:
+	- Calander Control
+	- Windows Authentication & There types of Authentication
+	- How to block the User
+	- How to Password reset link give in mail
+	- How to change Password
+	- How to Unblock User
+
+=>  Today i have learn new thinks like lock the Authentication user.
+=>  How to get chance for login Authentication and block user for some creditional sites.
+=>  Get information about Windows Authentication and use of windows Authentication.
+=>  Know about form Authentication.
+=>  Also implimating google Recaptcha in webform.`
+
+
+

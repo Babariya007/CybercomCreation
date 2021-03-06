@@ -7,7 +7,9 @@
         <hr />
         <div>
         <h4>Balance Enquiry</h4>
-
+            <br />
+            <br />
+            <asp:Label ID="lblBalance" runat="server"></asp:Label>
         </div>
     </div>
 

@@ -22,7 +22,7 @@ namespace ATM_Transections
             try
             {
                 SqlConnection objConn = new SqlConnection();
-                objConn.ConnectionString = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString.ToString();
+                objConn.ConnectionString = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString;
                 objConn.Open();
 
                 SqlCommand objCmd = new SqlCommand();

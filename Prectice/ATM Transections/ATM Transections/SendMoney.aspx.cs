@@ -26,7 +26,7 @@ namespace ATM_Transections
         protected void btnSave_Click(object sender, EventArgs e)
         {
             SqlConnection objConn = new SqlConnection();
-            objConn.ConnectionString = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString.ToString();
+            objConn.ConnectionString = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString;
             try
             {
                 objConn.Open();
@@ -42,17 +42,19 @@ namespace ATM_Transections
                     objCmd.Parameters.AddWithValue("@ReciverName", txtReciverName.Text.Trim());
                     objCmd.Parameters.AddWithValue("@ReciverMobileNo", txtReciverMobileNo.Text.Trim());
                     objCmd.Parameters.AddWithValue("@Balance", txtAmount.Text.Trim());
+                    objCmd.Parameters.AddWithValue("@SenderName", Session["Name"].ToString());
 
                     objCmd.ExecuteNonQuery();
                     sqlTransaction.Commit();
 
                     lblMessage.Text = " Send Money Successfully  " + txtReciverName.Text.Trim();
                     lblMessage.ForeColor = System.Drawing.Color.Green;
+                    ClearControl();
                 }
                 catch
                 {
                     sqlTransaction.Rollback();
-                    lblMessage.Text = "Insufficient Balance";
+                    lblMessage.Text = "Check Details Or Insufficient Balance";
                     lblMessage.ForeColor = System.Drawing.Color.Red;
                     
                 }
@@ -72,6 +74,14 @@ namespace ATM_Transections
                 if (objConn.State == ConnectionState.Open)
                     objConn.Close();
             }
+        }
+
+        private void ClearControl()
+        {
+            txtReciverName.Text = string.Empty;
+            txtReciverMobileNo.Text = string.Empty;
+            txtAmount.Text = string.Empty;
+            txtReciverName.Focus();
         }
     }
 }

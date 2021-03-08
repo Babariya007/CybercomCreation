@@ -43,6 +43,8 @@ namespace ATM_Transections
 
                     lblMessage.Text = "Transection Successfully...";
                     lblMessage.ForeColor = System.Drawing.Color.Green;
+                    txtWithdrowal.Text = string.Empty;
+                    txtWithdrowal.Focus();
                 }
                 catch (SqlException sqlex)
                 {

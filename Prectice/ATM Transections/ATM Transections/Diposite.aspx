@@ -10,7 +10,7 @@
             <div class="col-sm-4">
                 <asp:TextBox ID="txtDiposite" runat="server" class="form-control" placeholder="Enter Amount" />
                 <asp:RequiredFieldValidator ID="rfvDiposite" runat="server" ControlToValidate="txtDiposite" ErrorMessage="Please Enter Amount" Display="Dynamic" ForeColor="Red" ValidationGroup="Diposite" />
-                <asp:RegularExpressionValidator ID="revDiposite" runat="server" ControlToValidate="txtDiposite" ErrorMessage="Please Enter Digit" Display="Dynamic" ValidationExpression="^[0-9]+$" ForeColor="Red" ValidationGroup="Withdrowal" ></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="revDiposite" runat="server" ControlToValidate="txtDiposite" ErrorMessage="Please Enter Digit or Valid Digit" Display="Dynamic" ValidationExpression="^[0-9]+$" ForeColor="Red" ValidationGroup="Withdrowal" ></asp:RegularExpressionValidator>
 
             </div>
         </div>
@@ -22,7 +22,6 @@
         </div>
         <br />
         <asp:Label ID="lblMessage" runat="server"></asp:Label>
-        <asp:Label ID="lblSession" runat="server"></asp:Label>
 
     </div>
 </asp:Content>

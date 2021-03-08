@@ -14,12 +14,12 @@ namespace ATM_Transections
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            txtDiposite.Focus();
         }
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString.ToString();
+            string connStr = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString;
 
             using (SqlConnection objConn = new SqlConnection(connStr))
             {
@@ -40,6 +40,8 @@ namespace ATM_Transections
 
                     lblMessage.Text = "Transection Successfully...";
                     lblMessage.ForeColor = System.Drawing.Color.Green;
+                    txtDiposite.Text = string.Empty;
+                    txtDiposite.Focus();
                 }
                 catch
                 {

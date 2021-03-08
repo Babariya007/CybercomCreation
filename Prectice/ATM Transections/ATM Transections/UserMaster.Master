@@ -40,7 +40,7 @@
                             <asp:HyperLink ID="hlSendMoney" runat="server" class="nav-link" NavigateUrl="~/SendMoney.aspx">Send Money</asp:HyperLink>
                         </li>
                         <li class="nav-item" style="margin-top:8px;">
-                            <asp:Button ID="btnCancle" runat="server" class="nav-link btn btn-danger" Text="Cancle Transection" OnClick="btnCancle_Click" />
+                            <asp:Button ID="btnCancle" runat="server" class="nav-link btn btn-danger" Text="Cancle Transection" UseSubmitBehavior="false" OnClick="btnCancle_Click" />
                         </li>
                     </ul>
                     <%--<ul class="nav navbar-nav navbar-right">

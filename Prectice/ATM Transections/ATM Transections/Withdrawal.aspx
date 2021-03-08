@@ -11,7 +11,7 @@
             <div class="col-sm-4">
                 <asp:TextBox ID="txtWithdrowal" runat="server" class="form-control" placeholder="Enter Amount" />
                 <asp:RequiredFieldValidator ID="rfvWithdrowal" runat="server" ControlToValidate="txtWithdrowal" ErrorMessage="Please Enter Amount" Display="Dynamic" ForeColor="Red" ValidationGroup="Withdrowal" />
-                <asp:RegularExpressionValidator ID="revWithdrowal" runat="server" ControlToValidate="txtWithdrowal" ErrorMessage="Please Enter Digit" Display="Dynamic" ValidationExpression="^[0-9]+$" ForeColor="Red" ValidationGroup="Withdrowal" ></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="revWithdrowal" runat="server" ControlToValidate="txtWithdrowal" ErrorMessage="Please Enter Digit or Valid Digit" Display="Dynamic" ValidationExpression="^[0-9]+$" ForeColor="Red" ValidationGroup="Withdrowal" ></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group row">

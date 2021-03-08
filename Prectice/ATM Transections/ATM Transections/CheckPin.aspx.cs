@@ -20,7 +20,7 @@ namespace ATM_Transections
         protected void btnSave_Click(object sender, EventArgs e)
         {
             SqlConnection objConn = new SqlConnection();
-            objConn.ConnectionString = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString.ToString();
+            objConn.ConnectionString = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString;
             objConn.Open();
 
             SqlCommand objCmd = new SqlCommand();

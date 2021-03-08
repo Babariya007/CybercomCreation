@@ -1,0 +1,16 @@
+=>  Today i have Prectice of asp.net
+
+=>  First i have update ATM Transection task:
+	- We Widrowal, Deposite or Send Money then show that transection on transection Histry
+	- Show those Histry create procedure
+	- And use those procedure in update all transections (Widrowal, Deposite or Send Money)
+	- During this task solved generate errors and now work Successfully
+	- Show all the transection history by user
+
+=>  Then I have Update my project.
+	- In Project i have upadte to password save with encryption.
+	- This is apply on signUp, SignIn and also Reset Password
+	- During these task i have find how to decrypet password
+	- I have find some sites to decrypet password but most of site not a proper work
+	- I have know about those site the general encrypet text is show result properly, But if we write other uncommon text and then it's show not found or show error
+

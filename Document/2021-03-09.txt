@@ -1,0 +1,14 @@
+=>  Today i have update in bank app and Captcha
+
+=>  In Bank app today update is:
+	- Download statement by two diffrent dates.
+	- Solve some error from database to send mony to thired party.
+	- And Today most of the time consumming task is if in statement amount credit then show that is a green and ammount is debited then that color is red
+	- this is using on some conditions. To create class file and css file and change color base on condition
+
+=>  Today i have also apply recaptcha v2
+	- In this task the dificult is a captcha validation for me.
+	- I have find and get error and solve those errors.
+	- In captcha validation we can use google api througth validation.
+
+=>  Today more clear with how to use css base on conditions. And use of Google Recaptcha and validation.

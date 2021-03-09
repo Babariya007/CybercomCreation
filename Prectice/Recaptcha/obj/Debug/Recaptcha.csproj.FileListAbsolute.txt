@@ -1,4 +1,3 @@
-D:\CybercomCreation\Prectice\Recaptcha\bin\Recaptcha.dll.config
 D:\CybercomCreation\Prectice\Recaptcha\bin\Recaptcha.dll
 D:\CybercomCreation\Prectice\Recaptcha\bin\Recaptcha.pdb
 D:\CybercomCreation\Prectice\Recaptcha\bin\roslyn\csc.exe
@@ -29,8 +28,6 @@ D:\CybercomCreation\Prectice\Recaptcha\bin\roslyn\VBCSCompiler.exe
 D:\CybercomCreation\Prectice\Recaptcha\bin\roslyn\VBCSCompiler.exe.config
 D:\CybercomCreation\Prectice\Recaptcha\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\CybercomCreation\Prectice\Recaptcha\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\CybercomCreation\Prectice\Recaptcha\obj\Debug\Recaptcha.csprojAssemblyReference.cache
-D:\CybercomCreation\Prectice\Recaptcha\obj\Debug\Recaptcha.csproj.CoreCompileInputs.cache
-D:\CybercomCreation\Prectice\Recaptcha\obj\Debug\Recaptcha.csproj.CopyComplete
 D:\CybercomCreation\Prectice\Recaptcha\obj\Debug\Recaptcha.dll
 D:\CybercomCreation\Prectice\Recaptcha\obj\Debug\Recaptcha.pdb
+D:\CybercomCreation\Prectice\Recaptcha\obj\Debug\Recaptcha.csprojResolveAssemblyReference.cache

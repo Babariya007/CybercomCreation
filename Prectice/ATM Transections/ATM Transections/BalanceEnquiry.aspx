@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserMaster.Master" AutoEventWireup="true" CodeBehind="BalanceEnquiry.aspx.cs" Inherits="ATM_Transections.BalanceEnquiry" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+        <link href="<%=ResolveClientUrl("~/css/Style.css")%>" rel="stylesheet" type="text/css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
@@ -11,8 +12,25 @@
             <h4>Balance Enquiry</h4>
             <asp:Label ID="lblBalance" runat="server" Font-Size="Large"></asp:Label>
         </div>
-            <br />
-            <br />
+        <br />
+        <br />
+
+        <div class="row">
+            <div class="form-group row" style="margin-left: 5px">
+                <label for="lblPin" class="col-sm-2 col-form-label">Download Statement</label>
+                <div class="col-sm-3">
+                    <asp:TextBox ID="txtFromDate" runat="server" class="form-control" type="date" />
+                </div>
+                <div class="col-sm-3">
+                    <asp:TextBox ID="txtToDate" runat="server" class="form-control" type="date" />
+                </div>
+                <div class="col-sm-3">
+                    <asp:Button ID="btnDownload" runat="server" class="btn btn-primary" Text="Download" OnClick="btnDownload_Click" />
+                </div>
+            </div>
+        </div>
+        <br />
+        <br />
         <div>
             <asp:GridView ID="gvTransectionHistory" runat="server" AutoGenerateColumns="False" CssClass="table table-borderless" CellPadding="4" ForeColor="#333333" GridLines="None">
                 <AlternatingRowStyle BackColor="White" />
@@ -23,12 +41,12 @@
                         </ItemTemplate>
                     </asp:TemplateField>
                     <asp:BoundField DataField="TransectionMessage" HeaderText="Transection" />
-                    <%--<asp:TemplateField HeaderText="Payment" ItemStyle-Font-Bold="true" ItemStyle-HorizontalAlign="Center">
+                    <asp:TemplateField HeaderText="Payment" ItemStyle-Font-Bold="true">
                         <ItemTemplate>
-                            <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount")%>' ForeColor='<%# Convert.ToInt32(Eval("Amount"))>0?System.Drawing.Color.Green:System.Drawing.Color.Red %>''></asp:Label>
+                            <asp:Label ID="lblAmount" runat="server" Text='<%# Eval("Amount")%>' CssClass='<%# ATM_Transections.ChangeColor.RedOrGreen(Convert.ToInt32(Eval("Amount"))) %>'></asp:Label>
                         </ItemTemplate>
-                    </asp:TemplateField>--%>
-                    <asp:BoundField DataField="Amount" HeaderText="Amount" />
+                    </asp:TemplateField>
+                    <%--<asp:BoundField DataField="Amount" HeaderText="Amount" />--%>
                     <asp:BoundField DataField="Date" HeaderText="Date" />
 
                 </Columns>

@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,6 +14,7 @@ namespace ATM_Transections
 {
     public partial class BalanceEnquiry : System.Web.UI.Page
     {
+        #region Page_Load
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -25,7 +27,9 @@ namespace ATM_Transections
             GetBalanceEnquiry();
             GetBalance();
         }
+        #endregion Page_Load
 
+        #region GetBalance
         private void GetBalance()
         {
             string conStr = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString;
@@ -50,7 +54,9 @@ namespace ATM_Transections
                 }
             }
         }
+        #endregion GetBalance
 
+        #region GetBalanceEnquiry
         private void GetBalanceEnquiry()
         {
             string conStr = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString;
@@ -73,27 +79,70 @@ namespace ATM_Transections
                 gvTransectionHistory.DataBind();
             }
         }
+        #endregion GetBalanceEnquiry
 
+        #region Download Statement
+        protected void btnDownload_Click(object sender, EventArgs e)
+        {
+            string conStr = ConfigurationManager.ConnectionStrings["ATMConnectionString"].ConnectionString;
+            using (SqlConnection objConn = new SqlConnection(conStr))
+            {
+                SqlCommand objCmd = new SqlCommand();
+                objCmd.Connection = objConn;
+                objCmd.CommandType = CommandType.StoredProcedure;
+                objCmd.CommandText = "PR_DowanloadStatement_SelectByDate";
+                objCmd.Parameters.AddWithValue("@UserID", Convert.ToInt32(Session["UserID"]));
+                objCmd.Parameters.AddWithValue("@FromDate", txtFromDate.Text);
+                objCmd.Parameters.AddWithValue("@ToDate", txtToDate.Text);
+                objConn.Open();
 
-        //protected void gvTransectionHistory_RowDataBound(object sender, GridViewRowEventArgs e)
-        //{
-        //    foreach (GridViewRow row in gvTransectionHistory.Rows)
-        //    {
-        //        for (int i = 0; i < gvTransectionHistory.Columns.Count; i++)
-        //        {
-        //            TableCell cell = row.Cells[i];
-        //            int balance = int.Parse(cell.Text);
-        //            if (balance <= 0)
-        //            {
-        //                cell.ForeColor = Color.Red;
-        //            }
-        //            else
-        //            { 
-        //                cell.ForeColor = Color.Green;
-        //            }
-        //        }
-        //    }
-        //}
+                using (SqlDataAdapter objSDA = new SqlDataAdapter(objCmd))
+                {
+                    DataSet ds = new DataSet();
+                    objSDA.Fill(ds);
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        StringBuilder sb = new StringBuilder();
+                        
+                        sb.Append("Account Holder Name : " + Session["Name"] + "\n");
+                        sb.Append("Statement Between " + txtFromDate.Text + " To " + txtToDate.Text + "\n\n");
+
+                        foreach (DataRow dataRow in ds.Tables[0].Rows)
+                        {
+                            sb.Append(dataRow[0] + " \t" + dataRow[1] + " \t" + Convert.ToDateTime(dataRow[2]).ToString("dd MMMM yyyy hh:mm:ss tt") + "\n");
+                        }
+
+                        Response.Clear();
+                        Response.ContentType = "application/txt";
+                        Response.Buffer = true;
+                        Response.AppendHeader("content-disposition", "attachement;filename=" + Session["Name"] + "Statement.txt");
+                        Response.BinaryWrite(Encoding.UTF8.GetBytes(sb.ToString()));
+                        Response.End();
+                        Response.Flush();
+                    }
+                }
+
+                //Download Statement
+                //StringBuilder sb = new StringBuilder();
+                //sb.Append(gvTransectionHistory.DataSource = dt);
+                ////sb.Append(gvTransectionHistory.DataBind());
+                //sb.Append("\n");
+
+                //string text = dt.ToString();
+
+                //Response.Clear();
+                //Response.ClearHeaders();
+
+                //Response.AppendHeader("Content-Length", text.Length.ToString());
+                //Response.ContentType = "text/plain";
+                //Response.AppendHeader("Content-Disposition", "attachment;filename=" + Session["Name"] + " Statement.txt");
+
+                //Response.Output.Write(text);
+                //Response.End();
+            }
+        }
+        #endregion Download Statement
 
     }
 }

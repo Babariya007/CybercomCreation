@@ -74,6 +74,7 @@
     <Compile Include="BalanceEnquiry.aspx.designer.cs">
       <DependentUpon>BalanceEnquiry.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ChangeColor.cs" />
     <Compile Include="CheckPin.aspx.cs">
       <DependentUpon>CheckPin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -134,7 +135,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="css\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

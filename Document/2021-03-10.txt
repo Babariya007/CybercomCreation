@@ -1,0 +1,14 @@
+=>  Today i have Prectice of All Insert, Update and Delete
+=>  First i have create a database in store procedures for insert update and deletes.
+=>  I have a create Contact details of Addressbook.
+	- In thos page i have fill data from user Name, Address, Pincode, EmailID, MobileNo, Country, State, City and Relationship
+	- In this task if user select country then show that country states.Otherwise don't show.
+	- If User Select State then show that States City. Otherwise don't show any City.
+	- And one more fild is user Relationship that contact to FemilyRelation or Bussnisses Reletion.
+=>  I have a face isuue in delete time.
+	- In delete time first i have don't call Gridview funtion in Page.IsPost then it's generate error to delete time because gridviw fill every page Lode.
+	- Second mistake is i have give the CommandName Only 'Delete' so data is deleted but generate error.
+	- This error take more time to solve because item deleted but show error.
+	- THen i have find out the 'Delete' is a by default trigger use .Net and i have change the name then it's working proper.
+
+=>  So today i have find out some error and know about .net use bydefault triggers.

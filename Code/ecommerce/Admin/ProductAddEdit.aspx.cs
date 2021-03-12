@@ -51,9 +51,8 @@ public partial class Admin_ProductAddEdit : System.Web.UI.Page
         if (!entProductMaster.ProductPrice.IsNull)
             txtProductPrice.Text = entProductMaster.ProductPrice.Value.ToString();
 
-        //if (!entProductMaster.ProductImage.IsNull)
-        //    FuUpload.ImageUrl = entProductMaster.ProductImage.Value.ToString();
-
+        if (!entProductMaster.ProductImage.IsNull)
+            FuUpload.SaveAs(Server.MapPath(entProductMaster.ProductImage.Value.ToString()));
     }
 
     #endregion LoadControls

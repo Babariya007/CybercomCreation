@@ -20,7 +20,7 @@ namespace eCommerce
             }
             set
             {
-                _ProductOrderID = value;
+                _ProductOrderID  = value;
             }
         }
 
@@ -37,30 +37,5 @@ namespace eCommerce
             }
         }
 
-        protected SqlInt32 _OrderQuntity;
-        public SqlInt32 OrderQuntity
-        {
-            get
-            {
-                return _OrderQuntity;
-            }
-            set
-            {
-                _OrderQuntity = value;
-            }
-        }
-
-        protected SqlDecimal _TotalBill;
-        public SqlDecimal TotalBill
-        {
-            get
-            {
-                return _TotalBill;
-            }
-            set
-            {
-                _TotalBill = value;
-            }
-        }
     }
 }

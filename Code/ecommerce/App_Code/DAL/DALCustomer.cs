@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
@@ -8,13 +10,114 @@ using System.Web;
 /// </summary>
 namespace eCommerce
 {
-    public class DALCustomer
+    public class DALCustomer : DataBaseConfig
     {
-        public DALCustomer()
+        #region Local Veriable
+
+        protected string _Message;
+        public string Message
         {
-            //
-            // TODO: Add constructor logic here
-            //
+            get
+            {
+                return _Message;
+            }
+            set
+            {
+                _Message = value;
+            }
         }
+
+        #endregion Local Veriable
+
+        #region Insert Operaction
+
+        public Boolean Insert(ENTCustomer entCustomer)
+        {
+            using (SqlConnection objConn = new SqlConnection(ConnectionString))
+            {
+                objConn.Open();
+                using (SqlCommand objCmd = objConn.CreateCommand())
+                    try
+                    {
+                        #region Prepare Command
+
+                        objCmd.CommandType = CommandType.StoredProcedure;
+                        objCmd.CommandText = "PR_CustomerConfiramOrder_Insert";
+                        objCmd.Parameters.AddWithValue("@FirstName", entCustomer.FirstName);
+                        objCmd.Parameters.AddWithValue("@LastName", entCustomer.LastName);
+                        objCmd.Parameters.AddWithValue("@Address", entCustomer.Address);
+                        objCmd.Parameters.AddWithValue("@ProductID", entCustomer.ProductID);
+                        objCmd.Parameters.AddWithValue("@OrderQuantity", entCustomer.OrderQuentity);
+                        objCmd.Parameters.AddWithValue("@TotalBill", entCustomer.TotalBill);
+
+                        #endregion Prepare Command
+
+                        objCmd.ExecuteNonQuery();
+
+                        return true;
+                    }
+                    catch (SqlException sqlex)
+                    {
+                        Message = sqlex.InnerException.Message.ToString();
+                        return false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Message = ex.InnerException.Message.ToString();
+                        return false;
+                    }
+                    finally
+                    {
+                        if (objConn.State == ConnectionState.Open)
+                            objConn.Close();
+                    }
+            }
+        }
+
+        #endregion Insert Operaction
+
+        #region CustomerOrderList
+
+        public DataTable SelectAll()
+        {
+            using (SqlConnection objConn = new SqlConnection(ConnectionString))
+            {
+                objConn.Open();
+                using (SqlCommand objCmd = objConn.CreateCommand())
+                    try
+                    {
+                        #region Prepare Command
+                        objCmd.CommandType = CommandType.StoredProcedure;
+                        objCmd.CommandText = "PR_CustomerOrderList_SelectAll";
+                        #endregion Prepare Command
+
+                        #region ReadData and Set Controls
+                        DataTable dt = new DataTable();
+                        using (SqlDataReader objSDR = objCmd.ExecuteReader())
+                        {
+                            dt.Load(objSDR);
+                        }
+                        return dt;
+                        #endregion ReadData and Set Controls
+                    }
+                    catch (SqlException sqlex)
+                    {
+                        Message = sqlex.InnerException.Message.ToString();
+                        return null;
+                    }
+                    catch (Exception ex)
+                    {
+                        Message = ex.InnerException.Message.ToString();
+                        return null;
+                    }
+                    finally
+                    {
+                        if (objConn.State == ConnectionState.Open)
+                            objConn.Close();
+                    }
+            }
+        }
+
+        #endregion CustomerOrderList
     }
 }

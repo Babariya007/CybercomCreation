@@ -122,24 +122,6 @@ namespace ATM_Transections
                         Response.Flush();
                     }
                 }
-
-                //Download Statement
-                //StringBuilder sb = new StringBuilder();
-                //sb.Append(gvTransectionHistory.DataSource = dt);
-                ////sb.Append(gvTransectionHistory.DataBind());
-                //sb.Append("\n");
-
-                //string text = dt.ToString();
-
-                //Response.Clear();
-                //Response.ClearHeaders();
-
-                //Response.AppendHeader("Content-Length", text.Length.ToString());
-                //Response.ContentType = "text/plain";
-                //Response.AppendHeader("Content-Disposition", "attachment;filename=" + Session["Name"] + " Statement.txt");
-
-                //Response.Output.Write(text);
-                //Response.End();
             }
         }
         #endregion Download Statement

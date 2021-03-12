@@ -145,7 +145,14 @@ namespace eCommerce
                     }
                     catch (SqlException sqlex)
                     {
-                        Message = sqlex.InnerException.Message.ToString();
+                        if (sqlex.Number == 547)
+                        {
+                            Message = "This Product is Purches Do not able to Delete This Record";
+                        }
+                        else
+                        {
+                            Message = sqlex.InnerException.Message.ToString();
+                        }
                         return false;
                     }
                     catch (Exception ex)
@@ -183,38 +190,38 @@ namespace eCommerce
 
                         #region ReadData and Set Controls
 
-                        ENTProductMaster entBranch = new ENTProductMaster();
+                        ENTProductMaster entProductMaster = new ENTProductMaster();
                         using (SqlDataReader objSDR = objcmd.ExecuteReader())
                         {
                             while (objSDR.Read())
                             {
                                 if (!objSDR["ProductID"].Equals(DBNull.Value))
                                 {
-                                    entBranch.ProductID = Convert.ToInt32(objSDR["ProductID"]);
+                                    entProductMaster.ProductID = Convert.ToInt32(objSDR["ProductID"]);
                                 }
                                 if (!objSDR["ProductName"].Equals(DBNull.Value))
                                 {
-                                    entBranch.ProductName = Convert.ToString(objSDR["ProductName"]);
+                                    entProductMaster.ProductName = Convert.ToString(objSDR["ProductName"]);
                                 }
                                 if (!objSDR["ProductQuantity"].Equals(DBNull.Value))
                                 {
-                                    entBranch.ProductQuantity = Convert.ToInt32(objSDR["ProductQuantity"]);
+                                    entProductMaster.ProductQuantity = Convert.ToInt32(objSDR["ProductQuantity"]);
                                 }
                                 if (!objSDR["ProductDetails"].Equals(DBNull.Value))
                                 {
-                                    entBranch.ProductDetails = Convert.ToString(objSDR["ProductDetails"]);
+                                    entProductMaster.ProductDetails = Convert.ToString(objSDR["ProductDetails"]);
                                 }
                                 if (!objSDR["ProductPrice"].Equals(DBNull.Value))
                                 {
-                                    entBranch.ProductPrice = Convert.ToDecimal(objSDR["ProductPrice"]);
+                                    entProductMaster.ProductPrice = Convert.ToDecimal(objSDR["ProductPrice"]);
                                 }
                                 if (!objSDR["ProductImage"].Equals(DBNull.Value))
                                 {
-                                    entBranch.ProductImage = Convert.ToString(objSDR["ProductImage"]);
+                                    entProductMaster.ProductImage = Convert.ToString(objSDR["ProductImage"]);
                                 }
                             }
                         }
-                        return entBranch;
+                        return entProductMaster;
                         #endregion ReadData and Set Controls
                     }
                     catch (SqlException sqlex)
@@ -279,7 +286,7 @@ namespace eCommerce
 
         //-----------------------------------------------------------------------
 
-        #region Select Operaction
+        #region ShowProducts
 
         public DataTable ShowProducts()
         {
@@ -321,10 +328,10 @@ namespace eCommerce
             }
         }
 
-        #endregion Select Operaction
+        #endregion ShowProducts
 
         #region ProductDetailsByID
-        public DataTable ProductDetailsByID(SqlInt32 ProductID)
+        public ENTProductMaster ProductMasterShowDetailsByPK(SqlInt32 ProductID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -334,17 +341,40 @@ namespace eCommerce
                     {
                         #region Prepar Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_ProductMaster_SelectByPK";
+                        objCmd.CommandText = "PR_ProductMasterShowDetails_SelectByPK";
                         objCmd.Parameters.AddWithValue("@ProductID", ProductID);
                         #endregion Prepar Command
 
                         #region ReadData and Set Controls
-                        DataTable dt = new DataTable();
+
+                        ENTProductMaster entProductMaster = new ENTProductMaster();
                         using (SqlDataReader objSDR = objCmd.ExecuteReader())
                         {
-                            dt.Load(objSDR);
+                            while (objSDR.Read())
+                            {
+                                if (!objSDR["ProductID"].Equals(DBNull.Value))
+                                {
+                                    entProductMaster.ProductID = Convert.ToInt32(objSDR["ProductID"]);
+                                }
+                                if (!objSDR["ProductName"].Equals(DBNull.Value))
+                                {
+                                    entProductMaster.ProductName = Convert.ToString(objSDR["ProductName"]);
+                                }
+                                if (!objSDR["ProductDetails"].Equals(DBNull.Value))
+                                {
+                                    entProductMaster.ProductDetails = Convert.ToString(objSDR["ProductDetails"]);
+                                }
+                                if (!objSDR["ProductPrice"].Equals(DBNull.Value))
+                                {
+                                    entProductMaster.ProductPrice = Convert.ToDecimal(objSDR["ProductPrice"]);
+                                }
+                                if (!objSDR["ProductImage"].Equals(DBNull.Value))
+                                {
+                                    entProductMaster.ProductImage = Convert.ToString(objSDR["ProductImage"]);
+                                }
+                            }
                         }
-                        return dt;
+                        return entProductMaster;
                         #endregion ReadData and Set Controls
                     }
                     catch (SqlException sqlex)
@@ -366,8 +396,8 @@ namespace eCommerce
         }
         #endregion ProductDetailsByID
 
-        #region ItemInCartByID
-        public DataTable ItemInCartByID(SqlInt32 ProductID)
+        #region ItemInCart
+        public DataTable ItemInCart()
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
             {
@@ -377,8 +407,7 @@ namespace eCommerce
                     {
                         #region Prepar Command
                         objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_ItemInCart_SelectByPK";
-                        objCmd.Parameters.AddWithValue("@ProductID", ProductID);
+                        objCmd.CommandText = "PR_ItemShowCart_SelectAll";
                         #endregion Prepar Command
 
                         #region ReadData and Set Controls
@@ -407,6 +436,6 @@ namespace eCommerce
                     }
             }
         }
-        #endregion ItemInCartByID
+        #endregion ItemInCart
     }
 }

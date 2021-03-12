@@ -11,60 +11,59 @@
         </div>
         <hr />
         <br />
+        <div style="text-align:right">
+            <asp:HyperLink ID="hlHome" runat="server" Text="Add New Product" CssClass="btn btn-warning" NavigateUrl="~/Client/Home.aspx"></asp:HyperLink>
+        </div>
+        <br />
         <div class="row">
-            <asp:Repeater ID="rpCheckout" runat="server">
-
+            <asp:Repeater ID="rpCart" runat="server">
                 <ItemTemplate>
-                    <div class="col-md-2">
-                        <div>
-                            <asp:Image ID="imgProduct" runat="server" ImageUrl='<%#Eval("ProductImage") %>' Height="150px" Width="150px" />
+                    <div class="row col-md-6">
+                        <div class="col-md-4">
+                            <div>
+                                <asp:Image ID="imgProduct" runat="server" ImageUrl='<%#Eval("ProductImage") %>' Height="150px" Width="150px" />
+                            </div>
                         </div>
-                        <br />
-                        <div class="row col-md-12">
-                            <asp:TextBox ID="txtQuantity" runat="server" class="form-control" Text="1" placeholder="Enter Quantity" AutoPostBack="true" OnTextChanged="txtQuantity_TextChanged"></asp:TextBox>
-                            <asp:RequiredFieldValidator ID="rfvQuantity" runat="server" ControlToValidate="txtQuantity" ErrorMessage="Enter Quentity" Display="Dynamic" ForeColor="Red" ValidationGroup="Product" />
-                            <br />
-                        </div>
-                    </div>
-                    <div class="col-md-4" style="padding-left: 50px">
-                        <div>
-                            <h1>
-                                <asp:Label ID="lblProductName" runat="server" Text='<%#Eval("ProductName") %>'></asp:Label>
-                            </h1>
-                        </div>
-                        <div>
-                            <h3>
-                                <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("ProductPrice") %>'></asp:Label>
-                                <i class="fa fa-inr" style="font-size: 20px"></i></h3>
-                        </div>
-                    </div>
-                    <div class="row col-md-4">
-                        <div>
-                            Quantity :
-                    <asp:Label ID="lblQuantity" runat="server"></asp:Label>
-                        </div>
-                        <br />
-                        <div>
-                            Price :
-                    <asp:Label ID="lblProductPrice" runat="server" Text='<%#Eval("ProductPrice") %>' class="fa fa-inr"></asp:Label>
-                        </div>
-                        <br />
-                        <div>
-                            GST Charge 18% :
-                    <asp:Label ID="lblGSTCharge" runat="server"></asp:Label>
-                        </div>
-                        <br />
-                        <div>
-                            Total Bill :
-                    <asp:Label ID="lblTotalBill" runat="server"></asp:Label>
-                        </div>
-                    </div>
+                        <div class="col-md-8">
+                            <div>
+                                <h1>
+                                    <asp:Label ID="lblProductName" runat="server" Text='<%#Eval("ProductName") %>'></asp:Label>
+                                </h1>
+                            </div>
+                            <div>
+                                <h3>
+                                    <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("ProductPrice") %>'></asp:Label>
+                                    <i class="fa fa-inr" style="font-size: 20px"></i></h3>
 
+                                <asp:TextBox ID="txtQuantity" runat="server" class="form-control" Text="1" placeholder="Enter Quantity" AutoPostBack="true" OnTextChanged="txtQuantity_TextChanged" Width="30%"></asp:TextBox>
+                                <asp:RequiredFieldValidator ID="rfvQuantity" runat="server" ControlToValidate="txtQuantity" ErrorMessage="Enter Quentity" Display="Dynamic" ForeColor="Red" ValidationGroup="Product" />
+                                <br />
+                            </div>
+                        </div>
+                    </div>
                 </ItemTemplate>
             </asp:Repeater>
-
-            <div>
-                <asp:Button ID="btnCheckOut" runat="server" Text="Check Out" CssClass="btn btn-info" />
+            <hr />
+            <br />
+            <div class="row col-md-11" style="padding-bottom: 50px">
+                <div>
+                    Quantity :
+                    <asp:Label ID="lblQuantity" runat="server"></asp:Label>
+                </div>
+                <br />
+                <div>
+                    GST Charge 18% :
+                    <asp:Label ID="lblGSTCharge" runat="server"></asp:Label>
+                </div>
+                <br />
+                <div>
+                    Total Bill :
+                    <asp:Label ID="lblTotalBill" runat="server"></asp:Label>
+                </div>
+                <br />
+                <div>
+                    <asp:LinkButton ID="btnCheckOut" runat="server" Text="Check Out" CssClass="btn btn-info" OnClick="btnCheckOut_Click" />
+                </div>
             </div>
         </div>
     </div>

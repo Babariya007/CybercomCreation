@@ -95,19 +95,20 @@ namespace eCommerce
             DALProductMaster dalProductMaster = new DALProductMaster();
             return dalProductMaster.ShowProducts();
         }
-        public DataTable ProductDetailsByID(SqlInt32 ProductID)
+        public ENTProductMaster ProductMasterShowDetailsByPK(SqlInt32 ProductID)
         {
             DALProductMaster dalProductMaster = new DALProductMaster();
-            return dalProductMaster.ProductDetailsByID(ProductID);
+            return dalProductMaster.ProductMasterShowDetailsByPK(ProductID);
         }
         #endregion Show Product
 
-        #region ItemInCartByID
-        public DataTable ItemInCartByID(SqlInt32 ProductID)
+        #region ItemInCartBy
+        public DataTable ItemInCartByID()
         {
             DALProductMaster dalProductMaster = new DALProductMaster();
-            return dalProductMaster.ItemInCartByID(ProductID);
+            return dalProductMaster.ItemInCart();
         }
-        #endregion ItemInCartByID
+        #endregion ItemInCart
+        
     }
 }

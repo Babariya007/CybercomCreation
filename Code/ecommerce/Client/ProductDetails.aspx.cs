@@ -17,6 +17,10 @@ public partial class Client_ProductDetails : System.Web.UI.Page
             FillDetailsByProductID(Convert.ToInt32(Request.QueryString["ProductID"]));
             this.Page.Title = "eCommers Products";
         }
+        else
+        {
+            Response.Redirect("~/Client/Home.aspx");
+        }
     }
     #endregion Page_Load
 
@@ -28,19 +32,37 @@ public partial class Client_ProductDetails : System.Web.UI.Page
             ENTProductMaster entProductMaster = new ENTProductMaster();
             BALProductMaster balProductMaster = new BALProductMaster();
 
-            if (Request.QueryString["ProductID"] != null)
-            {
-                entProductMaster.ProductID = ProductID;
-            }
+            entProductMaster = balProductMaster.ProductMasterShowDetailsByPK(ProductID);
 
-            DataTable dt = balProductMaster.ProductDetailsByID(ProductID);
-            if (dt.Rows.Count > 0)
-            {
-                rpProductDetails.DataSource = dt;
-                rpProductDetails.DataBind();
-            }
+            if (!entProductMaster.ProductName.IsNull)
+                lblProductName.Text = entProductMaster.ProductName.Value.ToString();
+
+            if (!entProductMaster.ProductDetails.IsNull)
+                lblDetail.Text = entProductMaster.ProductDetails.Value.ToString();
+            
+            if (!entProductMaster.ProductPrice.IsNull)
+                lblPrice.Text = entProductMaster.ProductPrice.Value.ToString();
+            
+            if (!entProductMaster.ProductName.IsNull)
+                lblProductName.Text = entProductMaster.ProductName.Value.ToString();
+
+            if (!entProductMaster.ProductImage.IsNull)
+                imgProduct.ImageUrl = entProductMaster.ProductImage.Value.ToString();
         }
     }
     #endregion FillDetailsByProductID
+
+    #region AddToCart
+    protected void btnAddToCart_Click(object sender, EventArgs e)
+    {
+        BALProductOrder balProductOrder = new BALProductOrder();
+
+        if (Request.QueryString["ProductID"] != null)
+            balProductOrder.ProductOrderAddCart(Convert.ToInt32(Request.QueryString["ProductID"]));
+
+
+        btnAddToCart.Visible = false;
+    }
+    #endregion AddToCart
 
 }

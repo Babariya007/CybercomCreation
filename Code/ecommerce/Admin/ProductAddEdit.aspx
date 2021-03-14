@@ -43,7 +43,9 @@
             </div>
             <label for="lblProductPrice" class="col-sm-2 col-form-label">Select Product Image</label>
             <div class="col-sm-4">
+                <asp:Label ID="lblFileName" runat="server" Visible="false"></asp:Label>
                 <asp:FileUpload ID="FuUpload" runat="server" class="form-control-file" placeholder="Select Product Image" accept=".jpeg, .jpg, .png"></asp:FileUpload>
+                <asp:HiddenField ID="hfFileName" runat="server" Visible="false"></asp:HiddenField>
                 <asp:RequiredFieldValidator ID="rfvFileUpload" runat="server" ControlToValidate="FuUpload" ErrorMessage="Select File" Display="Dynamic" ForeColor="Red" ValidationGroup="Product" />
             </div>
         </div>

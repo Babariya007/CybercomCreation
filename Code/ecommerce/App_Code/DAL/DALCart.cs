@@ -222,9 +222,22 @@ namespace eCommerce
                         objCmd.Parameters.AddWithValue("@ProductID", ProductID);
                         #endregion Prepar Command
 
-                        objCmd.ExecuteNonQuery();
+                        #region ReadData and Set Controls
+                        DataTable dt = new DataTable();
+                        using (SqlDataReader objSDR = objCmd.ExecuteReader())
+                        {
+                            dt.Load(objSDR);
+                        }
+                        #endregion ReadData and Set Controls
 
-                        return true;
+                        if (dt.Rows.Count > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
                     }
                     catch (SqlException sqlex)
                     {
@@ -245,5 +258,6 @@ namespace eCommerce
         }
         #endregion CheckIteamOnCart
 
+        
     }
 }

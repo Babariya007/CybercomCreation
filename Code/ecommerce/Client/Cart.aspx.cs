@@ -36,6 +36,7 @@ public partial class Client_Cart : System.Web.UI.Page
         }
         else
         {
+            rpCart.Visible = false;
             lblGSTCharge.Visible = false;
             lblQuantity.Visible = false;
             lblTotalBill.Visible = false;
@@ -68,6 +69,10 @@ public partial class Client_Cart : System.Web.UI.Page
         lblQuantity.Text = "Total Quantity : " + TotalQuantity.ToString();
         lblGSTCharge.Text = "Total GST Charge : " + GSTCharge.ToString();
         lblTotalBill.Text = "Total Bill : " + TotalAmount.ToString();
+
+        Session["TotalQuantity"] = TotalQuantity.ToString();
+        Session["GSTCharge"] = GSTCharge.ToString();
+        Session["TotalBill"] = TotalAmount.ToString();
     }
     #endregion GSTANDTotalBill
 
@@ -81,13 +86,7 @@ public partial class Client_Cart : System.Web.UI.Page
     #region Button Checkout
     protected void btnCheckOut_Click(object sender, EventArgs e)
     {
-        Session["ProductName"] = lblProductName.Text.ToString();
-        Session["ProductPrice"] = lblProductPrice.Text.ToString();
-        Session["Quantity"] = lblQuantity.Text.ToString();
-        Session["GSTCharge"] = lblGSTCharge.Text.ToString();
-        Session["TotalBill"] = lblTotalBill.Text.ToString();
-
-        Response.Redirect("~/Client/CHeckOut.aspx?ProductID=" + Request.QueryString["ProductID"]);
+        Response.Redirect("~/Client/CHeckOut.aspx");
     }
     #endregion Button Checkout
 

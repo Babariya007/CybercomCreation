@@ -12,10 +12,8 @@ public partial class Client_ProductDetails : System.Web.UI.Page
     #region Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
-        if (!Page.IsPostBack)
-        {
-            CheckItemInCart(Convert.ToInt32(Request.QueryString["ProductID"]));
-        }
+        
+        CheckItemInCart(Convert.ToInt32(Request.QueryString["ProductID"]));
 
         if (Request.QueryString["ProductID"] != null)
         {
@@ -72,15 +70,16 @@ public partial class Client_ProductDetails : System.Web.UI.Page
 
     public void CheckItemInCart(Int32 ProductID)
     {
+        ENTCart entCart = new ENTCart();
         BALCart balCart = new BALCart();
 
-        if (Convert.ToInt32(balCart.CheckItemInCart(ProductID)) == ProductID)
+        if (!balCart.CheckItemInCart(ProductID))
         {
-            btnAddToCart.Visible = false;
+            btnAddToCart.Visible = true;
         }
         else
         {
-            btnAddToCart.Visible = true;
+            btnAddToCart.Visible = false;
         }
     }
 }

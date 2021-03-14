@@ -30,14 +30,14 @@ namespace eCommerce
         #region Insert Operation
         public Boolean Insert(ENTCart entProductOrder)
         {
-            DALCart dalProductMaster = new DALCart();
-            if (dalProductMaster.Insert(entProductOrder))
+            DALCart dalCart = new DALCart();
+            if (dalCart.Insert(entProductOrder))
             {
                 return true;
             }
             else
             {
-                this.Message = dalProductMaster.Message;
+                this.Message = dalCart.Message;
                 return false;
             }
         }
@@ -62,8 +62,8 @@ namespace eCommerce
         #region ItemInCartBy
         public DataTable ItemInCart()
         {
-            DALCart dalProductMaster = new DALCart();
-            return dalProductMaster.ItemInCart();
+            DALCart dalCart = new DALCart();
+            return dalCart.ItemInCart();
         }
         #endregion ItemInCart
 
@@ -74,5 +74,6 @@ namespace eCommerce
             return dalCart.CheckItemInCart(ProductID);
         }
         #endregion Delete Iteam From Cart
+
     }
 }

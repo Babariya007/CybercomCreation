@@ -52,7 +52,13 @@ public partial class Admin_ProductAddEdit : System.Web.UI.Page
             txtProductPrice.Text = entProductMaster.ProductPrice.Value.ToString();
 
         if (!entProductMaster.ProductImage.IsNull)
-            FuUpload.SaveAs(Server.MapPath(entProductMaster.ProductImage.Value.ToString()));
+        {
+            hfFileName.Value = entProductMaster.ProductImage.Value.ToString();
+            string strFilePath = "~/Content/ProductImage/";
+            rfvFileUpload.Visible = false;
+            lblFileName.Visible = true;
+            lblFileName.Text= entProductMaster.ProductImage.Value.ToString().Remove(strFilePath.Length);
+        }
     }
 
     #endregion LoadControls
@@ -111,6 +117,10 @@ public partial class Admin_ProductAddEdit : System.Web.UI.Page
                 {
                     rfvFileUpload.Text = "Only Upload .jpg .jpeg and .png";
                 }
+            }
+            else
+            {
+                entProductMaster.ProductImage = hfFileName.Value.ToString();
             }
 
             if (Request.QueryString["ProductID"] == null)

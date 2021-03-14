@@ -102,7 +102,13 @@ namespace eCommerce
         }
         #endregion Show Product
 
-        
+        #region GetProductNamePriceSelectAll
+        public DataTable GetProductNamePriceSelectAll()
+        {
+            DALProductMaster dalProductMaster = new DALProductMaster();
+            return dalProductMaster.GetProductNamePriceSelectAll();
+        }
+        #endregion GetProductNamePriceSelectAll
         
     }
 }

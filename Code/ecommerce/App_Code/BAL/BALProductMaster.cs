@@ -102,13 +102,7 @@ namespace eCommerce
         }
         #endregion Show Product
 
-        #region ItemInCartBy
-        public DataTable ItemInCartByID()
-        {
-            DALProductMaster dalProductMaster = new DALProductMaster();
-            return dalProductMaster.ItemInCart();
-        }
-        #endregion ItemInCart
+        
         
     }
 }

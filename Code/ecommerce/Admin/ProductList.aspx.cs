@@ -36,8 +36,8 @@ public partial class Admin_ProductList : System.Web.UI.Page
     #region gvProduct_RowCommand
     protected void gvProduct_RowCommand(object sender, GridViewCommandEventArgs e)
     {
-        //try
-        //{
+        try
+        {
             if (e.CommandName == "DeleteRecord" && e.CommandArgument != null)
             {
                 BALProductMaster balProductMaster = new BALProductMaster();
@@ -51,12 +51,12 @@ public partial class Admin_ProductList : System.Web.UI.Page
                     lblError.ForeColor = Color.Red;
                 }
             }
-        //}
-        //catch (Exception ex)
-        //{
-        //    lblError.Text = ex.Message.ToString();
-        //    lblError.ForeColor = Color.Red;
-        //}
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message.ToString();
+            lblError.ForeColor = Color.Red;
+        }
     }
     #endregion gvProduct_RowCommand
 

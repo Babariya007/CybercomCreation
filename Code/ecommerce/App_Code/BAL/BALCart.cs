@@ -10,7 +10,7 @@ using System.Web;
 /// </summary>
 namespace eCommerce
 {
-    public class BALProductOrder
+    public class BALCart
     {
         #region Local Veriable
         protected string _Message;
@@ -28,9 +28,9 @@ namespace eCommerce
         #endregion Local Veriable
 
         #region Insert Operation
-        public Boolean Insert(ENTProductOrder entProductOrder)
+        public Boolean Insert(ENTCart entProductOrder)
         {
-            DALProductOrder dalProductMaster = new DALProductOrder();
+            DALCart dalProductMaster = new DALCart();
             if (dalProductMaster.Insert(entProductOrder))
             {
                 return true;
@@ -43,12 +43,36 @@ namespace eCommerce
         }
         #endregion Insert Operation
 
-        #region ProductOrderAddCart
-        public ENTProductOrder ProductOrderAddCart(SqlInt32 Product)
+        #region Delete Iteam From Cart
+        public Boolean Delete(SqlInt32 CartID)
         {
-            DALProductOrder dalProductOrder = new DALProductOrder();
+            DALCart dalCart = new DALCart();
+            return dalCart.Delete(CartID);
+        }
+        #endregion Delete Iteam From Cart
+
+        #region ProductOrderAddCart
+        public ENTCart ProductOrderAddCart(SqlInt32 Product)
+        {
+            DALCart dalProductOrder = new DALCart();
             return dalProductOrder.ProductOrderAddCart(Product);
         }
         #endregion ProductOrderAddCart
+
+        #region ItemInCartBy
+        public DataTable ItemInCart()
+        {
+            DALCart dalProductMaster = new DALCart();
+            return dalProductMaster.ItemInCart();
+        }
+        #endregion ItemInCart
+
+        #region Delete Iteam From Cart
+        public Boolean CheckItemInCart(SqlInt32 ProductID)
+        {
+            DALCart dalCart = new DALCart();
+            return dalCart.CheckItemInCart(ProductID);
+        }
+        #endregion Delete Iteam From Cart
     }
 }

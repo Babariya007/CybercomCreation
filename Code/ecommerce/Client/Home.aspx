@@ -18,7 +18,7 @@
                     <div class="col-sm-3" style="margin-bottom: 20px">
                         <div class="card" style="width: 18rem;">
                             <asp:HyperLink ID="hlProduct" runat="server" NavigateUrl='<%# "~/Client/ProductDetails.aspx?ProductID=" + Eval("ProductID").ToString().Trim() %>'>
-                                <asp:Image ID="imgProduct" runat="server" ImageUrl='<%#Eval("ProductImage") %>' alt='<%#Eval("ProductName") %>' class="card-img-top" Height="200" Width="271" />
+                                <asp:Image ID="imgProduct" runat="server" ImageUrl='<%#Eval("ProductImage") %>' alt='<%#Eval("ProductName") %>' ToolTip='<%#Eval("ProductName") %>' class="card-img-top" Height="200" Width="271" />
                             </asp:HyperLink>
 
                             <div class="card-body">

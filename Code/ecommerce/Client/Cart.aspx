@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Client.master" AutoEventWireup="true" CodeFile="Cart.aspx.cs" Inherits="Client_Cart" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
@@ -11,12 +11,12 @@
         </div>
         <hr />
         <br />
-        <div style="text-align:right">
+        <div style="text-align: right">
             <asp:HyperLink ID="hlHome" runat="server" Text="Add New Product" CssClass="btn btn-warning" NavigateUrl="~/Client/Home.aspx"></asp:HyperLink>
         </div>
         <br />
         <div class="row">
-            <asp:Repeater ID="rpCart" runat="server">
+            <asp:Repeater ID="rpCart" runat="server" OnItemCommand="rpCart_ItemCommand">
                 <ItemTemplate>
                     <div class="row col-md-6">
                         <div class="col-md-4">
@@ -34,10 +34,16 @@
                                 <h3>
                                     <asp:Label ID="lblPrice" runat="server" Text='<%#Eval("ProductPrice") %>'></asp:Label>
                                     <i class="fa fa-inr" style="font-size: 20px"></i></h3>
-
-                                <asp:TextBox ID="txtQuantity" runat="server" class="form-control" Text="1" placeholder="Enter Quantity" AutoPostBack="true" OnTextChanged="txtQuantity_TextChanged" Width="30%"></asp:TextBox>
-                                <asp:RequiredFieldValidator ID="rfvQuantity" runat="server" ControlToValidate="txtQuantity" ErrorMessage="Enter Quentity" Display="Dynamic" ForeColor="Red" ValidationGroup="Product" />
-                                <br />
+                            </div>
+                            <div>
+                                <div class="col-md-6">
+                                    <asp:TextBox ID="txtQuantity" runat="server" class="form-control" Text="1" placeholder="Enter Quantity" AutoPostBack="true" OnTextChanged="txtQuantity_TextChanged"></asp:TextBox>
+                                    <asp:RequiredFieldValidator ID="rfvQuantity" runat="server" ControlToValidate="txtQuantity" ErrorMessage="Enter Quentity" Display="Dynamic" ForeColor="Red" ValidationGroup="Product" />
+                                    <br />
+                                </div>
+                                <div class="col-md-6">
+                                <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" CommandName="DeleteRecord" CommandArgument='<%#Eval("CartID") %>'><i class="glyphicon glyphicon-remove"></i>  Remove</asp:LinkButton>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -47,17 +53,14 @@
             <br />
             <div class="row col-md-11" style="padding-bottom: 50px">
                 <div>
-                    Quantity :
                     <asp:Label ID="lblQuantity" runat="server"></asp:Label>
                 </div>
                 <br />
                 <div>
-                    GST Charge 18% :
                     <asp:Label ID="lblGSTCharge" runat="server"></asp:Label>
                 </div>
                 <br />
                 <div>
-                    Total Bill :
                     <asp:Label ID="lblTotalBill" runat="server"></asp:Label>
                 </div>
                 <br />

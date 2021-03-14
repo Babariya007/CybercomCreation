@@ -12,6 +12,11 @@ public partial class Client_ProductDetails : System.Web.UI.Page
     #region Page_Load
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!Page.IsPostBack)
+        {
+            CheckItemInCart(Convert.ToInt32(Request.QueryString["ProductID"]));
+        }
+
         if (Request.QueryString["ProductID"] != null)
         {
             FillDetailsByProductID(Convert.ToInt32(Request.QueryString["ProductID"]));
@@ -39,10 +44,10 @@ public partial class Client_ProductDetails : System.Web.UI.Page
 
             if (!entProductMaster.ProductDetails.IsNull)
                 lblDetail.Text = entProductMaster.ProductDetails.Value.ToString();
-            
+
             if (!entProductMaster.ProductPrice.IsNull)
                 lblPrice.Text = entProductMaster.ProductPrice.Value.ToString();
-            
+
             if (!entProductMaster.ProductName.IsNull)
                 lblProductName.Text = entProductMaster.ProductName.Value.ToString();
 
@@ -55,7 +60,7 @@ public partial class Client_ProductDetails : System.Web.UI.Page
     #region AddToCart
     protected void btnAddToCart_Click(object sender, EventArgs e)
     {
-        BALProductOrder balProductOrder = new BALProductOrder();
+        BALCart balProductOrder = new BALCart();
 
         if (Request.QueryString["ProductID"] != null)
             balProductOrder.ProductOrderAddCart(Convert.ToInt32(Request.QueryString["ProductID"]));
@@ -65,4 +70,17 @@ public partial class Client_ProductDetails : System.Web.UI.Page
     }
     #endregion AddToCart
 
+    public void CheckItemInCart(Int32 ProductID)
+    {
+        BALCart balCart = new BALCart();
+
+        if (Convert.ToInt32(balCart.CheckItemInCart(ProductID)) == ProductID)
+        {
+            btnAddToCart.Visible = false;
+        }
+        else
+        {
+            btnAddToCart.Visible = true;
+        }
+    }
 }

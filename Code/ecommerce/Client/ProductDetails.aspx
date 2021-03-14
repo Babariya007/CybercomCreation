@@ -15,7 +15,7 @@
                 </div>
                 <br />
                 <div>
-                    <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" CssClass="btn btn-warning" OnClick="btnAddToCart_Click"></asp:Button>
+                    <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" CssClass="btn btn-warning" Visible="false" OnClick="btnAddToCart_Click"></asp:Button>
                 </div>
             </div>
             <div class="col-md-8" style="padding-left: 50px">

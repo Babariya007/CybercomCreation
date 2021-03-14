@@ -9,18 +9,18 @@ using System.Web;
 /// </summary>
 namespace eCommerce
 {
-    public class ENTProductOrder
+    public class ENTCart
     {
-        protected SqlInt32 _ProductOrderID;
-        public SqlInt32 ProductOrderID
+        protected SqlInt32 _CartID;
+        public SqlInt32 CartID
         {
             get
             {
-                return _ProductOrderID;
+                return _CartID;
             }
             set
             {
-                _ProductOrderID  = value;
+                _CartID  = value;
             }
         }
 

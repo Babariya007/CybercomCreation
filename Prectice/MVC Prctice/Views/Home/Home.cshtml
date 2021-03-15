@@ -1,0 +1,68 @@
+﻿
+@model MVC_Prctice.Models.MyDetails
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Home</title>
+</head>
+<body>
+    <div>
+        <h1>Name : @Model.Name</h1>
+        <h2>Address : @Model.Address</h2>
+    </div>
+    <div>
+        @DateTime.Now
+
+        @{
+            var a = "Abhay";
+            var b = "Babariya";
+        }
+    </div>
+    <br />
+    <br />
+    <label>@a @b, </label>
+    @@abhay_babariya
+    <br />
+    <br />
+    <br />
+
+    <div>
+        @if (Model.Name == "Abhay")
+        {
+            <label>Work On ASP.Net MVC</label>
+        }
+        else
+        {
+            <label>Work On ASP.Net 3-Tire Architecture</label>
+        }
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div>
+        @{
+            var Number = new List<int>() { 1, 2, 3, 4, 5 };
+        }
+
+        @helper MyHelper(string[] str)
+        {
+            <ul>
+                @foreach (var item in str)
+                {
+                    <li>@item</li>
+                }
+            </ul>
+        }
+
+        <div>
+            @MyHelper(new string[] { Model.Name, Model.Address})
+        </div>
+    </div>
+</body>
+</html>

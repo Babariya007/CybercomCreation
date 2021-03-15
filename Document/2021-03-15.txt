@@ -1,0 +1,17 @@
+=>  Today i have Complete all the videos and topics cover by:
+	- Introduction of MVC
+	- Setting up environment mvc
+	- Create default MVC 5 Application
+	- Understanding MVC 5 project architecture
+	- Controllers
+	- Views
+	- Models
+	- Razor View
+	- Loop in Razor View
+	- Inline HTML Helpers
+
+=>  Today i have know about ASP.Net MVC architecture.
+=>  Learn about Model views and controllers.
+=>  Today i have find out how to create master page in mvc.
+=>  Today i have also prectice of all As stated above.
+

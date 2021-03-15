@@ -1,0 +1,4 @@
+=>  First i have complete tomorrow pandding task.
+=>  Then Complete new task to given by sir as per time.
+=>  Add some new feture like remove item from cart option.
+=>  Proper Naming convension of project in ENT, DAL, BAL files.

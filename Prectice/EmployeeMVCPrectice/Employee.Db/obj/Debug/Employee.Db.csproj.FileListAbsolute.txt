@@ -1,0 +1,14 @@
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\Employee.Db.dll.config
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\Employee.Db.dll
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\Employee.Db.pdb
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\EntityFramework.dll
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\EntityFramework.SqlServer.dll
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\MyApp.Models.dll
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\MyApp.Models.pdb
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\EntityFramework.xml
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\bin\Debug\EntityFramework.SqlServer.xml
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\obj\Debug\Employee.Db.csprojAssemblyReference.cache
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\obj\Debug\Employee.Db.csproj.CoreCompileInputs.cache
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\obj\Debug\Employee.Db.csproj.CopyComplete
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\obj\Debug\Employee.Db.dll
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\Employee.Db\obj\Debug\Employee.Db.pdb

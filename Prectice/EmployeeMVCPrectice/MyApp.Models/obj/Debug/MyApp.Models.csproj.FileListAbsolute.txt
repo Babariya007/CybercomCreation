@@ -1,0 +1,6 @@
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\MyApp.Models\bin\Debug\MyApp.Models.dll
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\MyApp.Models\bin\Debug\MyApp.Models.pdb
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\MyApp.Models\obj\Debug\MyApp.Models.csprojAssemblyReference.cache
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\MyApp.Models\obj\Debug\MyApp.Models.csproj.CoreCompileInputs.cache
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\MyApp.Models\obj\Debug\MyApp.Models.dll
+D:\CybercomCreation\Prectice\EmployeeMVCPrectice\MyApp.Models\obj\Debug\MyApp.Models.pdb

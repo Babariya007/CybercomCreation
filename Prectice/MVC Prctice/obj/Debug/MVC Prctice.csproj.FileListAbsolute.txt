@@ -1,4 +1,3 @@
-D:\CybercomCreation\Prectice\MVC Prctice\bin\MVC Prctice.dll.config
 D:\CybercomCreation\Prectice\MVC Prctice\bin\MVC Prctice.dll
 D:\CybercomCreation\Prectice\MVC Prctice\bin\MVC Prctice.pdb
 D:\CybercomCreation\Prectice\MVC Prctice\bin\roslyn\csc.exe
@@ -28,7 +27,6 @@ D:\CybercomCreation\Prectice\MVC Prctice\bin\roslyn\vbc.rsp
 D:\CybercomCreation\Prectice\MVC Prctice\bin\roslyn\VBCSCompiler.exe
 D:\CybercomCreation\Prectice\MVC Prctice\bin\roslyn\VBCSCompiler.exe.config
 D:\CybercomCreation\Prectice\MVC Prctice\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-D:\CybercomCreation\Prectice\MVC Prctice\bin\Microsoft.Web.Infrastructure.dll
 D:\CybercomCreation\Prectice\MVC Prctice\bin\System.Web.Helpers.dll
 D:\CybercomCreation\Prectice\MVC Prctice\bin\System.Web.Mvc.dll
 D:\CybercomCreation\Prectice\MVC Prctice\bin\System.Web.Razor.dll
@@ -42,8 +40,10 @@ D:\CybercomCreation\Prectice\MVC Prctice\bin\System.Web.Webpages.Razor.xml
 D:\CybercomCreation\Prectice\MVC Prctice\bin\System.Web.Helpers.xml
 D:\CybercomCreation\Prectice\MVC Prctice\bin\System.Web.Mvc.xml
 D:\CybercomCreation\Prectice\MVC Prctice\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\CybercomCreation\Prectice\MVC Prctice\obj\Debug\MVC Prctice.dll
+D:\CybercomCreation\Prectice\MVC Prctice\obj\Debug\MVC Prctice.pdb
+D:\CybercomCreation\Prectice\MVC Prctice\bin\MVC Prctice.dll.config
+D:\CybercomCreation\Prectice\MVC Prctice\bin\Microsoft.Web.Infrastructure.dll
 D:\CybercomCreation\Prectice\MVC Prctice\obj\Debug\MVC Prctice.csprojAssemblyReference.cache
 D:\CybercomCreation\Prectice\MVC Prctice\obj\Debug\MVC Prctice.csproj.CoreCompileInputs.cache
 D:\CybercomCreation\Prectice\MVC Prctice\obj\Debug\MVC Prctice.csproj.CopyComplete
-D:\CybercomCreation\Prectice\MVC Prctice\obj\Debug\MVC Prctice.dll
-D:\CybercomCreation\Prectice\MVC Prctice\obj\Debug\MVC Prctice.pdb

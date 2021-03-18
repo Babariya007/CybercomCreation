@@ -16,12 +16,14 @@ namespace MVC_Prctice.Controllers
             return View(data);
         }
 
+        
+
         private MyDetails GetDetails()
         {
             MyDetails details = new MyDetails();
-            details.Name = "Abhay Babariya";
+            details.ID = 1;
+            details.Name = "Abhay";
             details.Address = "Jamnagar";
-
             return details;
         }
     }

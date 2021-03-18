@@ -1,0 +1,11 @@
+=>  Today i have Complete all the videos and topics cover by:
+	- Get data from database
+	- Update & delete data
+	- Entity State
+	- jQuery in MVC
+	- JSON from MVC
+	- use ajax in MVC
+	- Loader in Ajax
+	- Ajax.ActionLink
+	- Partial View
+	- Diffrence Between @Html.Partial vs @Html.RenderPartial

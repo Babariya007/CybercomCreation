@@ -1,0 +1,75 @@
+=>  Today i have Complete all the videos and topics cover by:
+	- Built-in Standard HTML helpers
+	- Built-in Strongly type HTML helpers
+	- Built-in Templated HTML helpers
+	- Custom HTML helpers
+	- ViewBag and ViewData
+	- TempData, Keek(), Peek()
+	- HTTP verbs
+	- Routing
+
+
+
+=>  Built-in Standard HTML helpers:
+	- @Html.ActionLink("Link_Text", "Link_Path")
+	- @Html.TextBox("Text for Name and Id", "Text_BoxDefault_Text", new {give any parameters Like as Class,Style etc})
+	- @Html.CheckBox("Text for Name and Id", true, new { } )   //(true = checkedornot)
+	- @Html.Password()		//Use for password filld
+	- @Html.BeginForm() or @Html.EndForm()
+
+=>  Built-in Strongly type HTML helpers:
+	- It uses Lambda Expressions
+	- All Tag postfix add For. ex: @Html.TextBoxFor(Lambda Expressions)
+	- The sata are pass one page to another page bydefauly use Get Method.
+	- If we use Post Method then usr [HttpPost] attribute on Controller.
+
+=>  Built-in Templated HTML helpers:
+	- Using this Helper autometic generate html code we not required diffrent tags or attributes
+	- Display Types : @Html.Display(), @Html.DisplayFor(), @Html.DisplayName(), @Html.DisplayNameFor(), @Html.DisplayText(), @Html.DisplayTextFor(), @Html.DisplayForModel()
+	- Edit/ Input Types : @Html.Editor(), @Html.EditorFor(), @Html.EditorForModel()
+	- We can use attribute then require System.ComponentModel.DataAnnotations namespace in Model.
+	- @Html.DisplayForModel() use to autometically genetrate HTML code and we can use css on perticullay Name and or ID (Lable or Filds)
+	- @Html.Editor() : Used to create input filed using single model property
+	- @Html.EditorFor() : Strongly binding version of last Helper
+	- @Html.EditorForModel() : Used to create inout fields for entire model
+
+=>  Custom HTML helpers:
+	- We can use Custom HTML Helper like as Img tag.
+
+=>  ViewBag and ViewData:
+	- ViewBag is a dynamic property
+	- This is use to send data from controller to view
+	- View data works as a dictionary
+	- This i use to send data from controller to view
+	- We can assign any name to key
+	- This advantages is Easy to use, Less code, Not depend on other classes
+	- This disadvantage is No compile time checking, Key or property name can be misspelled, need to cast while using on view
+
+=>  TempData, Keek(), Peek():
+	- TempData is used to pass store data for one subsequent request
+	- TempData works as a dictionary
+	- It's used to store data for next subsequently request only(Use only one time then its distroy)
+	- We can assign any name or key
+	- It's internally uses session to store data
+	- To save data for next HTTP call we use Keek() method
+	- Save data of all TempData we use Keek()
+	- Save data for a perticular key we use Keep("key")
+	- If we can store more then one data then we can use keep()
+	- Peek() work as read data and save data for next cycle
+
+=>  HTTP verbs:
+	- The HTTP main verbs are: Get, Post, Put, Delete
+	- HTTP verbs are used on a action method
+
+=>  Routing:
+	- If we can use AttributeRouting then we can add method MapMvcAttributeRoutes();
+	- Add attribute with route name in Controller method above the paerticular Controlle method
+	- RoutePrefix Use for common name of prefix in url
+	- We can also use show data on perticular condition base on URL. Eg: if minimum ID is 5 then show data otherwise don't show data.
+	- If we can not use prefix on pertcular page or method then we can use "~/URL Name" in Route attribbute
+
+=>  Also learn how to pass data Controller to view or view to Controller
+=>  If we have deseble the session then we can use Session.Abandon().
+=>  More clear how to use URL Routing in MVC
+
+

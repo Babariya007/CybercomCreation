@@ -1,0 +1,63 @@
+=>  Today i have Complete all the videos and topics cover by:
+	- Pass data from view to controller
+	- Validation in MVC in loosely binding
+	- Validation in MVC with strongly binding
+	- Validation Summary
+	- Custom Validation
+	- Layout
+	- Multiple Layouts
+	- Section in Layout
+	- @RenderPage in MVC
+	- Entityframework in MVC
+
+
+=>  Pass data from view to controller:
+	- Using Parameter :
+		- If we create form and data send to view to controller then we can pass method name and controller name in form.
+		- In form data pass view to controller then we must use name property in HTML tag.
+		- In controller method we pass parameter as form HTML tags name property. if spelling mistake then it's generate error.
+	- Using Request :
+		- If we use data pass using request then we not require to passs as parameters in method
+		- We can just pass in 'Request["name"]' as per HTML input tags name properties.
+	- Using FormCollection : 
+		- in form collection we can Pass parameter FormCollection and give parameter name and retrive data parametername["HTMLPropertyname"]
+	- Stronglly Buinding :
+		- In stronglly buinding first we can create Model and pass in controller method.
+		- Then we can add in view add model and create @HTML Tags.
+		- We can also pass FormMethod as parameter in Html.BeginForm
+
+=>  Validation in MVC in loosely binding:
+	- In loosely binding validation first we add namespace DataAnnotations
+	- Then write validation attribute above the property like Required, EmailAddress, Range(), MinLength, MaxLength, Phone Number, etc
+	- Then write in view @Html.ValidationMessage("PropertyName")
+	- We can also write Custome error message. Write in Model in attribute use ErrorMessage Property.
+
+=>  Validation in MVC with strongly binding:
+	- In strongly binding we can only one change to loosely binding
+	- In view we can werite For eg: TextBoxFor(Lambda_Expression) and also write ValidationMessageFor(Lambda_Expression)
+
+=>  Validation Summary :
+	- Validation Summary is use for show all error message in one filed and do not required write message perticully.
+	- Use the validation summary tag is @Html.ValidationSummary().
+
+=>  Custom Validation :
+	- In custom Validation we can create class and inherite validationAttribute class and we can write logic about perticular validation
+
+=>  Layout :
+	- Master Page in webform and Layout is Caled in MVC. It's one type of master page.
+	- Layout Page is must be put in Shared folder because of access all other pages.
+	- Use @RenderBody() as dynamic content part. It's like as ContentPlaceHolder in webform
+	- If some item in common in all views like Layout Path or other property then we can create _ViewStart.cshtml file and write their and it's work all view pages
+
+=>  Multiple Layouts :
+	- There are two ways of use multipal layouts:
+	- First is we can write in controller return view pass view name and layout page name
+	- Second is we can write in view page at the top define Layout = "Layout_Path"
+
+=>  Section in Layout & @RenderPage :
+	- The use of section page is if we pass data content page to Layout page then we can use Section in Layout
+	- The syntex is @RenderSection("SectionName", required:true/false)
+	- The use of Render page is a other page all contain data show in one another page
+	- The syntex of Render page is : @RenderPage("FilePath", Parameters)
+
+=>  Also learn about Entityframework in MVC to insert data

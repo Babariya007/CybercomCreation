@@ -1,0 +1,17 @@
+=>  Today i have Complete all the videos and topics cover by:
+	- Filters
+	- OutputCache Filter
+	- Location in OutputCache Filter
+	- HandleError
+	- Html.raw
+	- XSS Attack, AllowHTML, ValidateInput
+	- Authentication and Authorization
+	- Login, Signup and Logout
+	- AllowAnonymous
+	- Roles in MVC
+	- Role based Menu
+	- Identity framework
+
+=>  Learn about Anonymous Access, Login base access means role base access.
+=>  Learn about How to use Caching, know about diffrent types of caching also learn about wich time use which caching.
+=>  Also learn about Identity fremework

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<eCommerce_Model.ProductMasterModel>
+
+@{
+    ViewBag.Title = "CountryList";
+}
+
+<br />
+<h2>ProductList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Action
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+    </tr>
+
+@foreach (var item in (IEnumerable<eCommerce_Model.ProductMasterModel>)ViewData["Product"]) {
+<tr>
+    <td>
+        @Html.ActionLink("Edit", "Create", new { id=item.ProductID })
+        @Html.ActionLink("Delete", "Delete", new { id =item.ProductID })
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductQuantity)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductDetails)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductPrice)
+    </td>
+    <td>
+        <img src="@Url.Content(item.ProductImage)" width="150px" height="150px" />
+        @*@Html.DisplayFor(modelItem => item.ProductImage)*@
+    </td>
+
+</tr>
+}
+
+</table>

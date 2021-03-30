@@ -1,0 +1,86 @@
+﻿@model IEnumerable<eCommerce_Model.ProductMasterModel>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<div class="container">
+    <div>
+        <h2>Welcome e-Commerce</h2>
+        <asp:Label ID="lblError" runat="server" EnableViewState="false" Font-Size="Large"></asp:Label>
+    </div>
+    <hr />
+    <br />
+    <br />
+    <div class="row">
+        @foreach (var item in (IEnumerable<eCommerce_Model.ProductMasterModel>)ViewData["ShowProductList"])
+        {
+            <div class="col-sm-3" style="margin-bottom: 20px">
+                <div class="card" style="width: 18rem;">
+                    <img src="@Url.Content(item.ProductImage)" Height="200" Width="271" />
+
+                    <div class="card-body">
+                        <h3 class="card-title">@Html.DisplayFor(modelItem => item.ProductName)</h3>
+                        <h4 class="card-text" style="color: green;">@Html.DisplayFor(modelItem => item.ProductPrice) <i class="fa fa-inr" style="font-size: 18px"></i></h4>
+                        @Html.ActionLink("Go to Product", "ProductDetils", new { controllr= "ProductMaster", id = item.ProductID }, new { @class = "btn btn-primary" })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductQuantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductDetails)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </th>
+        <th></th>
+    </tr>
+
+    @*@foreach (var item in (IEnumerable<eCommerce_Model.ProductMasterModel>)ViewData["ShowProductList"])
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductImage)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }*@
+
+</table>

@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="eCommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="OrderQuentity" Type="int" />
+          <Property Name="TotalBill" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ProductMaster">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="500" Nullable="false" />
+          <Property Name="ProductQuantity" Type="int" Nullable="false" />
+          <Property Name="ProductDetails" Type="varchar" MaxLength="2000" Nullable="false" />
+          <Property Name="ProductPrice" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ProductImage" Type="varchar" MaxLength="500" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_ProductMaster">
+          <End Role="ProductMaster" Type="Self.ProductMaster" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductMaster">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductOrder_ProductMaster">
+          <End Role="ProductMaster" Type="Self.ProductMaster" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductMaster">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="PR_Cart_CheckIteamSelectByID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Cart_InsertProduct" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Cart_TruncateData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PR_CartDeleteItem_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CartID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_CartItemShow_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PR_CheckOut_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="OrderQuantity" Type="int" Mode="In" />
+          <Parameter Name="TotalBill" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="PR_CustomerConfiramOrder_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="OrderQuantity" Type="int" Mode="In" />
+          <Parameter Name="TotalBill" Type="decimal" Mode="In" />
+        </Function>
+        <Function Name="PR_CustomerOrderList_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PR_ProductMaster_DeleteByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_ProductMaster_GetProductNamePriceSelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PR_ProductMaster_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+          <Parameter Name="ProductQuntity" Type="int" Mode="In" />
+          <Parameter Name="ProductDetails" Type="varchar" Mode="In" />
+          <Parameter Name="ProductPrice" Type="decimal" Mode="In" />
+          <Parameter Name="ProductImage" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PR_ProductMaster_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PR_ProductMaster_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_ProductMaster_UpdateByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+          <Parameter Name="ProductName" Type="varchar" Mode="In" />
+          <Parameter Name="ProductQuntity" Type="int" Mode="In" />
+          <Parameter Name="ProductDetails" Type="varchar" Mode="In" />
+          <Parameter Name="ProductPrice" Type="decimal" Mode="In" />
+          <Parameter Name="ProductImage" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PR_ProductMasterShowDetails_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ProductID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_ShowProducts_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="eCommerceModelStoreContainer">
+          <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductMaster" EntityType="Self.ProductMaster" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Customer_ProductMaster" Association="Self.FK_Customer_ProductMaster">
+            <End Role="ProductMaster" EntitySet="ProductMaster" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductOrder_ProductMaster" Association="Self.FK_ProductOrder_ProductMaster">
+            <End Role="ProductMaster" EntitySet="ProductMaster" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="eCommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="CartID" />
+          </Key>
+          <Property Name="CartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" />
+          <NavigationProperty Name="ProductMaster" Relationship="Self.FK_ProductOrder_ProductMaster" FromRole="Cart" ToRole="ProductMaster" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerID" />
+          </Key>
+          <Property Name="CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="OrderQuentity" Type="Int32" />
+          <Property Name="TotalBill" Type="Decimal" Precision="10" Scale="2" />
+          <NavigationProperty Name="ProductMaster" Relationship="Self.FK_Customer_ProductMaster" FromRole="Customer" ToRole="ProductMaster" />
+        </EntityType>
+        <EntityType Name="ProductMaster">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductQuantity" Type="Int32" Nullable="false" />
+          <Property Name="ProductDetails" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ProductPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="ProductImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cart" Relationship="Self.FK_ProductOrder_ProductMaster" FromRole="ProductMaster" ToRole="Cart" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_ProductMaster" FromRole="ProductMaster" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_ProductOrder_ProductMaster">
+          <End Role="ProductMaster" Type="Self.ProductMaster" Multiplicity="0..1" />
+          <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductMaster">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_ProductMaster">
+          <End Role="ProductMaster" Type="Self.ProductMaster" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProductMaster">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="eCommerceCS" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cart" EntityType="Self.Cart" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" />
+          <EntitySet Name="ProductMaster" EntityType="Self.ProductMaster" />
+          <AssociationSet Name="FK_ProductOrder_ProductMaster" Association="Self.FK_ProductOrder_ProductMaster">
+            <End Role="ProductMaster" EntitySet="ProductMaster" />
+            <End Role="Cart" EntitySet="Cart" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_ProductMaster" Association="Self.FK_Customer_ProductMaster">
+            <End Role="ProductMaster" EntitySet="ProductMaster" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <FunctionImport Name="PR_Cart_CheckIteamSelectByID" ReturnType="Collection(Int32)">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Cart_InsertProduct">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Cart_TruncateData" />
+          <FunctionImport Name="PR_CartDeleteItem_SelectByPK">
+            <Parameter Name="CartID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_CartItemShow_SelectAll" ReturnType="Collection(eCommerceModel.PR_CartItemShow_SelectAll_Result)" />
+          <FunctionImport Name="PR_CheckOut_Insert">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderQuantity" Mode="In" Type="Int32" />
+            <Parameter Name="TotalBill" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PR_CustomerConfiramOrder_Insert">
+            <Parameter Name="FirstName" Mode="In" Type="String" />
+            <Parameter Name="LastName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="OrderQuantity" Mode="In" Type="Int32" />
+            <Parameter Name="TotalBill" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="PR_CustomerOrderList_SelectAll" ReturnType="Collection(eCommerceModel.PR_CustomerOrderList_SelectAll_Result)" />
+          <FunctionImport Name="PR_ProductMaster_DeleteByPK">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ProductMaster_GetProductNamePriceSelectAll" ReturnType="Collection(eCommerceModel.PR_ProductMaster_GetProductNamePriceSelectAll_Result)" />
+          <FunctionImport Name="PR_ProductMaster_Insert">
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="ProductQuntity" Mode="In" Type="Int32" />
+            <Parameter Name="ProductDetails" Mode="In" Type="String" />
+            <Parameter Name="ProductPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="ProductImage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ProductMaster_SelectAll" ReturnType="Collection(eCommerceModel.PR_ProductMaster_SelectAll_Result)" />
+          <FunctionImport Name="PR_ProductMaster_SelectByPK" ReturnType="Collection(eCommerceModel.PR_ProductMaster_SelectByPK_Result)">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ProductMaster_UpdateByPK">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+            <Parameter Name="ProductName" Mode="In" Type="String" />
+            <Parameter Name="ProductQuntity" Mode="In" Type="Int32" />
+            <Parameter Name="ProductDetails" Mode="In" Type="String" />
+            <Parameter Name="ProductPrice" Mode="In" Type="Decimal" />
+            <Parameter Name="ProductImage" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ProductMasterShowDetails_SelectByPK" ReturnType="Collection(eCommerceModel.PR_ProductMasterShowDetails_SelectByPK_Result)">
+            <Parameter Name="ProductID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ShowProducts_SelectAll" ReturnType="Collection(eCommerceModel.PR_ShowProducts_SelectAll_Result)" />
+        </EntityContainer>
+        <ComplexType Name="PR_CartItemShow_SelectAll_Result">
+          <Property Type="Int32" Name="CartID" Nullable="false" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="500" />
+          <Property Type="Decimal" Name="ProductPrice" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="ProductQuantity" Nullable="false" />
+          <Property Type="String" Name="ProductImage" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="PR_CustomerOrderList_SelectAll_Result">
+          <Property Type="Int32" Name="CustomerID" Nullable="false" />
+          <Property Type="String" Name="FirstName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="OrderQuentity" Nullable="true" />
+          <Property Type="Decimal" Name="TotalBill" Nullable="true" Precision="10" Scale="2" />
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="500" />
+          <Property Type="Decimal" Name="ProductPrice" Nullable="false" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PR_ProductMaster_GetProductNamePriceSelectAll_Result">
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="500" />
+          <Property Type="Decimal" Name="ProductPrice" Nullable="false" Precision="10" Scale="2" />
+        </ComplexType>
+        <ComplexType Name="PR_ProductMaster_SelectAll_Result">
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="ProductQuantity" Nullable="false" />
+          <Property Type="String" Name="ProductDetails" Nullable="false" MaxLength="2000" />
+          <Property Type="Decimal" Name="ProductPrice" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="String" Name="ProductImage" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="PR_ProductMaster_SelectByPK_Result">
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="500" />
+          <Property Type="Int32" Name="ProductQuantity" Nullable="false" />
+          <Property Type="String" Name="ProductDetails" Nullable="false" MaxLength="2000" />
+          <Property Type="Decimal" Name="ProductPrice" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="String" Name="ProductImage" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="PR_ProductMasterShowDetails_SelectByPK_Result">
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="ProductDetails" Nullable="false" MaxLength="2000" />
+          <Property Type="Decimal" Name="ProductPrice" Nullable="false" Precision="10" Scale="2" />
+          <Property Type="String" Name="ProductImage" Nullable="false" MaxLength="500" />
+        </ComplexType>
+        <ComplexType Name="PR_ShowProducts_SelectAll_Result">
+          <Property Type="Int32" Name="ProductID" Nullable="false" />
+          <Property Type="String" Name="ProductImage" Nullable="false" MaxLength="500" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="500" />
+          <Property Type="Decimal" Name="ProductPrice" Nullable="false" Precision="10" Scale="2" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="eCommerceModelStoreContainer" CdmEntityContainer="eCommerceCS">
+          <EntitySetMapping Name="Cart">
+            <EntityTypeMapping TypeName="eCommerceModel.Cart">
+              <MappingFragment StoreEntitySet="Cart">
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customer">
+            <EntityTypeMapping TypeName="eCommerceModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="OrderQuentity" ColumnName="OrderQuentity" />
+                <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductMaster">
+            <EntityTypeMapping TypeName="eCommerceModel.ProductMaster">
+              <MappingFragment StoreEntitySet="ProductMaster">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PR_Cart_CheckIteamSelectByID" FunctionName="eCommerceModel.Store.PR_Cart_CheckIteamSelectByID" />
+          <FunctionImportMapping FunctionImportName="PR_Cart_InsertProduct" FunctionName="eCommerceModel.Store.PR_Cart_InsertProduct" />
+          <FunctionImportMapping FunctionImportName="PR_Cart_TruncateData" FunctionName="eCommerceModel.Store.PR_Cart_TruncateData" />
+          <FunctionImportMapping FunctionImportName="PR_CartDeleteItem_SelectByPK" FunctionName="eCommerceModel.Store.PR_CartDeleteItem_SelectByPK" />
+          <FunctionImportMapping FunctionImportName="PR_CartItemShow_SelectAll" FunctionName="eCommerceModel.Store.PR_CartItemShow_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eCommerceModel.PR_CartItemShow_SelectAll_Result">
+                <ScalarProperty Name="CartID" ColumnName="CartID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_CheckOut_Insert" FunctionName="eCommerceModel.Store.PR_CheckOut_Insert" />
+          <FunctionImportMapping FunctionImportName="PR_CustomerConfiramOrder_Insert" FunctionName="eCommerceModel.Store.PR_CustomerConfiramOrder_Insert" />
+          <FunctionImportMapping FunctionImportName="PR_CustomerOrderList_SelectAll" FunctionName="eCommerceModel.Store.PR_CustomerOrderList_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eCommerceModel.PR_CustomerOrderList_SelectAll_Result">
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="OrderQuentity" ColumnName="OrderQuentity" />
+                <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_ProductMaster_DeleteByPK" FunctionName="eCommerceModel.Store.PR_ProductMaster_DeleteByPK" />
+          <FunctionImportMapping FunctionImportName="PR_ProductMaster_GetProductNamePriceSelectAll" FunctionName="eCommerceModel.Store.PR_ProductMaster_GetProductNamePriceSelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eCommerceModel.PR_ProductMaster_GetProductNamePriceSelectAll_Result">
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_ProductMaster_Insert" FunctionName="eCommerceModel.Store.PR_ProductMaster_Insert" />
+          <FunctionImportMapping FunctionImportName="PR_ProductMaster_SelectAll" FunctionName="eCommerceModel.Store.PR_ProductMaster_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eCommerceModel.PR_ProductMaster_SelectAll_Result">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_ProductMaster_SelectByPK" FunctionName="eCommerceModel.Store.PR_ProductMaster_SelectByPK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eCommerceModel.PR_ProductMaster_SelectByPK_Result">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_ProductMaster_UpdateByPK" FunctionName="eCommerceModel.Store.PR_ProductMaster_UpdateByPK" />
+          <FunctionImportMapping FunctionImportName="PR_ProductMasterShowDetails_SelectByPK" FunctionName="eCommerceModel.Store.PR_ProductMasterShowDetails_SelectByPK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eCommerceModel.PR_ProductMasterShowDetails_SelectByPK_Result">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_ShowProducts_SelectAll" FunctionName="eCommerceModel.Store.PR_ShowProducts_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="eCommerceModel.PR_ShowProducts_SelectAll_Result">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

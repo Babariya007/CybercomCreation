@@ -1,0 +1,60 @@
+﻿@model IEnumerable<eCommerce_Model.CustomerModel>
+
+@{
+    ViewBag.Title = "OrderList";
+}
+
+<h2>OrderList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Sr No
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderQuentity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalBill)
+        </th>
+        <th></th>
+    </tr>
+    @{ int Sr_No = 1; }
+    @foreach (var item in (IEnumerable<eCommerce_Model.CustomerModel>)ViewData["OrderList"])
+    {
+        <tr>
+            <td>
+                @Sr_No
+            </td>
+            @{ Sr_No++;}
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderQuentity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalBill)
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,14 @@
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\DAL.dll.config
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\DAL.dll
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\DAL.pdb
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\EntityFramework.dll
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\EntityFramework.xml
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\CybercomCreation\Code\eCommerce MVC\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\CybercomCreation\Code\eCommerce MVC\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\CybercomCreation\Code\eCommerce MVC\DAL\obj\Debug\DAL.csproj.CopyComplete
+D:\CybercomCreation\Code\eCommerce MVC\DAL\obj\Debug\DAL.dll
+D:\CybercomCreation\Code\eCommerce MVC\DAL\obj\Debug\DAL.pdb
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\eCommerce Model.dll
+D:\CybercomCreation\Code\eCommerce MVC\DAL\bin\Debug\eCommerce Model.pdb

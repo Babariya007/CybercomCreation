@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="eCommerceModelStoreContainer" CdmEntityContainer="eCommerceCS">
+    <EntitySetMapping Name="Cart">
+      <EntityTypeMapping TypeName="eCommerceModel.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="CartID" ColumnName="CartID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="eCommerceModel.Customer">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="OrderQuentity" ColumnName="OrderQuentity" />
+          <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductMaster">
+      <EntityTypeMapping TypeName="eCommerceModel.ProductMaster">
+        <MappingFragment StoreEntitySet="ProductMaster">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+          <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PR_Cart_CheckIteamSelectByID" FunctionName="eCommerceModel.Store.PR_Cart_CheckIteamSelectByID" />
+    <FunctionImportMapping FunctionImportName="PR_Cart_InsertProduct" FunctionName="eCommerceModel.Store.PR_Cart_InsertProduct" />
+    <FunctionImportMapping FunctionImportName="PR_Cart_TruncateData" FunctionName="eCommerceModel.Store.PR_Cart_TruncateData" />
+    <FunctionImportMapping FunctionImportName="PR_CartDeleteItem_SelectByPK" FunctionName="eCommerceModel.Store.PR_CartDeleteItem_SelectByPK" />
+    <FunctionImportMapping FunctionImportName="PR_CartItemShow_SelectAll" FunctionName="eCommerceModel.Store.PR_CartItemShow_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eCommerceModel.PR_CartItemShow_SelectAll_Result">
+          <ScalarProperty Name="CartID" ColumnName="CartID" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_CheckOut_Insert" FunctionName="eCommerceModel.Store.PR_CheckOut_Insert" />
+    <FunctionImportMapping FunctionImportName="PR_CustomerConfiramOrder_Insert" FunctionName="eCommerceModel.Store.PR_CustomerConfiramOrder_Insert" />
+    <FunctionImportMapping FunctionImportName="PR_CustomerOrderList_SelectAll" FunctionName="eCommerceModel.Store.PR_CustomerOrderList_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eCommerceModel.PR_CustomerOrderList_SelectAll_Result">
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="OrderQuentity" ColumnName="OrderQuentity" />
+          <ScalarProperty Name="TotalBill" ColumnName="TotalBill" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_ProductMaster_DeleteByPK" FunctionName="eCommerceModel.Store.PR_ProductMaster_DeleteByPK" />
+    <FunctionImportMapping FunctionImportName="PR_ProductMaster_GetProductNamePriceSelectAll" FunctionName="eCommerceModel.Store.PR_ProductMaster_GetProductNamePriceSelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eCommerceModel.PR_ProductMaster_GetProductNamePriceSelectAll_Result">
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_ProductMaster_Insert" FunctionName="eCommerceModel.Store.PR_ProductMaster_Insert" />
+    <FunctionImportMapping FunctionImportName="PR_ProductMaster_SelectAll" FunctionName="eCommerceModel.Store.PR_ProductMaster_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eCommerceModel.PR_ProductMaster_SelectAll_Result">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+          <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_ProductMaster_SelectByPK" FunctionName="eCommerceModel.Store.PR_ProductMaster_SelectByPK">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eCommerceModel.PR_ProductMaster_SelectByPK_Result">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductQuantity" ColumnName="ProductQuantity" />
+          <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_ProductMaster_UpdateByPK" FunctionName="eCommerceModel.Store.PR_ProductMaster_UpdateByPK" />
+    <FunctionImportMapping FunctionImportName="PR_ProductMasterShowDetails_SelectByPK" FunctionName="eCommerceModel.Store.PR_ProductMasterShowDetails_SelectByPK">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eCommerceModel.PR_ProductMasterShowDetails_SelectByPK_Result">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductDetails" ColumnName="ProductDetails" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_ShowProducts_SelectAll" FunctionName="eCommerceModel.Store.PR_ShowProducts_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="eCommerceModel.PR_ShowProducts_SelectAll_Result">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductPrice" ColumnName="ProductPrice" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

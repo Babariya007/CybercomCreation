@@ -1,0 +1,97 @@
+﻿@model eCommerce_Model.ProductMasterModel
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+@{
+    ViewBag.Title = "ProductDetils";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+<h2>ProductDetils</h2>
+
+<div class="container">
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-3">
+            <div>
+                <img src="@Url.Content(model => model.ProductImage)" Height="300px" Width="250px" />
+            </div>
+            <br />
+            <div>
+                <button type="submit" class="btn btn-warning">Add to Cart</button>
+            </div>
+        </div>
+        <div class="col-md-8" style="padding-left: 50px">
+            <div>
+                <h1>
+                    <label>@Html.DisplayFor(model => model.ProductName)</label>
+                </h1>
+            </div>
+            <br />
+            <div>
+                <pre><label>@Html.DisplayFor(model => model.ProductDetails)</label></pre>
+            </div>
+            <div>
+                <h3>
+                    <label>@Html.DisplayFor(model => model.ProductPrice)</label>
+                    <i class="fa fa-inr" style="font-size: 20px"></i>
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductQuantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductQuantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductDetails)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductDetails)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductImage)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductImage)
+        </dd>
+
+    </dl>
+</div>*@

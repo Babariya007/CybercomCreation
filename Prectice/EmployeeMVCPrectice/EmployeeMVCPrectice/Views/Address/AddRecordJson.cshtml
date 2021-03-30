@@ -1,0 +1,80 @@
+﻿@model MyApp.Models.AddressModel
+
+@{
+    ViewBag.Title = "AddRecordJson";
+}
+<script src="~/Scripts/jquery-3.5.1.slim.min.js"></script>
+<script src="~/Scripts/jquery-3.5.1.js"></script>
+
+<h2>AddRecordJson</h2>
+
+@ViewBag.IsSuccess
+
+@using (Ajax.BeginForm("AddRecord", new AjaxOptions() { OnSuccess="Success", OnFailure="Fail"}))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>AddressModel</h4>
+        <hr />
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Details</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Details, "", new { @class="form-control"})
+                @Html.ValidationMessageFor(model => model.Details, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">State</label>
+            <div class="col-md-10">
+                <input type="text" id="State" class="form-control" />
+                @Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Country</label>
+            <div class="col-md-10">
+                <input type="text" id="Country" class="form-control" />
+                @Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Create" id="btnSubmit" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "AddressList")
+</div>
+<script>
+
+    $(function () {
+        $("#btnSubmit").click(function () {
+            $.ajax(
+                {
+                    url: "Address/AddRecordJson",
+                    type: "POST",
+                    data: {
+                        Details: $("#Details").val(),
+                        State: $("#State").val(),
+                        Country: $("#Country").val(),
+                    },
+                    success: function (data) {
+                        alert("ok");
+                        //data = JSON.parse(data);
+                        //conso.log(data);
+                    },
+                    error: function (err) {
+
+                    }
+                });
+        })
+    })
+</script>

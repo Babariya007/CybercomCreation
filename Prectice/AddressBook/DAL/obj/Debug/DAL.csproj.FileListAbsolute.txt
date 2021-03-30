@@ -1,0 +1,14 @@
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\DAL.dll.config
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\DAL.dll
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\DAL.pdb
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\EntityFramework.dll
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\EntityFramework.SqlServer.dll
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\EntityFramework.xml
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\EntityFramework.SqlServer.xml
+D:\CybercomCreation\Prectice\AddressBook\DAL\obj\Debug\DAL.dll
+D:\CybercomCreation\Prectice\AddressBook\DAL\obj\Debug\DAL.pdb
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\AddressBook.Model.dll
+D:\CybercomCreation\Prectice\AddressBook\DAL\bin\Debug\AddressBook.Model.pdb
+D:\CybercomCreation\Prectice\AddressBook\DAL\obj\Debug\DAL.csprojAssemblyReference.cache
+D:\CybercomCreation\Prectice\AddressBook\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+D:\CybercomCreation\Prectice\AddressBook\DAL\obj\Debug\DAL.csproj.CopyComplete

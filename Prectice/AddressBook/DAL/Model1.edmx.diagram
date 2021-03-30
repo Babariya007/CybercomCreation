@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="b4801dad7a83407f9c542958cea2a71e" Name="Diagram1">
+        <EntityTypeShape EntityType="AddressBookModel.City" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AddressBookModel.Contact" Width="1.5" PointX="7.5" PointY="6.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AddressBookModel.ContactCategory" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="AddressBookModel.Country" Width="1.5" PointX="3" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AddressBookModel.MasterUser" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AddressBookModel.State" Width="1.5" PointX="5.25" PointY="8.25" IsExpanded="true" />
+        <AssociationConnector Association="AddressBookModel.FK_City_MasterUser" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_City_State" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_Contact_City" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_Contact_ContactCategory" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_Contact_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_Contact_MasterUser" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_Contact_State" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_ContactCategory_MasterUser" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_Country_MasterUser" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_State_Country" ManuallyRouted="false" />
+        <AssociationConnector Association="AddressBookModel.FK_State_MasterUser" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

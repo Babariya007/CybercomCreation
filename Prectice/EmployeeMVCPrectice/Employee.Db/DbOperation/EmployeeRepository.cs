@@ -9,6 +9,7 @@ namespace Employee.Db.DbOperation
 {
     public class EmployeeRepository
     {
+        #region AddEmployee
         public int AddEmployee(EmployeeModel employeeModel)
         {
             using (var context = new EmployeeDBEntitiesCS())
@@ -21,16 +22,6 @@ namespace Employee.Db.DbOperation
                     Code = employeeModel.Code,
                 };
 
-                if (employeeModel.Address != null)
-                {
-                    emp.Address = new Address()
-                    {
-                        Details = employeeModel.Address.Details,
-                        State = employeeModel.Address.State,
-                        Country = employeeModel.Address.Country
-                    };
-                }
-
                 context.Employee.Add(emp);
 
                 context.SaveChanges();
@@ -38,5 +29,82 @@ namespace Employee.Db.DbOperation
                 return emp.EmployeeID;
             }
         }
+        #endregion AddEmployee
+
+        #region UpdateEmployee
+        public List<EmployeeModel> UpdateEmployee()
+        {
+            using (var context = new EmployeeDBEntitiesCS())
+            {
+                var result = context.Employee.Select(x => new EmployeeModel()
+                {
+                    EmployeeID = x.EmployeeID,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Email = x.Email,
+                    Code = x.Code
+                }).ToList();
+
+                return result;
+            }
+        }
+        public EmployeeModel UpdateEmployee(int id)
+        {
+            using (var context = new EmployeeDBEntitiesCS())
+            {
+                var result = context.Employee.Where(x => x.EmployeeID == id).Select(x => new EmployeeModel()
+                {
+                    EmployeeID = x.EmployeeID,
+                    FirstName = x.FirstName,
+                    LastName = x.LastName,
+                    Email = x.Email,
+                    Code = x.Code
+                }).FirstOrDefault();
+
+                return result;
+            }
+        }
+        public bool UpdateEmployee(EmployeeModel empModel)
+        {
+            using (var context = new EmployeeDBEntitiesCS())
+            {
+                var emp = new Employee();
+
+                if (emp != null)
+                {
+                    emp.EmployeeID = empModel.EmployeeID;
+                    emp.FirstName = empModel.FirstName;
+                    emp.LastName = empModel.LastName;
+                    emp.Email = empModel.Email;
+                    emp.Code = empModel.Code;
+                }
+
+                context.Entry(emp).State = System.Data.Entity.EntityState.Modified;
+
+                context.SaveChanges();
+
+                return true;
+            }
+        }
+        #endregion UpdateEmployee
+
+        #region DeleteEmployee
+        public bool DeleteEmployee(int id)
+        {
+            using (var context = new EmployeeDBEntitiesCS())
+            {
+                var emp = new Employee()
+                {
+                    EmployeeID = id
+                };
+
+                context.Entry(emp).State = System.Data.Entity.EntityState.Deleted;
+                context.SaveChanges();
+
+                return false;
+            }
+        }
+        #endregion DeleteEmployee
+
     }
 }

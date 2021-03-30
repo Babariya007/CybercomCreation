@@ -1,0 +1,55 @@
+﻿@model IEnumerable<AddressBook.Model.CountryModel>
+
+@{
+    ViewBag.Title = "CountryList";
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<br />
+
+<h2>CountryList</h2>
+<hr />
+
+<p style="text-align: right">
+    @Html.ActionLink("Create New", "Create", new { Controller = "Country" }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th width="50px">
+            Sr No
+        </th>
+        <th>
+            Action
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryCode)
+        </th>
+    </tr>
+    @{ int SrNo = 1;}
+    @foreach (var item in (IEnumerable<AddressBook.Model.CountryModel>)ViewData["Country"])
+    {
+        <tr>
+            <td>
+                @SrNo
+            </td>
+            @{ SrNo++; }
+            <td>
+                @Html.ActionLink("Edit", "Create", new { Controller = "Country", id = item.CountryID }, new { id = item.CountryID, @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { Controller = "Country", id = item.CountryID }, new { @class = "btn btn-danger" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryCode)
+            </td>
+        </tr>
+    }
+
+</table>

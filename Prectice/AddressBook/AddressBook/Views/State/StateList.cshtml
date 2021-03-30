@@ -1,0 +1,59 @@
+﻿@model IEnumerable<AddressBook.Model.StateModel>
+
+@{
+    ViewBag.Title = "State List";
+    if (Session["UserID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<br />
+
+<h2>Create</h2>
+
+<hr />
+
+<p style="text-align: right">
+    @Html.ActionLink("Create New", "Create", new { Controller = "State" }, new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Sr No
+        </th>
+        <th>
+            Action
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StateName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CountryName)
+        </th>
+    </tr>
+
+    @{ int SrNo = 1;}
+
+    @foreach (var item in (IEnumerable<AddressBook.Model.StateModel>)ViewData["State"])
+    {
+        <tr>
+            <td>
+                @SrNo
+            </td>
+            @{ SrNo++; }
+            <td>
+                @Html.ActionLink("Edit", "Create", new { Controller = "State", id = item.StateID }, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Delete", "Delete", new { Controller = "State", id = item.StateID}, new { @class = "btn btn-danger" })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CountryName)
+            </td>
+
+        </tr>
+    }
+
+</table>

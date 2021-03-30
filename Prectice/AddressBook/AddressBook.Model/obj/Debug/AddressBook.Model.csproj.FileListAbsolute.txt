@@ -1,0 +1,6 @@
+D:\CybercomCreation\Prectice\AddressBook\AddressBook.Model\bin\Debug\AddressBook.Model.dll
+D:\CybercomCreation\Prectice\AddressBook\AddressBook.Model\bin\Debug\AddressBook.Model.pdb
+D:\CybercomCreation\Prectice\AddressBook\AddressBook.Model\obj\Debug\AddressBook.Model.dll
+D:\CybercomCreation\Prectice\AddressBook\AddressBook.Model\obj\Debug\AddressBook.Model.pdb
+D:\CybercomCreation\Prectice\AddressBook\AddressBook.Model\obj\Debug\AddressBook.Model.csprojAssemblyReference.cache
+D:\CybercomCreation\Prectice\AddressBook\AddressBook.Model\obj\Debug\AddressBook.Model.csproj.CoreCompileInputs.cache

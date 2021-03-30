@@ -1,0 +1,12 @@
+﻿@model CascaddingDropDown.Models.DropdownModel
+
+
+<option>-- Select State --</option>
+
+@if (ViewBag.StateList != null)
+{
+    foreach (var item in ViewBag.StateList)
+    { 
+        <option value="@item.StateID">@item.StateName</option>
+    }
+}

@@ -24,6 +24,6 @@ namespace MyApp.Models
         [Required]
         public string Code { get; set; }
 
-        public AddressModel Address { get; set; }
+        //public AddressModel Address { get; set; }
     }
 }

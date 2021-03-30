@@ -1,0 +1,66 @@
+﻿@model CascaddingDropDown.Models.DropdownModel
+@{
+    ViewBag.Title = "Cascadding Dropdown";
+}
+
+<h2>Cascadding Dropdown</h2>
+
+@if (ViewBag.CountryList != null)
+{
+    @Html.DropDownListFor(x => x.CountryID, ViewBag.CountryList as SelectList, "-- Select Country --", new { @class = "form-control", id = "ddlCountry" })
+}
+
+<br />
+
+@*@if (ViewBag.StateList != null)
+    {
+        @Html.DropDownListFor(x => x.StateID, ViewBag.StateList as SelectList, "-- Select State --", new { @class = "form-control" })
+    }*@
+
+@Html.DropDownListFor(x => x.StateID, new SelectList(string.Empty), "-- Select State --", new { @class = "form-control", id = "ddlState" })
+
+
+<script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+@*<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#ddlCountry").change(function () {
+                var SelecedVal = $(this).val();
+                $("#ddlSate").html('');
+                $("#ddlSate").append($("<option></option>").attr("value", '')
+                    .text('Select State'));
+                if (SelecedVal != '') {
+
+                    $.get('/Dropdown/StateList/',
+                        {
+                            "CountryId": SelecedVal
+                        }).success(function (data) {
+                            $.each(data, function (index, item) {
+                                $("#ddlSate").append($("<option></option>").attr("value", item.StateId)
+                                    .text(item.StateName));
+                            });
+                        })
+                }
+            });
+        })
+    </script>*@
+
+<script>
+    $(document).ready(function () {
+        $("#ddlCountry").change(function () {
+            var countryID = $(this).val();
+            debugger
+            $.ajax({
+                type: "post",
+                url: "/Dropdown/StateList?CountryId=" + countryID,
+                contentType: "html",
+                success: function (res) {
+                    debugger
+                    $("#StateID").empty();
+                    $("#StateID").append(res);
+
+                }
+            })
+        })
+    })
+</script>

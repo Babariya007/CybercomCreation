@@ -1,0 +1,1196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AddressBookModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="PinCode" Type="varchar" MaxLength="100" />
+          <Property Name="STDCode" Type="varchar" MaxLength="5" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactCategoryID" Type="int" Nullable="false" />
+          <Property Name="ContactName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
+          <Property Name="Pincode" Type="varchar" MaxLength="6" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="StateID" Type="int" />
+          <Property Name="CountryID" Type="int" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FaceBookID" Type="varchar" MaxLength="100" />
+          <Property Name="LinkedInID" Type="varchar" MaxLength="100" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ProfileImagePath" Type="varchar" MaxLength="250" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="ContactCategory">
+          <Key>
+            <PropertyRef Name="ContactCategoryID" />
+          </Key>
+          <Property Name="ContactCategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ContactCategoryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="CountryCode" Type="varchar" MaxLength="10" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="MasterUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <Association Name="FK_City_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_State">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_ContactCategory">
+          <End Role="ContactCategory" Type="Self.ContactCategory" Multiplicity="1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactCategory">
+              <PropertyRef Name="ContactCategoryID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="ContactCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactCategory_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="ContactCategory" Type="Self.ContactCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ContactCategory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="PR_City_DeleteByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CityID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_City_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StateID" Type="int" Mode="In" />
+          <Parameter Name="CityName" Type="varchar" Mode="In" />
+          <Parameter Name="PinCode" Type="varchar" Mode="In" />
+          <Parameter Name="STDCode" Type="varchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_City_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_City_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CityID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_City_SelectDropDownList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PR_City_UpdateByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CityID" Type="int" Mode="In" />
+          <Parameter Name="StateID" Type="int" Mode="In" />
+          <Parameter Name="CityName" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode" Type="varchar" Mode="In" />
+          <Parameter Name="STDcode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PR_Contact_DeleteByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Contact_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactCategoryID" Type="int" Mode="In" />
+          <Parameter Name="ContactName" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode" Type="varchar" Mode="In" />
+          <Parameter Name="CityID" Type="int" Mode="In" />
+          <Parameter Name="StateID" Type="int" Mode="In" />
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNo" Type="varchar" Mode="In" />
+          <Parameter Name="FaceBookID" Type="varchar" Mode="In" />
+          <Parameter Name="LinkedInID" Type="varchar" Mode="In" />
+          <Parameter Name="ProfileImagePath" Type="varchar" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Contact_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Contact_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Contact_UpdateByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactID" Type="int" Mode="In" />
+          <Parameter Name="ContactCategoryID" Type="int" Mode="In" />
+          <Parameter Name="ContactName" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="Pincode" Type="varchar" Mode="In" />
+          <Parameter Name="CityID" Type="int" Mode="In" />
+          <Parameter Name="StateID" Type="int" Mode="In" />
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="EmailAddress" Type="varchar" Mode="In" />
+          <Parameter Name="MobileNo" Type="varchar" Mode="In" />
+          <Parameter Name="FaceBookID" Type="varchar" Mode="In" />
+          <Parameter Name="LinkedInID" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PR_ContactCategory_DeleteByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactCategoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_ContactCategory_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactCategoryName" Type="varchar" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_ContactCategory_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_ContactCategory_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactCategoryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_ContactCategory_SelectDropDownList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PR_ContactCategory_UpdateByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ContactCategoryID" Type="int" Mode="In" />
+          <Parameter Name="ContactCategoryName" Type="varchar" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="PR_Country_DeleteByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Country_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryName" Type="varchar" Mode="In" />
+          <Parameter Name="CountryCode" Type="varchar" Mode="In" />
+          <Parameter Name="CreationDate" Type="datetime" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Country_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Country_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_Country_SelectDropDownList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PR_Country_UpdateByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="CountryName" Type="varchar" Mode="In" />
+          <Parameter Name="CountryCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PR_State_DeleteByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StateID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_State_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="StateName" Type="varchar" Mode="In" />
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_State_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_State_SelectByCountryID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_State_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StateID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_State_SelectDropDownList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PR_State_UpdateByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="StateID" Type="int" Mode="In" />
+          <Parameter Name="CountryID" Type="int" Mode="In" />
+          <Parameter Name="StateName" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="AddressBookModelStoreContainer">
+          <EntitySet Name="City" EntityType="Self.City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactCategory" EntityType="Self.ContactCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasterUser" EntityType="Self.MasterUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="State" EntityType="Self.State" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_City_MasterUser" Association="Self.FK_City_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_City" Association="Self.FK_Contact_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_ContactCategory" Association="Self.FK_Contact_ContactCategory">
+            <End Role="ContactCategory" EntitySet="ContactCategory" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Country" Association="Self.FK_Contact_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_MasterUser" Association="Self.FK_Contact_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_State" Association="Self.FK_Contact_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactCategory_MasterUser" Association="Self.FK_ContactCategory_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="ContactCategory" EntitySet="ContactCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_MasterUser" Association="Self.FK_Country_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_MasterUser" Association="Self.FK_State_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AddressBookModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="City">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PinCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="STDCode" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="MasterUser" Relationship="Self.FK_City_MasterUser" FromRole="City" ToRole="MasterUser" />
+          <NavigationProperty Name="State" Relationship="Self.FK_City_State" FromRole="City" ToRole="State" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Contact_City" FromRole="City" ToRole="Contact" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="ContactID" />
+          </Key>
+          <Property Name="ContactID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactCategoryID" Type="Int32" Nullable="false" />
+          <Property Name="ContactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Pincode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="StateID" Type="Int32" />
+          <Property Name="CountryID" Type="Int32" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FaceBookID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LinkedInID" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ProfileImagePath" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="Self.FK_Contact_City" FromRole="Contact" ToRole="City" />
+          <NavigationProperty Name="ContactCategory" Relationship="Self.FK_Contact_ContactCategory" FromRole="Contact" ToRole="ContactCategory" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Contact_Country" FromRole="Contact" ToRole="Country" />
+          <NavigationProperty Name="MasterUser" Relationship="Self.FK_Contact_MasterUser" FromRole="Contact" ToRole="MasterUser" />
+          <NavigationProperty Name="State" Relationship="Self.FK_Contact_State" FromRole="Contact" ToRole="State" />
+        </EntityType>
+        <EntityType Name="ContactCategory">
+          <Key>
+            <PropertyRef Name="ContactCategoryID" />
+          </Key>
+          <Property Name="ContactCategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ContactCategoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Contact_ContactCategory" FromRole="ContactCategory" ToRole="Contact" />
+          <NavigationProperty Name="MasterUser" Relationship="Self.FK_ContactCategory_MasterUser" FromRole="ContactCategory" ToRole="MasterUser" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Contact_Country" FromRole="Country" ToRole="Contact" />
+          <NavigationProperty Name="MasterUser" Relationship="Self.FK_Country_MasterUser" FromRole="Country" ToRole="MasterUser" />
+          <NavigationProperty Name="State" Relationship="Self.FK_State_Country" FromRole="Country" ToRole="State" />
+        </EntityType>
+        <EntityType Name="MasterUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="City" Relationship="Self.FK_City_MasterUser" FromRole="MasterUser" ToRole="City" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Contact_MasterUser" FromRole="MasterUser" ToRole="Contact" />
+          <NavigationProperty Name="ContactCategory" Relationship="Self.FK_ContactCategory_MasterUser" FromRole="MasterUser" ToRole="ContactCategory" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_Country_MasterUser" FromRole="MasterUser" ToRole="Country" />
+          <NavigationProperty Name="State" Relationship="Self.FK_State_MasterUser" FromRole="MasterUser" ToRole="State" />
+        </EntityType>
+        <EntityType Name="State">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="City" Relationship="Self.FK_City_State" FromRole="State" ToRole="City" />
+          <NavigationProperty Name="Contact" Relationship="Self.FK_Contact_State" FromRole="State" ToRole="Contact" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_State_Country" FromRole="State" ToRole="Country" />
+          <NavigationProperty Name="MasterUser" Relationship="Self.FK_State_MasterUser" FromRole="State" ToRole="MasterUser" />
+        </EntityType>
+        <Association Name="FK_City_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_City_State">
+          <End Role="State" Type="Self.State" Multiplicity="1" />
+          <End Role="City" Type="Self.City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="City">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_City">
+          <End Role="City" Type="Self.City" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_ContactCategory">
+          <End Role="ContactCategory" Type="Self.ContactCategory" Multiplicity="1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ContactCategory">
+              <PropertyRef Name="ContactCategoryID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="ContactCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Contact_State">
+          <End Role="State" Type="Self.State" Multiplicity="0..1" />
+          <End Role="Contact" Type="Self.Contact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="State">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Contact">
+              <PropertyRef Name="StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ContactCategory_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="ContactCategory" Type="Self.ContactCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="ContactCategory">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Country_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="Country" Type="Self.Country" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Country">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_Country">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_State_MasterUser">
+          <End Role="MasterUser" Type="Self.MasterUser" Multiplicity="0..1" />
+          <End Role="State" Type="Self.State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasterUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="State">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AddressBookCS" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="City" EntityType="Self.City" />
+          <EntitySet Name="Contact" EntityType="Self.Contact" />
+          <EntitySet Name="ContactCategory" EntityType="Self.ContactCategory" />
+          <EntitySet Name="Country" EntityType="Self.Country" />
+          <EntitySet Name="MasterUser" EntityType="Self.MasterUser" />
+          <EntitySet Name="State" EntityType="Self.State" />
+          <AssociationSet Name="FK_City_MasterUser" Association="Self.FK_City_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_City_State" Association="Self.FK_City_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="City" EntitySet="City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_City" Association="Self.FK_Contact_City">
+            <End Role="City" EntitySet="City" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_ContactCategory" Association="Self.FK_Contact_ContactCategory">
+            <End Role="ContactCategory" EntitySet="ContactCategory" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_Country" Association="Self.FK_Contact_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_MasterUser" Association="Self.FK_Contact_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Contact_State" Association="Self.FK_Contact_State">
+            <End Role="State" EntitySet="State" />
+            <End Role="Contact" EntitySet="Contact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ContactCategory_MasterUser" Association="Self.FK_ContactCategory_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="ContactCategory" EntitySet="ContactCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Country_MasterUser" Association="Self.FK_Country_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="Country" EntitySet="Country" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_Country" Association="Self.FK_State_Country">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_State_MasterUser" Association="Self.FK_State_MasterUser">
+            <End Role="MasterUser" EntitySet="MasterUser" />
+            <End Role="State" EntitySet="State" />
+          </AssociationSet>
+          <FunctionImport Name="PR_City_DeleteByPK">
+            <Parameter Name="CityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_City_Insert">
+            <Parameter Name="StateID" Mode="In" Type="Int32" />
+            <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="PinCode" Mode="In" Type="String" />
+            <Parameter Name="STDCode" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_City_SelectAll" ReturnType="Collection(AddressBookModel.PR_City_SelectAll_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_City_SelectByPK" ReturnType="Collection(AddressBookModel.PR_City_SelectByPK_Result)">
+            <Parameter Name="CityID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_City_SelectDropDownList" ReturnType="Collection(AddressBookModel.PR_City_SelectDropDownList_Result)" />
+          <FunctionImport Name="PR_City_UpdateByPK">
+            <Parameter Name="CityID" Mode="In" Type="Int32" />
+            <Parameter Name="StateID" Mode="In" Type="Int32" />
+            <Parameter Name="CityName" Mode="In" Type="String" />
+            <Parameter Name="Pincode" Mode="In" Type="String" />
+            <Parameter Name="STDcode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Contact_DeleteByPK">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Contact_Insert">
+            <Parameter Name="ContactCategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="ContactName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Pincode" Mode="In" Type="String" />
+            <Parameter Name="CityID" Mode="In" Type="Int32" />
+            <Parameter Name="StateID" Mode="In" Type="Int32" />
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="MobileNo" Mode="In" Type="String" />
+            <Parameter Name="FaceBookID" Mode="In" Type="String" />
+            <Parameter Name="LinkedInID" Mode="In" Type="String" />
+            <Parameter Name="ProfileImagePath" Mode="In" Type="String" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Contact_SelectAll" ReturnType="Collection(AddressBookModel.PR_Contact_SelectAll_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Contact_SelectByPK" ReturnType="Collection(AddressBookModel.PR_Contact_SelectByPK_Result)">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Contact_UpdateByPK">
+            <Parameter Name="ContactID" Mode="In" Type="Int32" />
+            <Parameter Name="ContactCategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="ContactName" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="Pincode" Mode="In" Type="String" />
+            <Parameter Name="CityID" Mode="In" Type="Int32" />
+            <Parameter Name="StateID" Mode="In" Type="Int32" />
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="EmailAddress" Mode="In" Type="String" />
+            <Parameter Name="MobileNo" Mode="In" Type="String" />
+            <Parameter Name="FaceBookID" Mode="In" Type="String" />
+            <Parameter Name="LinkedInID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ContactCategory_DeleteByPK">
+            <Parameter Name="ContactCategoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ContactCategory_Insert">
+            <Parameter Name="ContactCategoryName" Mode="In" Type="String" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ContactCategory_SelectAll" ReturnType="Collection(AddressBookModel.PR_ContactCategory_SelectAll_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ContactCategory_SelectByPK" ReturnType="Collection(AddressBookModel.PR_ContactCategory_SelectByPK_Result)">
+            <Parameter Name="ContactCategoryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_ContactCategory_SelectDropDownList" ReturnType="Collection(AddressBookModel.PR_ContactCategory_SelectDropDownList_Result)" />
+          <FunctionImport Name="PR_ContactCategory_UpdateByPK">
+            <Parameter Name="ContactCategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="ContactCategoryName" Mode="In" Type="String" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Country_DeleteByPK">
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Country_Insert">
+            <Parameter Name="CountryName" Mode="In" Type="String" />
+            <Parameter Name="CountryCode" Mode="In" Type="String" />
+            <Parameter Name="CreationDate" Mode="In" Type="DateTime" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Country_SelectAll" ReturnType="Collection(AddressBookModel.PR_Country_SelectAll_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Country_SelectByPK" ReturnType="Collection(AddressBookModel.PR_Country_SelectByPK_Result)">
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_Country_SelectDropDownList" ReturnType="Collection(AddressBookModel.PR_Country_SelectDropDownList_Result)" />
+          <FunctionImport Name="PR_Country_UpdateByPK">
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="CountryName" Mode="In" Type="String" />
+            <Parameter Name="CountryCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="PR_State_DeleteByPK">
+            <Parameter Name="StateID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_State_Insert">
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="StateName" Mode="In" Type="String" />
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_State_SelectAll" ReturnType="Collection(AddressBookModel.PR_State_SelectAll_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_State_SelectByCountryID" ReturnType="Collection(AddressBookModel.PR_State_SelectByCountryID_Result)">
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_State_SelectByPK" ReturnType="Collection(AddressBookModel.PR_State_SelectByPK_Result)">
+            <Parameter Name="StateID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_State_SelectDropDownList" ReturnType="Collection(AddressBookModel.PR_State_SelectDropDownList_Result)">
+            <Parameter Name="UserID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="PR_State_UpdateByPK">
+            <Parameter Name="StateID" Mode="In" Type="Int32" />
+            <Parameter Name="CountryID" Mode="In" Type="Int32" />
+            <Parameter Name="StateName" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="PR_City_SelectAll_Result">
+          <Property Type="Int32" Name="CityID" Nullable="false" />
+          <Property Type="Int32" Name="StateID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Pincode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="STDcode" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_City_SelectByPK_Result">
+          <Property Type="Int32" Name="CityID" Nullable="false" />
+          <Property Type="Int32" Name="StateID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Pincode" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="STDcode" Nullable="true" MaxLength="5" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_City_SelectDropDownList_Result">
+          <Property Type="Int32" Name="CityID" Nullable="false" />
+          <Property Type="String" Name="CityName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_Contact_SelectAll_Result">
+          <Property Type="Int32" Name="ContactID" Nullable="false" />
+          <Property Type="Int32" Name="ContactCategoryID" Nullable="false" />
+          <Property Type="String" Name="ContactName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Pincode" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="StateID" Nullable="true" />
+          <Property Type="Int32" Name="CountryID" Nullable="true" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FaceBookID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LinkedInID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ProfileImagePath" Nullable="true" MaxLength="250" />
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="StateName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ContactCategoryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_Contact_SelectByPK_Result">
+          <Property Type="Int32" Name="ContactID" Nullable="false" />
+          <Property Type="Int32" Name="ContactCategoryID" Nullable="false" />
+          <Property Type="String" Name="ContactName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+          <Property Type="String" Name="Pincode" Nullable="true" MaxLength="6" />
+          <Property Type="Int32" Name="CityID" Nullable="true" />
+          <Property Type="Int32" Name="StateID" Nullable="true" />
+          <Property Type="Int32" Name="CountryID" Nullable="true" />
+          <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="MobileNo" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="FaceBookID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="LinkedInID" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="CountryName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="StateName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="CityName" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="ContactCategoryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_ContactCategory_SelectAll_Result">
+          <Property Type="Int32" Name="ContactCategoryID" Nullable="false" />
+          <Property Type="String" Name="ContactCategoryName" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="PR_ContactCategory_SelectByPK_Result">
+          <Property Type="Int32" Name="ContactCategoryID" Nullable="false" />
+          <Property Type="String" Name="ContactCategoryName" Nullable="false" MaxLength="100" />
+          <Property Type="DateTime" Name="CreationDate" Nullable="false" Precision="23" />
+        </ComplexType>
+        <ComplexType Name="PR_ContactCategory_SelectDropDownList_Result">
+          <Property Type="Int32" Name="ContactCategoryID" Nullable="false" />
+          <Property Type="String" Name="ContactCategoryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_Country_SelectAll_Result">
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CountryCode" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="PR_Country_SelectByPK_Result">
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="CountryCode" Nullable="true" MaxLength="10" />
+        </ComplexType>
+        <ComplexType Name="PR_Country_SelectDropDownList_Result">
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_State_SelectAll_Result">
+          <Property Type="Int32" Name="StateID" Nullable="false" />
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_State_SelectByCountryID_Result">
+          <Property Type="Int32" Name="StateID" Nullable="false" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_State_SelectByPK_Result">
+          <Property Type="Int32" Name="StateID" Nullable="false" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="CountryID" Nullable="false" />
+          <Property Type="String" Name="CountryName" Nullable="false" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="PR_State_SelectDropDownList_Result">
+          <Property Type="Int32" Name="StateID" Nullable="false" />
+          <Property Type="String" Name="StateName" Nullable="false" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AddressBookModelStoreContainer" CdmEntityContainer="AddressBookCS">
+          <EntitySetMapping Name="City">
+            <EntityTypeMapping TypeName="AddressBookModel.City">
+              <MappingFragment StoreEntitySet="City">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+                <ScalarProperty Name="STDCode" ColumnName="STDCode" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contact">
+            <EntityTypeMapping TypeName="AddressBookModel.Contact">
+              <MappingFragment StoreEntitySet="Contact">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="FaceBookID" ColumnName="FaceBookID" />
+                <ScalarProperty Name="LinkedInID" ColumnName="LinkedInID" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ProfileImagePath" ColumnName="ProfileImagePath" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactCategory">
+            <EntityTypeMapping TypeName="AddressBookModel.ContactCategory">
+              <MappingFragment StoreEntitySet="ContactCategory">
+                <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+                <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Country">
+            <EntityTypeMapping TypeName="AddressBookModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasterUser">
+            <EntityTypeMapping TypeName="AddressBookModel.MasterUser">
+              <MappingFragment StoreEntitySet="MasterUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="State">
+            <EntityTypeMapping TypeName="AddressBookModel.State">
+              <MappingFragment StoreEntitySet="State">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PR_City_DeleteByPK" FunctionName="AddressBookModel.Store.PR_City_DeleteByPK" />
+          <FunctionImportMapping FunctionImportName="PR_City_Insert" FunctionName="AddressBookModel.Store.PR_City_Insert" />
+          <FunctionImportMapping FunctionImportName="PR_City_SelectAll" FunctionName="AddressBookModel.Store.PR_City_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_City_SelectAll_Result">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="STDcode" ColumnName="STDcode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_City_SelectByPK" FunctionName="AddressBookModel.Store.PR_City_SelectByPK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_City_SelectByPK_Result">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="STDcode" ColumnName="STDcode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_City_SelectDropDownList" FunctionName="AddressBookModel.Store.PR_City_SelectDropDownList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_City_SelectDropDownList_Result">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_City_UpdateByPK" FunctionName="AddressBookModel.Store.PR_City_UpdateByPK" />
+          <FunctionImportMapping FunctionImportName="PR_Contact_DeleteByPK" FunctionName="AddressBookModel.Store.PR_Contact_DeleteByPK" />
+          <FunctionImportMapping FunctionImportName="PR_Contact_Insert" FunctionName="AddressBookModel.Store.PR_Contact_Insert" />
+          <FunctionImportMapping FunctionImportName="PR_Contact_SelectAll" FunctionName="AddressBookModel.Store.PR_Contact_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_Contact_SelectAll_Result">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="FaceBookID" ColumnName="FaceBookID" />
+                <ScalarProperty Name="LinkedInID" ColumnName="LinkedInID" />
+                <ScalarProperty Name="ProfileImagePath" ColumnName="ProfileImagePath" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_Contact_SelectByPK" FunctionName="AddressBookModel.Store.PR_Contact_SelectByPK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_Contact_SelectByPK_Result">
+                <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+                <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="FaceBookID" ColumnName="FaceBookID" />
+                <ScalarProperty Name="LinkedInID" ColumnName="LinkedInID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_Contact_UpdateByPK" FunctionName="AddressBookModel.Store.PR_Contact_UpdateByPK" />
+          <FunctionImportMapping FunctionImportName="PR_ContactCategory_DeleteByPK" FunctionName="AddressBookModel.Store.PR_ContactCategory_DeleteByPK" />
+          <FunctionImportMapping FunctionImportName="PR_ContactCategory_Insert" FunctionName="AddressBookModel.Store.PR_ContactCategory_Insert" />
+          <FunctionImportMapping FunctionImportName="PR_ContactCategory_SelectAll" FunctionName="AddressBookModel.Store.PR_ContactCategory_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_ContactCategory_SelectAll_Result">
+                <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+                <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_ContactCategory_SelectByPK" FunctionName="AddressBookModel.Store.PR_ContactCategory_SelectByPK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_ContactCategory_SelectByPK_Result">
+                <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+                <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_ContactCategory_SelectDropDownList" FunctionName="AddressBookModel.Store.PR_ContactCategory_SelectDropDownList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_ContactCategory_SelectDropDownList_Result">
+                <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+                <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_ContactCategory_UpdateByPK" FunctionName="AddressBookModel.Store.PR_ContactCategory_UpdateByPK" />
+          <FunctionImportMapping FunctionImportName="PR_Country_DeleteByPK" FunctionName="AddressBookModel.Store.PR_Country_DeleteByPK" />
+          <FunctionImportMapping FunctionImportName="PR_Country_Insert" FunctionName="AddressBookModel.Store.PR_Country_Insert" />
+          <FunctionImportMapping FunctionImportName="PR_Country_SelectAll" FunctionName="AddressBookModel.Store.PR_Country_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_Country_SelectAll_Result">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_Country_SelectByPK" FunctionName="AddressBookModel.Store.PR_Country_SelectByPK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_Country_SelectByPK_Result">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_Country_SelectDropDownList" FunctionName="AddressBookModel.Store.PR_Country_SelectDropDownList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_Country_SelectDropDownList_Result">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_Country_UpdateByPK" FunctionName="AddressBookModel.Store.PR_Country_UpdateByPK" />
+          <FunctionImportMapping FunctionImportName="PR_State_DeleteByPK" FunctionName="AddressBookModel.Store.PR_State_DeleteByPK" />
+          <FunctionImportMapping FunctionImportName="PR_State_Insert" FunctionName="AddressBookModel.Store.PR_State_Insert" />
+          <FunctionImportMapping FunctionImportName="PR_State_SelectAll" FunctionName="AddressBookModel.Store.PR_State_SelectAll">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_State_SelectAll_Result">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_State_SelectByCountryID" FunctionName="AddressBookModel.Store.PR_State_SelectByCountryID">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_State_SelectByCountryID_Result">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_State_SelectByPK" FunctionName="AddressBookModel.Store.PR_State_SelectByPK">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_State_SelectByPK_Result">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_State_SelectDropDownList" FunctionName="AddressBookModel.Store.PR_State_SelectDropDownList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="AddressBookModel.PR_State_SelectDropDownList_Result">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="PR_State_UpdateByPK" FunctionName="AddressBookModel.Store.PR_State_UpdateByPK" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

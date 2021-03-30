@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AddressBookModelStoreContainer" CdmEntityContainer="AddressBookCS">
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="AddressBookModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="PinCode" ColumnName="PinCode" />
+          <ScalarProperty Name="STDCode" ColumnName="STDCode" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contact">
+      <EntityTypeMapping TypeName="AddressBookModel.Contact">
+        <MappingFragment StoreEntitySet="Contact">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="FaceBookID" ColumnName="FaceBookID" />
+          <ScalarProperty Name="LinkedInID" ColumnName="LinkedInID" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="ProfileImagePath" ColumnName="ProfileImagePath" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ContactCategory">
+      <EntityTypeMapping TypeName="AddressBookModel.ContactCategory">
+        <MappingFragment StoreEntitySet="ContactCategory">
+          <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+          <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Country">
+      <EntityTypeMapping TypeName="AddressBookModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MasterUser">
+      <EntityTypeMapping TypeName="AddressBookModel.MasterUser">
+        <MappingFragment StoreEntitySet="MasterUser">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="State">
+      <EntityTypeMapping TypeName="AddressBookModel.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PR_City_DeleteByPK" FunctionName="AddressBookModel.Store.PR_City_DeleteByPK" />
+    <FunctionImportMapping FunctionImportName="PR_City_Insert" FunctionName="AddressBookModel.Store.PR_City_Insert" />
+    <FunctionImportMapping FunctionImportName="PR_City_SelectAll" FunctionName="AddressBookModel.Store.PR_City_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_City_SelectAll_Result">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="STDcode" ColumnName="STDcode" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_City_SelectByPK" FunctionName="AddressBookModel.Store.PR_City_SelectByPK">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_City_SelectByPK_Result">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="STDcode" ColumnName="STDcode" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_City_SelectDropDownList" FunctionName="AddressBookModel.Store.PR_City_SelectDropDownList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_City_SelectDropDownList_Result">
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_City_UpdateByPK" FunctionName="AddressBookModel.Store.PR_City_UpdateByPK" />
+    <FunctionImportMapping FunctionImportName="PR_Contact_DeleteByPK" FunctionName="AddressBookModel.Store.PR_Contact_DeleteByPK" />
+    <FunctionImportMapping FunctionImportName="PR_Contact_Insert" FunctionName="AddressBookModel.Store.PR_Contact_Insert" />
+    <FunctionImportMapping FunctionImportName="PR_Contact_SelectAll" FunctionName="AddressBookModel.Store.PR_Contact_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_Contact_SelectAll_Result">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="FaceBookID" ColumnName="FaceBookID" />
+          <ScalarProperty Name="LinkedInID" ColumnName="LinkedInID" />
+          <ScalarProperty Name="ProfileImagePath" ColumnName="ProfileImagePath" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_Contact_SelectByPK" FunctionName="AddressBookModel.Store.PR_Contact_SelectByPK">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_Contact_SelectByPK_Result">
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Pincode" ColumnName="Pincode" />
+          <ScalarProperty Name="CityID" ColumnName="CityID" />
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="FaceBookID" ColumnName="FaceBookID" />
+          <ScalarProperty Name="LinkedInID" ColumnName="LinkedInID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_Contact_UpdateByPK" FunctionName="AddressBookModel.Store.PR_Contact_UpdateByPK" />
+    <FunctionImportMapping FunctionImportName="PR_ContactCategory_DeleteByPK" FunctionName="AddressBookModel.Store.PR_ContactCategory_DeleteByPK" />
+    <FunctionImportMapping FunctionImportName="PR_ContactCategory_Insert" FunctionName="AddressBookModel.Store.PR_ContactCategory_Insert" />
+    <FunctionImportMapping FunctionImportName="PR_ContactCategory_SelectAll" FunctionName="AddressBookModel.Store.PR_ContactCategory_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_ContactCategory_SelectAll_Result">
+          <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+          <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_ContactCategory_SelectByPK" FunctionName="AddressBookModel.Store.PR_ContactCategory_SelectByPK">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_ContactCategory_SelectByPK_Result">
+          <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+          <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_ContactCategory_SelectDropDownList" FunctionName="AddressBookModel.Store.PR_ContactCategory_SelectDropDownList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_ContactCategory_SelectDropDownList_Result">
+          <ScalarProperty Name="ContactCategoryID" ColumnName="ContactCategoryID" />
+          <ScalarProperty Name="ContactCategoryName" ColumnName="ContactCategoryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_ContactCategory_UpdateByPK" FunctionName="AddressBookModel.Store.PR_ContactCategory_UpdateByPK" />
+    <FunctionImportMapping FunctionImportName="PR_Country_DeleteByPK" FunctionName="AddressBookModel.Store.PR_Country_DeleteByPK" />
+    <FunctionImportMapping FunctionImportName="PR_Country_Insert" FunctionName="AddressBookModel.Store.PR_Country_Insert" />
+    <FunctionImportMapping FunctionImportName="PR_Country_SelectAll" FunctionName="AddressBookModel.Store.PR_Country_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_Country_SelectAll_Result">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_Country_SelectByPK" FunctionName="AddressBookModel.Store.PR_Country_SelectByPK">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_Country_SelectByPK_Result">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_Country_SelectDropDownList" FunctionName="AddressBookModel.Store.PR_Country_SelectDropDownList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_Country_SelectDropDownList_Result">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_Country_UpdateByPK" FunctionName="AddressBookModel.Store.PR_Country_UpdateByPK" />
+    <FunctionImportMapping FunctionImportName="PR_State_DeleteByPK" FunctionName="AddressBookModel.Store.PR_State_DeleteByPK" />
+    <FunctionImportMapping FunctionImportName="PR_State_Insert" FunctionName="AddressBookModel.Store.PR_State_Insert" />
+    <FunctionImportMapping FunctionImportName="PR_State_SelectAll" FunctionName="AddressBookModel.Store.PR_State_SelectAll">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_State_SelectAll_Result">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_State_SelectByCountryID" FunctionName="AddressBookModel.Store.PR_State_SelectByCountryID">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_State_SelectByCountryID_Result">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_State_SelectByPK" FunctionName="AddressBookModel.Store.PR_State_SelectByPK">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_State_SelectByPK_Result">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_State_SelectDropDownList" FunctionName="AddressBookModel.Store.PR_State_SelectDropDownList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="AddressBookModel.PR_State_SelectDropDownList_Result">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="PR_State_UpdateByPK" FunctionName="AddressBookModel.Store.PR_State_UpdateByPK" />
+  </EntityContainerMapping>
+</Mapping>

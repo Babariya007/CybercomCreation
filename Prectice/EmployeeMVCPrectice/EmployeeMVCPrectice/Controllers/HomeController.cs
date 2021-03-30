@@ -12,12 +12,14 @@ namespace EmployeeMVCPrectice.Controllers
     {
         EmployeeRepository repository = null;
 
+        #region HomeControllerConstructor
         public HomeController()
         {
             repository = new EmployeeRepository();
         }
+        #endregion HomeControllerConstructor
 
-        // GET: Home
+        #region Insert
         public ActionResult Create()
         {
             return View();
@@ -32,10 +34,53 @@ namespace EmployeeMVCPrectice.Controllers
                 if (id > 0)
                 {
                     ModelState.Clear();
-                    ViewBag.IsSuccess = "Data Inserted";
+                    ViewBag.IsSuccess = "Data Inserted Sucessfully...";
                 }
             }
             return View();
         }
+        #endregion Insert
+
+        #region Update
+        public ActionResult GetAllRecord()
+        {
+            var result = repository.UpdateEmployee();
+            return View(result);
+        }
+        public ActionResult Details(int id)
+        {
+            var result = repository.UpdateEmployee(id);
+            return View(result);
+        }
+        #endregion Update
+
+        #region Edit
+        public ActionResult Edit(int id)
+        {
+            var result = repository.UpdateEmployee(id);
+            return View(result);
+        }
+        [HttpPost]
+        public ActionResult Edit(EmployeeModel empModel)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.UpdateEmployee(empModel);
+
+                return RedirectToAction("GetAllRecord");
+            }
+            return View();
+        }
+        #endregion Edit
+
+        #region Delete
+        public ActionResult Delete(int id)
+        {
+            repository.DeleteEmployee(id);
+
+            return RedirectToAction("GetAllRecord");
+        }
+        #endregion Delete
+
     }
 }

@@ -1,33 +1,6 @@
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\eCommerce MVC.dll.config
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\eCommerce MVC.dll
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\eCommerce MVC.pdb
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\csc.exe
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\csc.exe.config
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\csc.rsp
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\csi.exe
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\csi.rsp
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.CodeAnalysis.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.CSharp.Core.targets
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\Microsoft.VisualBasic.Core.targets
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\System.AppContext.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\System.Collections.Immutable.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\System.Diagnostics.StackTrace.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\System.IO.FileSystem.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\System.IO.FileSystem.Primitives.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\System.Reflection.Metadata.dll
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\vbc.exe
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\vbc.exe.config
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\vbc.rsp
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\VBCSCompiler.exe
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\roslyn\VBCSCompiler.exe.config
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\Microsoft.Web.Infrastructure.dll
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Helpers.dll
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Mvc.dll
@@ -41,7 +14,6 @@ D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Webpages.Dep
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Webpages.Razor.xml
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Helpers.xml
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Mvc.xml
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\obj\Debug\eCommerce MVC.csprojAssemblyReference.cache
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\obj\Debug\eCommerce MVC.csproj.CoreCompileInputs.cache
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\obj\Debug\eCommerce MVC.csproj.CopyComplete
@@ -54,3 +26,9 @@ D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\DAL.dll.config
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\eCommerce Model.pdb
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\EntityFramework.dll
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\EntityFramework.xml
+D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\PagedList.dll
+D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\PagedList.Mvc.dll
+D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\PagedList.xml
+D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\PagedList.Mvc.xml
+D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\Newtonsoft.Json.dll
+D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\Newtonsoft.Json.xml

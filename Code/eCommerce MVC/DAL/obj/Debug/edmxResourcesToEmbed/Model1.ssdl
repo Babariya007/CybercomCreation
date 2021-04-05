@@ -19,6 +19,27 @@
     <Property Name="OrderQuentity" Type="int" />
     <Property Name="TotalBill" Type="decimal" Precision="10" Scale="2" />
   </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="int" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" />
+    <Property Name="TotalQuntity" Type="int" />
+    <Property Name="GSTAmount" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" />
+    <Property Name="OrderDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="OrderItemID" />
+    </Key>
+    <Property Name="OrderItemID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="OrderID" Type="int" />
+    <Property Name="ProductID" Type="int" />
+  </EntityType>
   <EntityType Name="ProductMaster">
     <Key>
       <PropertyRef Name="ProductID" />
@@ -38,6 +59,42 @@
         <PropertyRef Name="ProductID" />
       </Principal>
       <Dependent Role="Customer">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Customer">
+    <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_Order">
+    <End Role="Order" Type="Self.Order" Multiplicity="0..1" />
+    <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_ProductMaster">
+    <End Role="ProductMaster" Type="Self.ProductMaster" Multiplicity="0..1" />
+    <End Role="OrderItem" Type="Self.OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductMaster">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderItem">
         <PropertyRef Name="ProductID" />
       </Dependent>
     </ReferentialConstraint>
@@ -109,10 +166,24 @@
   <EntityContainer Name="eCommerceModelStoreContainer">
     <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OrderItem" EntityType="Self.OrderItem" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ProductMaster" EntityType="Self.ProductMaster" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_Customer_ProductMaster" Association="Self.FK_Customer_ProductMaster">
       <End Role="ProductMaster" EntitySet="ProductMaster" />
       <End Role="Customer" EntitySet="Customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Customer" Association="Self.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_Order" Association="Self.FK_OrderItem_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_ProductMaster" Association="Self.FK_OrderItem_ProductMaster">
+      <End Role="ProductMaster" EntitySet="ProductMaster" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
     </AssociationSet>
     <AssociationSet Name="FK_ProductOrder_ProductMaster" Association="Self.FK_ProductOrder_ProductMaster">
       <End Role="ProductMaster" EntitySet="ProductMaster" />

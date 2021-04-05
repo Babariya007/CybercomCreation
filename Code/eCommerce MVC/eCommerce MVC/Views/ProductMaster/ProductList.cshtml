@@ -1,61 +1,84 @@
-﻿@model IEnumerable<eCommerce_Model.ProductMasterModel>
+﻿@using PagedList.Mvc;
+@using PagedList;
+@model IPagedList<eCommerce_Model.ProductMasterModel>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @{
-    ViewBag.Title = "CountryList";
+    ViewBag.Title = "Product List";
 }
 
 <br />
 <h2>ProductList</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
+<p style="text-align:right">
+    @Html.ActionLink("Create New", "Create", new { @controller = "ProductMaster" }, new { @class = "btn btn-primary" })
 </p>
-<table class="table">
-    <tr>
-        <th>
-            Action
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductQuantity)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductDetails)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductPrice)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </th>
-    </tr>
+<table class="table table-striped" id="ProductInfo">
+    <thead>
+        <tr>
+            <th>
+                SrNo
+            </th>
+            <th>
+                Action
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProductDetails)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProductPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().ProductImage)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @{int SrNo = 1; }
+        @foreach (var item in (IEnumerable<eCommerce_Model.ProductMasterModel>)ViewData["Product"])
+        {
+            <tr>
+                <td>
+                    @SrNo
+                </td>
+                @{
+                    SrNo++;
+                }
+                <td>
+                    <a href="@Url.Action("Create", "ProductMaster", new { id = item.ProductID })" title="Edit"><i class="fa fa-edit"></i></a> &nbsp;
+                    <a href="@Url.Action("Delete", "ProductMaster", new { id = item.ProductID })" title="Delete" onclick="return confirm('Are you sure you want to delete this item?');"><i class="fa fa-trash"></i></a>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductQuantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductDetails)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td>
+                    <img src="@Url.Content(item.ProductImage)" style="width:150px; height:150px" />
+                </td>
 
-@foreach (var item in (IEnumerable<eCommerce_Model.ProductMasterModel>)ViewData["Product"]) {
-<tr>
-    <td>
-        @Html.ActionLink("Edit", "Create", new { id=item.ProductID })
-        @Html.ActionLink("Delete", "Delete", new { id =item.ProductID })
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ProductName)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ProductQuantity)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ProductDetails)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.ProductPrice)
-    </td>
-    <td>
-        <img src="@Url.Content(item.ProductImage)" width="150px" height="150px" />
-        @*@Html.DisplayFor(modelItem => item.ProductImage)*@
-    </td>
-
-</tr>
-}
-
+            </tr>
+        }
+        <tr>
+            <td>
+                @*@Html.PagedListPager(Model, page => Url.Action("ProductList", "ProductMaster", new { page }))*@
+            </td>
+        </tr>
+    </tbody>
 </table>
+
+

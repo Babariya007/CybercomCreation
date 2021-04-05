@@ -1,0 +1,195 @@
+﻿@model IEnumerable<eCommerce_Model.CartModel>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+
+
+<div class="container">
+    <br />
+    <div>
+        <h2>My Cart</h2>
+        <asp:Label ID="lblError" runat="server" Font-Size="Large"></asp:Label>
+    </div>
+    <hr />
+    <br />
+    <div style="text-align: right">
+        <asp:HyperLink ID="hlHome" runat="server" Text="Add New Product" CssClass="btn btn-warning" NavigateUrl="~/Client/Home.aspx"></asp:HyperLink>
+        @Html.ActionLink("Add New Product", "Home", new { @controller = "ProductMaster" }, new { @class = "btn btn-warning", @id = "hlAddProduct" })
+
+    </div>
+    <br />
+    <div class="row">
+        <div class="row card pd-30 col-md-8" style="padding: 30px">
+            @if (ViewData["CartItem"] != null)
+            {
+                foreach (var item in (IEnumerable<eCommerce_Model.CartModel>)ViewData["CartItem"])
+                {
+
+                    <div class="row" style="margin-bottom: 50px;">
+                        <div class="col-md-3">
+                            <div>
+                                <a href="@Url.Action("ProductDetils", "ProductMaster", new { id = item.ProductID })">
+                                    <img src="@Url.Content(item.ProductImage)" Height="150px" Width="150px" />
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div>
+                                <h2>
+                                    @Html.DisplayFor(modelItem => item.ProductName)
+                                </h2>
+                            </div>
+                            <div>
+                                <h4>
+                                    <lable>@Html.DisplayFor(model => item.ProductPrice)</lable>
+                                    <i class="fa fa-inr" style="font-size: 20px"></i>
+                                    <input type="hidden" id="Price" class="Price" value="@Html.DisplayFor(model => item.ProductPrice)" />
+                                </h4>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="hidden" class="ProductID" value="@Html.DisplayFor(model => item.ProductID)" />
+                                    <input type="number" value="1" class="form-control txtqut" min="1" onkeyup="if(this.value<0){this.value= this.value * -1}" />
+                                </div>
+                                <div class="col-md-6">
+                                    @Html.ActionLink("Remove", "Delete", new { @controller = "Cart", id = item.CartID }, new { @class = "btn btn-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            }
+            else
+            {
+                <div class="" style="text-align:center">
+                    @ViewBag.NotInCart
+                    <br /><br /><br />
+                    @Html.ActionLink("Add New Product", "Home", new { @controller = "ProductMaster" }, new { @class = "btn btn-warning", @id = "hlAddProduct" })
+
+                </div>
+            }
+        </div>
+        <hr />
+        <br />
+        <div class="col-md-4 card" id="cart" style="padding-left: 50px;padding-right: 30px; height: 100%">
+            <div style="padding: 50px 0">
+                <div>
+                    Total Quantity : <span id="OrderQuentity"></span>
+                    <br /><br />
+                    Amount : <span id="Amount"></span>
+                    <br /><br />
+                    GST Charge : <span id="GSTCharge"></span>
+                    <br /><br />
+                    Total Bill : <label id="TotalBill"></label>
+                </div>
+                <br />
+                <div style="text-align:right">
+                    <input type="button" ID="btnCheckOut" value="Check Out" class="btn btn-info" onclick="SendtoCheckOut()" />
+                    @*@Html.ActionLink("Check Out", "CheckOut", new { @controller = "Customer" }, new { @class = "btn btn-info" })*@
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        //Quantity Sum
+        $(".txtqut").each(function () {
+
+            $(this).on('input', function () {
+                calculateSum();
+                calculateSumPrice();
+            });
+        });
+
+        //Price Sum
+        $('.Price').each(function () {
+
+            $(this).on('lable', function () {
+                calculateSumPrice();
+            });
+        });
+
+        calculateSum();
+        calculateSumPrice();
+
+        //If Not have any Item in cart then hide OrderQuentity, GSTBill, TotalAmount
+        if ('@ViewBag.NotInCart' == "Item Not in Cart") {
+            $('#cart').hide();
+            $('#hlAddProduct').hide();
+        }
+        else {
+            $('#cart').show();
+        }
+    });
+
+    //Quantity Sum
+    function calculateSum() {
+        var sum = 0;
+        $(".txtqut").each(function () {
+
+            if (!isNaN(this.value) && this.value.length != 0) {
+                sum += parseFloat(this.value);
+            }
+        });
+        if (sum < 0) { sum = sum * -1 }
+        $("#OrderQuentity").html(sum.toFixed(2));
+    }
+    //Price Sum, GST Charge, Total Bill
+    function calculateSumPrice() {
+
+        var sumPrice = GSTCharge = TotalBill = 0;
+        $(".Price").each(function () {
+            var Qut = $(this).parent().parent().parent().find('.txtqut');
+            if (!isNaN(this.value) && this.value.length != 0) {
+                sumPrice += parseFloat(this.value) * parseFloat(Qut.val());
+            }
+        });
+        if (sumPrice < 0) { sumPrice = sumPrice * -1 }
+        $("#Amount").html(sumPrice.toFixed(2));
+
+        GSTCharge = (sumPrice * 0.18);
+        $("#GSTCharge").html(GSTCharge.toFixed(2));
+
+        TotalBill = sumPrice + GSTCharge;
+        $("#TotalBill").html(TotalBill.toFixed(2));
+
+    }
+    function SendtoCheckOut() {
+        var product = [];
+        $(".txtqut").each(function () {
+            if (!isNaN(this.value) && this.value.length != 0) {
+                product.push({ Id: parseInt($(this).parent().find('.ProductID').val()), Quantity: parseInt(this.value) });
+            }
+        });
+        //console.log(product);
+        var Obj = {
+            OrderQuentity: parseInt($('#OrderQuentity').text()),
+            GSTCharge: parseFloat($('#GSTCharge').text()),
+            TotalBill: parseFloat($('#TotalBill').text()),
+            Products: product
+        };
+        //console.log(Obj);
+        $.ajax({
+            url: "/Customer/CheckOut",
+            data: { json: JSON.stringify(Obj) },
+            type: "POST",
+            ContentType: "application/json;charset=utf-8",
+            dataType: "text",
+            success: function (result) {
+                window.location.href = "/Customer/CheckOut";
+            },
+            error: function (errormessage) {
+                //alert(errormessage.responseText);
+                //alert("Quantity not be Empty");
+                console.log(errormessage);
+            }
+        });
+    }
+</script>

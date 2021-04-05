@@ -170,7 +170,6 @@ namespace DAL
         #endregion Delete Operaction
 
         #region Select Operaction
-
         public ProductMasterModel SelectByPK(SqlInt32 ProductID)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
@@ -308,7 +307,6 @@ namespace DAL
                     }
             }
         }
-
         #endregion Select Operaction
 
         //-----------------------------------------------------------------------------------

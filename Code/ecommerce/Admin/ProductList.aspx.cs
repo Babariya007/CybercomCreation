@@ -28,6 +28,8 @@ public partial class Admin_ProductList : System.Web.UI.Page
         {
             gvProduct.DataSource = dtProductMaster;
             gvProduct.DataBind();
+            gvProduct.UseAccessibleHeader = true;
+            gvProduct.HeaderRow.TableSection = TableRowSection.TableHeader;
         }
     }
 

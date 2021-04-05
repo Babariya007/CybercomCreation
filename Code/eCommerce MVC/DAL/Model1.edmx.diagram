@@ -10,6 +10,11 @@
         <EntityTypeShape EntityType="eCommerceModel.ProductMaster" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
         <AssociationConnector Association="eCommerceModel.FK_ProductOrder_ProductMaster" ManuallyRouted="false" />
         <AssociationConnector Association="eCommerceModel.FK_Customer_ProductMaster" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="eCommerceModel.Order" Width="1.5" PointX="5.25" PointY="3.25" />
+        <EntityTypeShape EntityType="eCommerceModel.OrderItem" Width="1.5" PointX="7.5" PointY="3.25" />
+        <AssociationConnector Association="eCommerceModel.FK_Order_Customer" />
+        <AssociationConnector Association="eCommerceModel.FK_OrderItem_Order" />
+        <AssociationConnector Association="eCommerceModel.FK_OrderItem_ProductMaster" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

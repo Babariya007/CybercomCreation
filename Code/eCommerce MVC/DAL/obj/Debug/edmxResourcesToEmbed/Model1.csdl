@@ -20,6 +20,7 @@
     <Property Name="OrderQuentity" Type="Int32" />
     <Property Name="TotalBill" Type="Decimal" Precision="10" Scale="2" />
     <NavigationProperty Name="ProductMaster" Relationship="Self.FK_Customer_ProductMaster" FromRole="Customer" ToRole="ProductMaster" />
+    <NavigationProperty Name="Order" Relationship="eCommerceModel.FK_Order_Customer" FromRole="Customer" ToRole="Order" />
   </EntityType>
   <EntityType Name="ProductMaster">
     <Key>
@@ -33,6 +34,7 @@
     <Property Name="ProductImage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="Cart" Relationship="Self.FK_ProductOrder_ProductMaster" FromRole="ProductMaster" ToRole="Cart" />
     <NavigationProperty Name="Customer" Relationship="Self.FK_Customer_ProductMaster" FromRole="ProductMaster" ToRole="Customer" />
+    <NavigationProperty Name="OrderItem" Relationship="eCommerceModel.FK_OrderItem_ProductMaster" FromRole="ProductMaster" ToRole="OrderItem" />
   </EntityType>
   <Association Name="FK_ProductOrder_ProductMaster">
     <End Role="ProductMaster" Type="Self.ProductMaster" Multiplicity="0..1" />
@@ -122,6 +124,20 @@
       <Parameter Name="ProductID" Mode="In" Type="Int32" />
     </FunctionImport>
     <FunctionImport Name="PR_ShowProducts_SelectAll" ReturnType="Collection(eCommerceModel.PR_ShowProducts_SelectAll_Result)" />
+    <EntitySet Name="Order" EntityType="eCommerceModel.Order" />
+    <EntitySet Name="OrderItem" EntityType="eCommerceModel.OrderItem" />
+    <AssociationSet Name="FK_Order_Customer" Association="eCommerceModel.FK_Order_Customer">
+      <End Role="Customer" EntitySet="Customer" />
+      <End Role="Order" EntitySet="Order" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_Order" Association="eCommerceModel.FK_OrderItem_Order">
+      <End Role="Order" EntitySet="Order" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OrderItem_ProductMaster" Association="eCommerceModel.FK_OrderItem_ProductMaster">
+      <End Role="ProductMaster" EntitySet="ProductMaster" />
+      <End Role="OrderItem" EntitySet="OrderItem" />
+    </AssociationSet>
   </EntityContainer>
   <ComplexType Name="PR_CartItemShow_SelectAll_Result">
     <Property Type="Int32" Name="CartID" Nullable="false" />
@@ -174,4 +190,65 @@
     <Property Type="String" Name="ProductName" Nullable="false" MaxLength="500" />
     <Property Type="Decimal" Name="ProductPrice" Nullable="false" Precision="10" Scale="2" />
   </ComplexType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderID" />
+    </Key>
+    <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerID" Type="Int32" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TotalQuntity" Type="Int32" />
+    <Property Name="GSTAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="TotalAmount" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Customer" Relationship="eCommerceModel.FK_Order_Customer" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="OrderItem" Relationship="eCommerceModel.FK_OrderItem_Order" FromRole="Order" ToRole="OrderItem" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="OrderItemID" />
+    </Key>
+    <Property Name="OrderItemID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="ProductID" Type="Int32" />
+    <NavigationProperty Name="Order" Relationship="eCommerceModel.FK_OrderItem_Order" FromRole="OrderItem" ToRole="Order" />
+    <NavigationProperty Name="ProductMaster" Relationship="eCommerceModel.FK_OrderItem_ProductMaster" FromRole="OrderItem" ToRole="ProductMaster" />
+  </EntityType>
+  <Association Name="FK_Order_Customer">
+    <End Type="eCommerceModel.Customer" Role="Customer" Multiplicity="0..1" />
+    <End Type="eCommerceModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_Order">
+    <End Type="eCommerceModel.Order" Role="Order" Multiplicity="0..1" />
+    <End Type="eCommerceModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="OrderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OrderItem_ProductMaster">
+    <End Type="eCommerceModel.ProductMaster" Role="ProductMaster" Multiplicity="0..1" />
+    <End Type="eCommerceModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductMaster">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - eCommerce</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
     <div class="navbar navbar-light bg-light" style="top: 0">
@@ -15,23 +16,26 @@
             <div class="navbar-header">
                 @Html.ActionLink("eCommerce", "ProductList", "ProductMaster", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-header">
-                <ul class="nav navbar-nav">
-                    @Html.ActionLink("Product List", "ProductList", new { Controller = "ProductMaster" },new { @class = "navbar-brand" })
-                </ul>
-            </div>
+            <ul class="nav navbar-nav">
+                <li class="nav-item">
+                    @Html.ActionLink("Product List", "ProductList", new { Controller = "ProductMaster" }, new { @class = "navbar-brand" })
+
+                    @Html.ActionLink("Order List", "OrderList", new { Controller = "Customer" }, new { @class = "navbar-brand" })
+                </li>
+            </ul>
         </div>
     </div>
 
     <div class="container body-content">
         @RenderBody()
+        @RenderSection("productList", false)
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
     <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

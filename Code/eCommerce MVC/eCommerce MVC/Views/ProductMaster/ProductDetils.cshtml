@@ -15,12 +15,16 @@
     <div class="row">
         <div class="col-md-3">
             <div>
-                <img src="@Url.Content(model => model.ProductImage)" Height="300px" Width="250px" />
+                <img src="@Url.Content(@Model.ProductImage)" Height="300px" Width="250px" />
             </div>
             <br />
-            <div>
-                <button type="submit" class="btn btn-warning">Add to Cart</button>
-            </div>
+            @using (Html.BeginForm("AddToCart", "ProductMaster", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.HiddenFor(model => model.ProductID)
+                <div>
+                    <button type="submit" class="btn btn-warning" onclick="addToCart()">Add to Cart</button>
+                </div>
+            }
         </div>
         <div class="col-md-8" style="padding-left: 50px">
             <div>
@@ -30,7 +34,7 @@
             </div>
             <br />
             <div>
-                <pre><label>@Html.DisplayFor(model => model.ProductDetails)</label></pre>
+                <pre>@Html.DisplayFor(model => model.ProductDetails)</pre>
             </div>
             <div>
                 <h3>
@@ -42,56 +46,8 @@
     </div>
 </div>
 
-@*<div>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductID)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductID)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductQuantity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductQuantity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductDetails)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductDetails)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductPrice)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductPrice)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ProductImage)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ProductImage)
-        </dd>
-
-    </dl>
-</div>*@
+<script>
+    function addToCart() {
+        alert("Item added into Cart");
+        }
+</script>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace eCommerce_Model
 {
@@ -25,5 +26,7 @@ namespace eCommerce_Model
 
         [Required(ErrorMessage = "Please Select Image")]
         public string ProductImage { get; set; }
+
+        public HttpPostedFileBase ImageFile { get; set; }
     }
 }

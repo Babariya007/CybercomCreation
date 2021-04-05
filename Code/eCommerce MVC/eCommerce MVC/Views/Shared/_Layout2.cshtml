@@ -9,15 +9,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
 </head>
-<body>
-    <div class="navbar navbar-light bg-light" style="top: 0">
+<body class="bg-light">
+    <div class="navbar navbar-light" style="top: 0;background-color: white;">
         <div class="container">
             <div class="navbar-header">
-                @Html.ActionLink("eCommerce", "Home", "Customer", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("eCommerce", "Home", "ProductMaster", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-header">
                 <ul class="nav navbar-nav">
-                    @Html.ActionLink("Home", "Home", new { Controller = "Customer" }, new { @class = "navbar-brand" })
+                    <li>
+                        @Html.ActionLink("Home", "Home", new { Controller = "ProductMaster" }, new { @class = "navbar-brand" })
+
+                        @Html.ActionLink("Cart", "Cart", new { Controller = "Cart" }, new { @class = "navbar-brand" })
+                    </li>
                 </ul>
             </div>
         </div>

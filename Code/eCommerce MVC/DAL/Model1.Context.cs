@@ -30,6 +30,8 @@ namespace DAL
         public virtual DbSet<Cart> Cart { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
         public virtual DbSet<ProductMaster> ProductMaster { get; set; }
+        public virtual DbSet<Order> Order { get; set; }
+        public virtual DbSet<OrderItem> OrderItem { get; set; }
     
         public virtual ObjectResult<Nullable<int>> PR_Cart_CheckIteamSelectByID(Nullable<int> productID)
         {

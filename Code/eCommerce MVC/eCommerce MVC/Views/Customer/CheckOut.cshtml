@@ -1,0 +1,63 @@
+﻿@using eCommerce_MVC.Models;
+@model eCommerce_MVC.Models.CustomerViewModel
+
+@{
+    ViewBag.Title = "CheckOut";
+    CartItems CartItems = TempData["CartItems"] as CartItems;
+
+    if (CartItems == null)
+    {
+        Response.Redirect("~/ProductMaster/Home");
+    }
+    Layout = "~/Views/Shared/_Layout2.cshtml";
+}
+<div class="container">
+    <br />
+
+    <h2>
+        <label>Check Out</label>
+    </h2>
+    <hr />
+    <br />
+    <br />
+
+    @using (Html.BeginForm("Order", "Customer", FormMethod.Post))
+    {
+        @Html.Hidden("OrderQuantity", @CartItems.OrderQuentity)
+        @Html.Hidden("TotalBill", @CartItems.TotalBill)
+        @Html.Hidden("GSTCharge", @CartItems.GSTCharge)
+        var count = 0;
+        foreach (var product in @CartItems.Products)
+        {
+            <input id="Products[@count].Id" name="Products[@count].Id" type="hidden" value='@product.Id' />
+            @*<input id="Products[@count].Quantity" name="Products[@count].Quantity" type="hidden" value='@product.Quantity' />*@
+            count++;
+        }
+
+
+
+        <div class="form-group row">
+            <label for="lblFirstName" class="col-sm-2 col-form-label">First Name</label>
+            <div class="col-sm-4">
+                @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" }, autofocus = "autofocus" })
+            </div>
+
+            <label for="lblLastName" class="col-sm-2 col-form-label">Last Name</label>
+            <div class="col-sm-4">
+                @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" }, autofocus = "autofocus" })
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lblAddress" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+                @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "form-control" }, autofocus = "autofocus" })
+            </div>
+        </div>
+        <div class="form-group row" style="text-align: right">
+            <input type="submit" Text="Confirm" class="btn btn-primary" />&nbsp;&nbsp;
+            @Html.ActionLink("Cancle", "Home", new { @controller = "ProductMaster" }, new { @class = "btn btn-danger" })
+
+        </div>
+        <br />
+    }
+</div>

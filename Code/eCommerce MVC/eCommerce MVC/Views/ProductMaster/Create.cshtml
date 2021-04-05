@@ -5,7 +5,7 @@
 <hr />
 <label style="color:forestgreen">@ViewBag.InsertMessage</label>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Create", "ProductMaster", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -29,7 +29,7 @@
     <div class="form-group row">
         @Html.LabelFor(model => model.ProductDetails, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-sm-10">
-            @Html.TextAreaFor(model => model.ProductDetails, new { htmlAttributes = new { @class = "form-control", @rows="" } })
+            @Html.TextAreaFor(model => model.ProductDetails, new { htmlAttributes = new { @class = "form-control", @rows = "" } })
             @Html.ValidationMessageFor(model => model.ProductDetails, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -41,12 +41,14 @@
         </div>
 
         @Html.LabelFor(model => model.ProductImage, htmlAttributes: new { @class = "control-label col-md-2" })
-    <div class="col-sm-4">
-        @Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control", type = "file", accept = ".jpeg, .jpg, .png" } })
-        <lable>@ViewBag.FileName</lable>
-        @Html.ValidationMessageFor(model => model.ProductImage, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.ProductImage)
-    </div>
+        <div class="col-sm-4">
+            @*@Html.EditorFor(model => model.ProductImage, new { htmlAttributes = new { @class = "form-control", @name = "ImageFile", @type = "file", @accept = ".jpeg, .jpg, .png" } })*@
+            <input accept=".jpeg, .jpg, .png" class="form-control text-box single-line" data-val="true" data-val-required="Please Select Image" id="ImageFile" name="ImageFile" type="file" value="">
+            <lable>@ViewBag.FileName</lable>
+            @Html.ValidationMessageFor(model => model.ProductImage, "", new { @class = "text-danger" })
+            @*<input type="hidden" name="ImageFile" data-val="true" id="ImageFile" value="@Model.ProductImage" />*@
+            @Html.Hidden("ProductImage")
+        </div>
     </div>
 
     <div class="col-md-offset-2" style="text-align:right">

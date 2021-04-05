@@ -54,7 +54,7 @@ public partial class Admin_ProductAddEdit : System.Web.UI.Page
         if (!entProductMaster.ProductImage.IsNull)
         {
             hfFileName.Value = entProductMaster.ProductImage.Value.ToString();
-            string strFilePath = "~/Content/ProductImage/";
+            string strFilePath = "~/Content/Img/";
             rfvFileUpload.Visible = false;
             lblFileName.Visible = true;
             lblFileName.Text= entProductMaster.ProductImage.Value.ToString().Remove(strFilePath.Length);
@@ -109,7 +109,7 @@ public partial class Admin_ProductAddEdit : System.Web.UI.Page
 
                 if (fileExt.ToLower() == ".jpeg" || fileExt.ToLower() == ".jpg" || fileExt.ToLower() == ".png")
                 {
-                    string strFilePath = "~/Content/ProductImage/";
+                    string strFilePath = "~/Content/Img/";
                     FuUpload.SaveAs(Server.MapPath(strFilePath + FuUpload.FileName));
                     entProductMaster.ProductImage = Convert.ToString(strFilePath + FuUpload.FileName);
                 }

@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using DAL;
 using eCommerce_Model;
+using Newtonsoft.Json;
+using PagedList;
+using PagedList.Mvc;
 
 namespace eCommerce_MVC.Controllers
 {
@@ -35,44 +38,49 @@ namespace eCommerce_MVC.Controllers
         [HttpPost]
         public ActionResult Create(ProductMasterModel productMasterModel)
         {
-            if (ModelState.IsValid)
+            if (productMasterModel.ProductID != null)
             {
-                if (productMasterModel.ProductID != null)
+                if (productMasterModel.ImageFile != null)
                 {
-                    string strFilePath = "~/Content/Img/";
-                    productMasterModel.ProductImage = strFilePath + productMasterModel.ProductImage;
-                    productMasterDAL.Update(productMasterModel);
-                    return RedirectToAction("ProductList");
+                    string FilePath = "~/Content/Img/";
+                    string filefullPath = Server.MapPath(FilePath + productMasterModel.ImageFile.FileName);
+                    productMasterModel.ImageFile.SaveAs(filefullPath);
+                    productMasterModel.ProductImage = Convert.ToString(FilePath + productMasterModel.ImageFile.FileName);
                 }
-                else
-                {
-                    //if (file.ContentLength > 0)
-                    //{
-                    //    string fileExt = System.IO.Path.GetExtension(file.FileName);
-
-                    //    if (fileExt.ToLower() == ".jpeg" || fileExt.ToLower() == ".jpg" || fileExt.ToLower() == ".png")
-                    //    {
-                    //        string strFilePath = "~/Content/ProductImage/";
-                    //        file.SaveAs(Server.MapPath(strFilePath + file.FileName));
-                    //        productMasterModel.ProductImage = Convert.ToString(strFilePath + file.FileName);
-                    //    }
-                    //}
-                    string strFilePath = "~/Content/Img/";
-                    productMasterModel.ProductImage = strFilePath + productMasterModel.ProductImage;
-                    productMasterDAL.Insert(productMasterModel);
-                    ViewBag.InsertMessage = "Data Inserted Successfully...";
-                }
-                ModelState.Clear();
+                productMasterDAL.Update(productMasterModel);
+                return RedirectToAction("ProductList");
             }
+            else
+            {
+                string fileExt = System.IO.Path.GetExtension(productMasterModel.ImageFile.FileName);
+
+                if (fileExt.ToLower() == ".jpeg" || fileExt.ToLower() == ".jpg" || fileExt.ToLower() == ".png")
+                {
+                    string FilePath = "~/Content/Img/";
+                    string filefullPath = Server.MapPath(FilePath + productMasterModel.ImageFile.FileName);
+                    productMasterModel.ImageFile.SaveAs(filefullPath);
+                    productMasterModel.ProductImage = Convert.ToString(FilePath + productMasterModel.ImageFile.FileName);
+                }
+                productMasterDAL.Insert(productMasterModel);
+                ViewBag.InsertMessage = "Data Inserted Successfully...";
+            }
+            ModelState.Clear();
             return View("Create");
         }
         #endregion Create
 
         #region ProductList
-        public ActionResult ProductList()
+        [HttpGet]
+        public ActionResult ProductList(int? page)
         {
             List<ProductMasterModel> product = productMasterDAL.SelectAll();
-            ViewData["Product"] = product;
+            ViewData["Product"] = product.ToPagedList(page ?? 1, 3);
+            //if (pageNo <= 0 || pageNo == 1)
+             //   ViewBag.SrNo = 1;
+            //else
+            //{
+            //    ViewBag.SrNo = (pageNo - 1) * 5 + 1;
+            //}
             return View();
         }
         #endregion ProductList
@@ -97,13 +105,23 @@ namespace eCommerce_MVC.Controllers
         }
         #endregion Home
 
-        #region Home
+        #region ProductDetils
         public ActionResult ProductDetils(int id)
         {
-            ProductMasterDAL productMasterDAL = new ProductMasterDAL();
             var productDetails = productMasterDAL.ProductMasterShowDetailsByPK(id);
             return View(productDetails);
         }
-        #endregion Home
+        #endregion ProductDetils
+
+        #region ProductOrderAddCart
+        [HttpPost]
+        public ActionResult AddToCart(CartModel cartModel)
+        {
+            CartDAL cartDAL = new CartDAL();
+            cartDAL.ProductOrderAddCart(cartModel.ProductID);
+            return RedirectToAction("ProductDetils", new { id = cartModel.ProductID });
+        }
+        #endregion ProductOrderAddCart
+
     }
 }

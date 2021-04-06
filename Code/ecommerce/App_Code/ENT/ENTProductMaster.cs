@@ -11,82 +11,80 @@ namespace eCommerce
 {
     public class ENTProductMaster
     {
-        protected SqlInt32 _ProductID;
+        //protected SqlInt32 _ProductID;
         public SqlInt32 ProductID
         {
-            get
-            {
-                return _ProductID;
-            }
-            set
-            {
-                _ProductID = value;
-            }
+            get;
+            //{
+            //    return _ProductID;
+            //}
+            set;
+            
         }
 
-        protected SqlString _ProductName;
+        //protected SqlString _ProductName;
         public SqlString ProductName
         {
-            get
-            {
-                return _ProductName;
-            }
-            set
-            {
-                _ProductName = value;
-            }
+            get;
+            //{
+            //    return _ProductName;
+            //}
+            set;
+            //{
+            //    _ProductName = value;
+            //}
         }
 
-        protected SqlInt32 _ProductQuantity;
+        //protected SqlInt32 _ProductQuantity;
         public SqlInt32 ProductQuantity
         {
-            get
-            {
-                return _ProductQuantity;
-            }
-            set
-            {
-                _ProductQuantity = value;
-            }
+            get;
+            //{
+            //    return _ProductQuantity;
+            //}
+            set;
+            //{
+            //    _ProductQuantity = value;
+            //}
         }
 
-        protected SqlString _ProductDetails;
+        //protected SqlString _ProductDetails;
         public SqlString ProductDetails
         {
-            get
-            {
-                return _ProductDetails;
-            }
-            set
-            {
-                _ProductDetails = value;
-            }
+            get;
+            //{
+            //    return _ProductDetails;
+            //}
+            set;
+            //{
+            //    _ProductDetails = value;
+            //}
         }
 
-        protected SqlDecimal _ProductPrice;
+        //protected SqlDecimal _ProductPrice;
         public SqlDecimal ProductPrice
         {
-            get
-            {
-                return _ProductPrice;
-            }
-            set
-            {
-                _ProductPrice = value;
-            }
+            get;
+            //{
+            //    return _ProductPrice;
+            //}
+            set;
+            //{
+            //    _ProductPrice = value;
+            //}
         }
 
-        protected SqlString _ProductImage;
+        //protected SqlString _ProductImage;
         public SqlString ProductImage
         {
-            get
-            {
-                return _ProductImage;
-            }
-            set
-            {
-                _ProductImage = value;
-            }
+            get;
+            //{
+            //    return _ProductImage;
+            //}
+            set;
+            //{
+            //    _ProductImage = value;
+            //}
         }
 
     }

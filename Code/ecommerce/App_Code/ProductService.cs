@@ -27,7 +27,7 @@ public class ProductService : System.Web.Services.WebService
     }
 
     [WebMethod]
-    public void Product()
+    public string Product()
     {
         List<ENTProductMaster> listProductMaster = new List<ENTProductMaster>();
 
@@ -68,7 +68,8 @@ public class ProductService : System.Web.Services.WebService
             }
         }
         var js = new JavaScriptSerializer();
-        Context.Response.Write(js.Serialize(listProductMaster));
+        string jsonData = js.Serialize(listProductMaster);
+        return jsonData;
     }
 
 }

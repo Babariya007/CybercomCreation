@@ -1,39 +1,70 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Admin.master" AutoEventWireup="true" CodeFile="ProductList.aspx.cs" Inherits="Admin_ProductList" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     
-    <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css"/>
-    <script type="text/javascript" src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
-
+    
     <script type="text/javascript">
         $(document).ready(function () {
-            $('#gvProduct').DataTable();
-        });
-    </script>
-
-    <%--<script type="text/javascript">
-        $(document).ready(function () {
             $.ajax({
-                url: 'ProductService.asmx/SelectAll',
-                method: 'post',
+                method: 'POST',
+                url: 'ProductList.aspx/FillProductGridView',
+                contentType: "application/json",
                 dataType: 'json',
-                success: function (data) {
-                    $('#datatable').dataTable({
-                        data: data,
-                        columns: [
-                            { 'data': 'ProductName'},
-                            { 'data': 'ProductQuantity' },
-                            { 'data': 'ProductDetails' },
-                            { 'data': 'ProductPrice' },
-                            { 'data': 'ProductImage' }
-                        ]
-                    });
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
                 }
             });
         });
-    </script>--%>
+
+        function OnSuccess(response) {
+            var items = JSON.parse(response.d);
+            $("#datatable").DataTable({
+                data: items,
+                columns: [
+                    {
+                        bSortable: false,
+                        data: 'ProductID.Value',
+                        mRender: function (data) {
+                            return '<a href="ProductAddEdit.aspx?ProductID=' + data + '"><i class="fa fa-pencil" style="font-size: 18px;"></i></a> &nbsp; <button id="delete" onclick="Delete('+ data +')"><i class="fa fa-trash-o" style = "font-size: 18px;"></i></button> ';
+                        }
+                    },
+                    { data: 'ProductName.Value' },
+                    { data: 'ProductQuantity.Value' },
+                    { data: 'ProductDetails.Value' },
+                    { data: 'ProductPrice.Value' },
+                    {
+                        data: 'ProductImage.Value',
+                        'render': function (data) {
+                            data = data.replace("~","..")
+                            return '<img src='+ data +' style="height:100px;width:100px"/>';
+                        }
+                    }
+                ]
+
+             });
+        };
+        function Delete(ProductID) {
+            $.ajax({
+                method: 'POST',
+                url: 'ProductList.aspx/Delete',
+                contentType: "application/json",
+                data: '{ ProductID : ' + ProductID + '}',
+                dataType: 'json',
+                success: $document.getElementById('#lblError').innerHTML = "Record Deleted",
+                failure: function (response) {
+                    alert(response.d);
+                },
+                error: function (response) {
+                    alert(response.d);
+                }
+            });
+        }
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
@@ -50,17 +81,20 @@
         <br />
         <br />
         <div>
-            <%--<table id="datatable" class="table table-responsive table-hover">
-                <tr>
-                    <th>ProductName</th>
-                    <th>Quantity</th>
-                    <th>Product Details</th>
-                    <th>Product Price</th>
-                    <th>Product Image</th>
-                </tr>
-
-            </table>--%>
-            <asp:GridView ID="gvProduct" runat="server" AutoGenerateColumns="False" CellPadding="4" CssClass="table table-striped" ForeColor="#333333" GridLines="None" OnRowCommand="gvProduct_RowCommand">
+            <table id="datatable" class="table table-responsive table-hover">
+                <thead>
+                    <tr>
+                        <th>Action</th>
+                        <th>ProductName</th>
+                        <th>Quantity</th>
+                        <th>Product Details</th>
+                        <th>Product Price</th>
+                        <th>Product Image</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <%--<asp:GridView ID="gvProduct" runat="server" AutoGenerateColumns="False" CellPadding="4" CssClass="table table-striped" ForeColor="#333333" GridLines="None" OnRowCommand="gvProduct_RowCommand">
                 <Columns>
                     <asp:TemplateField HeaderText="Sr No">
                         <ItemTemplate>
@@ -99,7 +133,7 @@
                 <SortedDescendingCellStyle BackColor="#E9EBEF" />
                 <SortedDescendingHeaderStyle BackColor="#4870BE" />
 
-            </asp:GridView>
+            </asp:GridView>--%>
         </div>
     </div>
 </asp:Content>

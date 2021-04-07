@@ -1,0 +1,16 @@
+=>  Today i have Complete all the videos and topics cover by:
+	- Custom Authentication filter in mvc
+	- Custom Action filter 
+	- Custom Exception filter
+	- Area in mvc
+	- Routing in Area 
+	- Bundling and Minification
+	- Model Binder
+	- Custom Model Binder
+	- MVC application life cycle
+	- Unit testing in MVC
+
+=>  Today i have learn for Bundling.How to Create Bundle, Show in css, js in browser etc.
+=>  Learn about Area for diffrent purpose ex.: Client_Panel, Admin_Panel etc.
+=>  Some knowladge about of Unit Testing.
+=>  also done prectice about Exception, Area, Routing in area, etc

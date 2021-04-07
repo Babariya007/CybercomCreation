@@ -1,0 +1,6 @@
+=>  Today my task is show data with jQuery DataTable
+=>  I have work first in MVC pagination
+=>  But got some error at pagination number time but other task work properly like as per page show only 3 data.
+=>  Then i have try pagination in ASP.Net project
+=>  In this project i have create service .asmx file but in my project dot have create .asmx.cs file only create .cs file on App_Code
+=>  I have find out those problem but can't solve it today

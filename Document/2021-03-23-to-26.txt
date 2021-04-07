@@ -1,0 +1,14 @@
+-----------  Date : [23/03 to 26/03]  ----------
+
+=>  Prectice about those things in MVC
+
+=>  Prectice about Cascading Dropdown List
+	- In this task i got more problem like not generate script or bootstrap file then dont work ajax
+
+=>  Also Prectice of Crude Operations
+
+=>  Also prectice of MVC project using Store Procedure
+
+=>  Using Store Procedure i have create a one Address Book with Login user.
+
+=>  Those project i have also crete in perticuler user wise show data.

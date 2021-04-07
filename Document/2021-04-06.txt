@@ -1,0 +1,6 @@
+=>  Today i have complete all task
+=>  I have face problem in data display time
+=>  Retrive all the data but not display in the web
+=>  Then it's show data then show only [object object] not show data
+=>  Then solve the problem of not add .Value then show data and then display img 
+=>  Today i have complete all the task.

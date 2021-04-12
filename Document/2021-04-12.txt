@@ -1,0 +1,19 @@
+=>  Today i show my task
+=>  Today i have not solve the query releted to DataTable
+=>  Today start a Angular serise and I have also complete the today all videos.
+=>  I have also update npm package to letest version
+
+=>  Today i have also learn form diffrent sites:
+=>  Angular js introduce in 2010
+=>  The Letest stable version of angular is 11.2.9 resently in 7th April 2021
+=>  And the Preview release of angular version is 12.0.0-next.8 is also introduce on 7 April
+=>  Angular base on cli means command line
+=>  It's a type script lunguage
+
+=>  The node letest stable version is 14.16.1 
+=>  And letest version of node 15.14.0 is currently in developing mode
+=>  The npm packege letest version is 7.9.0
+
+
+
+

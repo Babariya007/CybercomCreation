@@ -63,8 +63,8 @@ public partial class Client_ProductDetails : System.Web.UI.Page
         if (Request.QueryString["ProductID"] != null)
             balProductOrder.ProductOrderAddCart(Convert.ToInt32(Request.QueryString["ProductID"]));
 
-
         btnAddToCart.Visible = false;
+
     }
     #endregion AddToCart
 
@@ -80,6 +80,8 @@ public partial class Client_ProductDetails : System.Web.UI.Page
         else
         {
             btnAddToCart.Visible = false;
+            lblText.Text = "Item already in Cart";
+            lblText.ForeColor = System.Drawing.Color.Green;
         }
     }
 }

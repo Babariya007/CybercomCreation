@@ -27,76 +27,6 @@ namespace DAL
         }
         #endregion Local Veriable
 
-        #region CustomerOrderList
-        public List<CustomerModel> OrderListSelectAll()
-        {
-            using (SqlConnection objConn = new SqlConnection(ConnectionString))
-            {
-                objConn.Open();
-                using (SqlCommand objCmd = objConn.CreateCommand())
-                    try
-                    {
-                        #region Prepare Command
-                        objCmd.CommandType = CommandType.StoredProcedure;
-                        objCmd.CommandText = "PR_CustomerOrderList_SelectAll";
-                        #endregion Prepare Command
-
-                        #region ReadData and Set Controls
-                        List<CustomerModel> listCustomer = new List<CustomerModel>();
-                        using (SqlDataReader objSDR = objCmd.ExecuteReader())
-                        {
-                            while (objSDR.Read())
-                            {
-                                CustomerModel customerModel = new CustomerModel();
-                                if (!objSDR["CustomerID"].Equals(DBNull.Value))
-                                {
-                                    customerModel.CustomerID = Convert.ToInt32(objSDR["CustomerID"]);
-                                }
-                                if (!objSDR["FirstName"].Equals(DBNull.Value))
-                                {
-                                    customerModel.FirstName = Convert.ToString(objSDR["FirstName"]);
-                                }
-                                if (!objSDR["LastName"].Equals(DBNull.Value))
-                                {
-                                    customerModel.LastName = Convert.ToString(objSDR["LastName"]);
-                                }
-                                if (!objSDR["ProductName"].Equals(DBNull.Value))
-                                {
-                                    customerModel.ProductName = Convert.ToString(objSDR["ProductName"]);
-                                }
-                                if (!objSDR["TotalQuntity"].Equals(DBNull.Value))
-                                {
-                                    customerModel.OrderQuentity = Convert.ToInt32(objSDR["TotalQuntity"]);
-                                }
-                                if (!objSDR["TotalAmount"].Equals(DBNull.Value))
-                                {
-                                    customerModel.TotalBill = Convert.ToDecimal(objSDR["TotalAmount"]);
-                                }
-                                listCustomer.Add(customerModel);
-                            }
-                            return listCustomer;
-                        }
-                        #endregion ReadData and Set Controls
-                    }
-                    catch (SqlException sqlex)
-                    {
-                        Message = sqlex.InnerException.Message.ToString();
-                        return null;
-                    }
-                    catch (Exception ex)
-                    {
-                        Message = ex.InnerException.Message.ToString();
-                        return null;
-                    }
-                    finally
-                    {
-                        if (objConn.State == ConnectionState.Open)
-                            objConn.Close();
-                    }
-            }
-        }
-        #endregion CustomerOrderList
-
         #region Customer And Order Insert
 
         #region Order Insert
@@ -207,6 +137,7 @@ namespace DAL
                         objCmd.CommandText = "PR_OrderItem_Insert";
                         objCmd.Parameters.AddWithValue("@OrderID", orderModel.OrderID);
                         objCmd.Parameters.AddWithValue("@ProductID", orderModel.ProductID);
+                        objCmd.Parameters.AddWithValue("@OrderQuantity", orderModel.OrderQuantity);
 
                         #endregion Prepare Command
 

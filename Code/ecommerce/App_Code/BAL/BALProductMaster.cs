@@ -88,6 +88,24 @@ namespace eCommerce
         }
         #endregion Select Operation
 
+        #region Show Data Using DataTable
+        public string SelectAllByDataTable()
+        {
+            DALProductMaster dalProductMaster = new DALProductMaster();
+            string jsonData = dalProductMaster.SelectAllByDataTable();
+            return jsonData;
+        }
+        #endregion Show Data Using DataTable
+
+        #region Show Data Server Side DataTable
+        //public string SelectAllDataByServerSide()
+        //{
+        //    DALProductMaster dalProductMaster = new DALProductMaster();
+        //    string jsonData = dalProductMaster.SelectAllDataByServerSide();
+        //    return jsonData;
+        //}
+        #endregion Show Data Server Side DataTable
+
         //-----------------------------------------------------------------
         #region Show Product
         public DataTable ShowProducts()

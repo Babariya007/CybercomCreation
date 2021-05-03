@@ -15,15 +15,6 @@ namespace eCommerce_MVC.Controllers
     {
         CustomerDAL customerDAL = new CustomerDAL();
 
-        #region OrderList
-        public ActionResult OrderList()
-        {
-            List<CustomerModel> orderList = customerDAL.OrderListSelectAll();
-            ViewData["OrderList"] = orderList;
-            return View();
-        }
-        #endregion OrderList
-
         #region CheckOut
         [HttpGet]
         public ActionResult CheckOut()
@@ -76,6 +67,7 @@ namespace eCommerce_MVC.Controllers
                 OrderItemModel orderitemmodel = new OrderItemModel();
                 orderitemmodel.OrderID = ordermodel.OrderID;
                 orderitemmodel.ProductID = product.Id;
+                orderitemmodel.OrderQuantity = product.Quantity;
                 //sb.Append("ProductName : " + Session["ProductName"] + "\n");
                 //sb.Append("Quantity : " + customerViewModel.OrderQuantity + "\n");
 

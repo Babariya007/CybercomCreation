@@ -88,4 +88,20 @@ namespace eCommerce
         }
 
     }
+
+    public class ProductMasterDataTable
+    {
+        public int draw { get; set; }
+        public int recordsTotal { get; set; }
+        public int recordsFiltered { get; set; }
+        public string error { get; set; }
+        public List<ENTProductMaster> data { get; set; }
+    }
+
+    public class DataTableOrder
+    {
+        public int Column { get; set; }
+        public string Dir { get; set; }
+        public string Search { get; set; }
+    }
 }

@@ -20,15 +20,16 @@
                 <li class="nav-item">
                     @Html.ActionLink("Product List", "ProductList", new { Controller = "ProductMaster" }, new { @class = "navbar-brand" })
 
-                    @Html.ActionLink("Order List", "OrderList", new { Controller = "Customer" }, new { @class = "navbar-brand" })
+                    @Html.ActionLink("Order List", "OrderList", new { Controller = "Order" }, new { @class = "navbar-brand" })
                 </li>
             </ul>
         </div>
     </div>
 
     <div class="container body-content">
+        <br />
         @RenderBody()
-        @RenderSection("productList", false)
+        @RenderSection("script", false)
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>

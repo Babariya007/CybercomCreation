@@ -21,7 +21,10 @@
                     <div class="row col-md-6">
                         <div class="col-md-4">
                             <div>
-                                <asp:Image ID="imgProduct" runat="server" ImageUrl='<%#Eval("ProductImage") %>' Height="150px" Width="150px" />
+                                <asp:HiddenField ID="hfProductID" runat="server" Value='<%#Eval("ProductID") %>' />
+                                <asp:HyperLink ID="hlProduct" runat="server" NavigateUrl='<%# "~/Client/ProductDetails.aspx?ProductID=" + Eval("ProductID").ToString().Trim() %>'>
+                                    <asp:Image ID="imgProduct" runat="server" ImageUrl='<%#Eval("ProductImage") %>' Height="150px" Width="150px" />
+                                </asp:HyperLink>
                             </div>
                         </div>
                         <div class="col-md-8">
@@ -42,7 +45,7 @@
                                     <br />
                                 </div>
                                 <div class="col-md-6">
-                                <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" CommandName="DeleteRecord" CommandArgument='<%#Eval("CartID") %>'><i class="glyphicon glyphicon-remove"></i>  Remove</asp:LinkButton>
+                                    <asp:LinkButton ID="btnDelete" runat="server" CssClass="btn btn-danger" CommandName="DeleteRecord" CommandArgument='<%#Eval("CartID") %>'><i class="glyphicon glyphicon-remove"></i>  Remove</asp:LinkButton>
                                 </div>
                             </div>
                         </div>

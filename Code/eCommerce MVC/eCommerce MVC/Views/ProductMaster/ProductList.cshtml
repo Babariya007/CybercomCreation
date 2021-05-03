@@ -1,6 +1,7 @@
 ﻿@using PagedList.Mvc;
 @using PagedList;
 @model IPagedList<eCommerce_Model.ProductMasterModel>
+@*@model eCommerce_Model.ProductMasterModel*@
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -73,12 +74,37 @@
 
             </tr>
         }
-        <tr>
-            <td>
-                @*@Html.PagedListPager(Model, page => Url.Action("ProductList", "ProductMaster", new { page }))*@
-            </td>
-        </tr>
     </tbody>
+
+    @*@Html.PagedListPager(Model, page => Url.Action("ProductList", new { page }), PagedListRenderOptions.PageNumbersOnly)*@
+
 </table>
 
+@*<link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+    @section script {
+        <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+        <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
+        <script>
+            $(document).ready(function () {
+                $('#ProductInfo').DataTable({
+                    "ajax": {
+                        "url": "/ProductMaster/ProductList",
+                        "type": "POST",
+                        "dataType": "JSON"
+                    },
+                    "columns": [
+                        { "data": "ProductName", "name": "ProductName" },
+                        { "data": "ProductQuantity", "name": "ProductQuantity" },
+                        { "data": "ProductDetails", "name": "ProductDetails" },
+                        { "data": "ProductPrice", "name": "ProductPrice" },
+                        { "data": "ProductImage", "name": "ProductImage" }
+                    ],
+                    "serverSide": true,
+                    "order": [0, "asc"],
+                    "processing": true
+
+
+                });
+            });
+        </script>*@

@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Client.master" AutoEventWireup="true" CodeFile="ProductDetails.aspx.cs" Inherits="Client_ProductDetails" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div class="container">
@@ -16,6 +16,7 @@
                 <br />
                 <div>
                     <asp:Button ID="btnAddToCart" runat="server" Text="Add to Cart" CssClass="btn btn-warning" Visible="false" OnClick="btnAddToCart_Click"></asp:Button>
+                    <h4><asp:Label ID="lblText" runat="server"></asp:Label></h4>
                 </div>
             </div>
             <div class="col-md-8" style="padding-left: 50px">

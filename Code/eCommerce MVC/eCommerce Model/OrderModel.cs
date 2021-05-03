@@ -15,6 +15,8 @@ namespace eCommerce_Model
         public int TotalQuantity { get; set; }
         public decimal GSTAmount { get; set; }
         public decimal TotalAmount { get; set; }
+        public DateTime OrderDate { get; set; }
+        public int filterCount { get; set; }
         public OrderItemModel OrderItem { get; set; }
     }
 }

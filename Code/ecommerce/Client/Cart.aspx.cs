@@ -56,8 +56,16 @@ public partial class Client_Cart : System.Web.UI.Page
 
         foreach (RepeaterItem item in rpCart.Items)
         {
+            HiddenField hfProductID = (HiddenField)item.FindControl("hfProductID");
+            List<int> productList = new List<int>();
+            productList.Add(Convert.ToInt32(hfProductID.Value));
+            Session["ProductID"] = productList;
+
             TextBox txtQuantity = (TextBox)item.FindControl("txtQuantity");
             TotalQuantity += Convert.ToInt32(txtQuantity.Text);
+            List<int> quantityList = new List<int>();
+            quantityList.Add(Convert.ToInt32(txtQuantity.Text));
+            Session["ProductQuantity"] = quantityList;
 
             Label lblPrice = (Label)item.FindControl("lblPrice");
             GSTCharge += (Convert.ToDouble(lblPrice.Text) * Convert.ToDouble(txtQuantity.Text)) * 0.18;

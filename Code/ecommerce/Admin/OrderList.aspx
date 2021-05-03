@@ -21,10 +21,8 @@
                     </asp:TemplateField>
                     <asp:BoundField DataField="FirstName" HeaderText="First Name" />
                     <asp:BoundField DataField="LastName" HeaderText="Last Name" />
-                    <asp:BoundField DataField="ProductName" HeaderText="Product Name" />
-                    <asp:BoundField DataField="ProductPrice" HeaderText="Product Price" />
-                    <asp:BoundField DataField="OrderQuentity" HeaderText="Order Quentity" />
-                    <asp:BoundField DataField="TotalBill" HeaderText="Total Bill" />
+                    <asp:BoundField DataField="TotalQuntity" HeaderText="Order Quentity" />
+                    <asp:BoundField DataField="TotalAmount" HeaderText="Total Bill" />
 
                 </Columns>
 

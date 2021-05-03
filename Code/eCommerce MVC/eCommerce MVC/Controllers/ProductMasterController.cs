@@ -70,17 +70,14 @@ namespace eCommerce_MVC.Controllers
         #endregion Create
 
         #region ProductList
-        [HttpGet]
-        public ActionResult ProductList(int? page)
+        public ActionResult ProductList()
         {
+            //var draw = Request.Form.GetValues("draw");
+            //var start = Request.Form.GetValues("start");
+            //var length = Request.Form.GetValues("length");
             List<ProductMasterModel> product = productMasterDAL.SelectAll();
-            ViewData["Product"] = product.ToPagedList(page ?? 1, 3);
-            //if (pageNo <= 0 || pageNo == 1)
-             //   ViewBag.SrNo = 1;
-            //else
-            //{
-            //    ViewBag.SrNo = (pageNo - 1) * 5 + 1;
-            //}
+            ViewData["Product"] = product;
+
             return View();
         }
         #endregion ProductList
@@ -109,6 +106,8 @@ namespace eCommerce_MVC.Controllers
         public ActionResult ProductDetils(int id)
         {
             var productDetails = productMasterDAL.ProductMasterShowDetailsByPK(id);
+            CartDAL cartDAL = new CartDAL();
+            ViewBag.Button = cartDAL.CheckItemInCart(id);
             return View(productDetails);
         }
         #endregion ProductDetils

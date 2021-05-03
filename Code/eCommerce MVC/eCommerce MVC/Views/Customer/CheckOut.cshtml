@@ -30,7 +30,7 @@
         foreach (var product in @CartItems.Products)
         {
             <input id="Products[@count].Id" name="Products[@count].Id" type="hidden" value='@product.Id' />
-            @*<input id="Products[@count].Quantity" name="Products[@count].Quantity" type="hidden" value='@product.Quantity' />*@
+            <input id="Products[@count].Quantity" name="Products[@count].Quantity" type="hidden" value='@product.Quantity' />
             count++;
         }
 

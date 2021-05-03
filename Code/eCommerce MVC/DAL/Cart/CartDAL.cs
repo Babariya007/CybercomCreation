@@ -187,5 +187,56 @@ namespace DAL
             }
         }
         #endregion Delete Item From Cart
+
+        #region CheckIteamOnCart
+        public Boolean CheckItemInCart(SqlInt32 ProductID)
+        {
+            using (SqlConnection objConn = new SqlConnection(ConnectionString))
+            {
+                objConn.Open();
+                using (SqlCommand objCmd = objConn.CreateCommand())
+                    try
+                    {
+                        #region Prepar Command
+                        objCmd.CommandType = CommandType.StoredProcedure;
+                        objCmd.CommandText = "PR_Cart_CheckIteamSelectByID";
+                        objCmd.Parameters.AddWithValue("@ProductID", ProductID);
+                        #endregion Prepar Command
+
+                        #region ReadData and Set Controls
+                        DataTable dt = new DataTable();
+                        using (SqlDataReader objSDR = objCmd.ExecuteReader())
+                        {
+                            dt.Load(objSDR);
+                        }
+                        #endregion ReadData and Set Controls
+
+                        if (dt.Rows.Count > 0)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            return false;
+                        }
+                    }
+                    catch (SqlException sqlex)
+                    {
+                        Message = sqlex.InnerException.Message.ToString();
+                        return false;
+                    }
+                    catch (Exception ex)
+                    {
+                        Message = ex.InnerException.Message.ToString();
+                        return false;
+                    }
+                    finally
+                    {
+                        if (objConn.State == ConnectionState.Open)
+                            objConn.Close();
+                    }
+            }
+        }
+        #endregion CheckIteamOnCart
     }
 }

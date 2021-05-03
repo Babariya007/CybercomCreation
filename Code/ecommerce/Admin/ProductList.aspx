@@ -2,13 +2,17 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="Server">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    
-    
-    <script type="text/javascript">
+    <script src="../Scripts/jquery-3.6.0.min.js"></script>
+
+    <link href="//cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="//cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <%--<script src="//cdn.datatables.net/1.10.24/js/dataTables.bootstrap.js"></script>--%>
+
+    <%--<script type="text/javascript">
         $(document).ready(function () {
             $.ajax({
                 method: 'POST',
-                url: 'ProductList.aspx/FillProductGridView',
+                url: 'ProductList.aspx/FillProductView',
                 contentType: "application/json",
                 dataType: 'json',
                 success: OnSuccess,
@@ -26,13 +30,13 @@
             $("#datatable").DataTable({
                 data: items,
                 columns: [
-                    {
-                        bSortable: false,
-                        data: 'ProductID.Value',
-                        mRender: function (data) {
-                            return '<a href="ProductAddEdit.aspx?ProductID=' + data + '"><i class="fa fa-pencil" style="font-size: 18px;"></i></a> &nbsp; <button id="delete" onclick="Delete('+ data +')"><i class="fa fa-trash-o" style = "font-size: 18px;"></i></button> ';
-                        }
-                    },
+                    //{
+                    //    bSortable: false,
+                    //    data: 'ProductID.Value',
+                    //    mRender: function (data) {
+                    //        return '<a href="ProductAddEdit.aspx?ProductID=' + data + '"><i class="fa fa-pencil" style="font-size: 18px;"></i></a> &nbsp; <button id="delete" onclick="Delete('+ data +')"><i class="fa fa-trash-o" style = "font-size: 18px;"></i></button> ';
+                    //    }
+                    //},
                     { data: 'ProductName.Value' },
                     { data: 'ProductQuantity.Value' },
                     { data: 'ProductDetails.Value' },
@@ -40,8 +44,7 @@
                     {
                         data: 'ProductImage.Value',
                         'render': function (data) {
-                            data = data.replace("~","..")
-                            return '<img src='+ data +' style="height:100px;width:100px"/>';
+                            return '<img src='+ data.replace("~","..") +' style="height:100px;width:100px"/>';
                         }
                     }
                 ]
@@ -64,6 +67,49 @@
                 }
             });
         }
+    </script>--%>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#datatable').DataTable({
+                destroy: true,
+                paging: true,
+                processing: true,
+                "bSort": false,
+                "autoWidth": false,
+                "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
+                ordering: [],
+                serverSide: true,
+                ajax: {
+                    url: "ProductList.aspx/SelectAllDataByServerSide",
+                    type: 'POST',
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: function (data) {
+                        return "{'draw':'" + data.start + "','start':'" + data.start + "','length':'" + data.length + "','order':'" + JSON.stringify(data.order) + "', 'search':'" + data.search.value + "'}";
+                    },
+                    dataSrc: function (data) {
+                        var jsonData = JSON.parse(data.d);
+                        data.recordsTotal = jsonData.recordsTotal;
+                        data.recordsFiltered = jsonData.recordsFiltered;
+                        console.log(data);
+                        return jsonData.data;
+                    }
+                },
+                "columns": [
+                    { "data": "ProductName.Value" },
+                    { "data": "ProductQuantity.Value" },
+                    { "data": "ProductDetails.Value" },
+                    { "data": "ProductPrice.Value" },
+                    {
+                        "data": "ProductImage.Value",
+                        'render': function (data) {
+                            return '<img src=' + data.replace("~", "..") + ' style="height:100px;width:100px"/>';
+                        }
+                    }
+                ]
+            });
+        });
     </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
@@ -84,7 +130,7 @@
             <table id="datatable" class="table table-responsive table-hover">
                 <thead>
                     <tr>
-                        <th>Action</th>
+                        <%--<th>Action</th>--%>
                         <th>ProductName</th>
                         <th>Quantity</th>
                         <th>Product Details</th>
@@ -94,6 +140,8 @@
                 </thead>
                 <tbody></tbody>
             </table>
+            <br />
+            <br />
             <%--<asp:GridView ID="gvProduct" runat="server" AutoGenerateColumns="False" CellPadding="4" CssClass="table table-striped" ForeColor="#333333" GridLines="None" OnRowCommand="gvProduct_RowCommand">
                 <Columns>
                     <asp:TemplateField HeaderText="Sr No">

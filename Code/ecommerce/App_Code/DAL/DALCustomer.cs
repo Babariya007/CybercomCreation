@@ -30,7 +30,6 @@ namespace eCommerce
         #endregion Local Veriable
 
         #region Insert Operaction
-
         public Boolean Insert(ENTCustomer entCustomer)
         {
             using (SqlConnection objConn = new SqlConnection(ConnectionString))
@@ -43,17 +42,17 @@ namespace eCommerce
 
                         objCmd.CommandType = CommandType.StoredProcedure;
                         objCmd.CommandText = "PR_CustomerConfiramOrder_Insert";
+                        objCmd.Parameters.Add("@CustomerID", SqlDbType.Int, 5);
+                        objCmd.Parameters["@CustomerID"].Direction = ParameterDirection.Output;
                         objCmd.Parameters.AddWithValue("@FirstName", entCustomer.FirstName);
                         objCmd.Parameters.AddWithValue("@LastName", entCustomer.LastName);
                         objCmd.Parameters.AddWithValue("@Address", entCustomer.Address);
-                        objCmd.Parameters.AddWithValue("@ProductID", entCustomer.ProductID);
-                        objCmd.Parameters.AddWithValue("@OrderQuantity", entCustomer.OrderQuentity);
-                        objCmd.Parameters.AddWithValue("@TotalBill", entCustomer.TotalBill);
 
                         #endregion Prepare Command
 
                         objCmd.ExecuteNonQuery();
 
+                        entCustomer.CustomerID = (int)objCmd.Parameters["@CustomerID"].Value;
                         return true;
                     }
                     catch (SqlException sqlex)

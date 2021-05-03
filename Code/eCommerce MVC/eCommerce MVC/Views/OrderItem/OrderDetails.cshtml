@@ -1,0 +1,64 @@
+﻿@using eCommerce_MVC.Models;
+@model eCommerce_Model.OrderItemModel
+
+@{
+    ViewBag.Title = "OrderDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>OrderDetails</h2>
+<br />
+
+<b>Name :</b> @ViewBag.FirstName @ViewBag.LastName
+<br />
+<b>Address :</b> @ViewBag.Address
+<br />
+<b>Order Date :</b> @ViewBag.OrderDate
+
+<br />
+<br />
+
+<div>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th style="text-align: center">
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th style="text-align: right">
+                @Html.DisplayNameFor(model => model.OrderQuantity)
+            </th>
+        </tr>
+
+        @foreach (var item in (IEnumerable<eCommerce_Model.OrderItemModel>)ViewData["OrderItemList"])
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.ProductPrice)
+                </td>
+                <td style="text-align: right">
+                    @Html.DisplayFor(modelItem => item.OrderQuantity)
+                </td>
+            </tr>
+        }
+
+    </table>
+    <br />
+    <div style="text-align:right">
+        <b>Total Quantity :</b> @ViewBag.TotalQuantity <br />
+        <b>GST Amount 18% :</b> @ViewBag.GSTAmount <br />
+        <b>Total Amount :</b> @ViewBag.TotalAmount
+    </div>
+</div>
+
+<br />
+<br />
+<p style="text-align:right">
+    @Html.ActionLink("Back to Order List", "OrderList", new { @controller = "Order" }, new { @class = "btn btn-primary" })
+</p>

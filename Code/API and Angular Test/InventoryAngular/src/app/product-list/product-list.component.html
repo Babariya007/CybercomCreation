@@ -1,0 +1,51 @@
+<h2>Product List</h2>
+<hr>
+<div style="text-align: right;">
+    <a class="btn btn-primary" routerLink="/products/add"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg> 
+      Add New Record
+    </a>
+</div>
+<br>
+<div class="form-group col-md-4">
+    <input type="text" class="form-control" id="ProductName" placeholder="Search Product Name" (keyup)="searchProduct($event)">
+</div>
+<br>
+<div *ngIf="product !== null">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr style="text-align: center;">
+                <th>SrNo</th>
+                <th scope="col">Action</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Stock</th>
+                <th scope="col">Price</th>
+                <th scope="col">Creation Date</th>
+                <th scope="col">Updation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pro of product | paginate: { id: 'pagination', itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalRecords }; let i = index">
+                <td>{{ itemsPerPage * (page - 1) + i+1 }}</td>
+                <td>
+                    <button class="btn btn-warning" (click)="editProduct(pro.ProductID)" title="Edit Record"><i class="fas fa-edit"></i> Edit</button> &nbsp;
+                    <button class="btn btn-danger" (click)="deleteProduct(pro.ProductID)" title="Delete Record"><i class="far fa-trash-alt"></i> Delete</button>
+                </td>
+                <td>{{ pro.ProductName }}</td>
+                <td>{{ pro.Stock }}</td>
+                <td>{{ pro.Price }}</td>
+                <td>{{ pro.CreatedDate | date: 'short' }}</td>
+                <td *ngIf="pro.UpdatedDate !== null"> {{ pro.UpdatedDate | date: 'short' }} </td>
+                <td *ngIf="pro.UpdatedDate === null">Currently Not Updated</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="text-right">
+        <pagination-controls id="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>
+<div *ngIf="product === null">
+    <div class="alert alert-danger">Product Not Found</div>
+</div>

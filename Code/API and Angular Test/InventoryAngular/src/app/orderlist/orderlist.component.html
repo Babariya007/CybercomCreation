@@ -1,0 +1,80 @@
+<h2>
+    Order List</h2>
+<hr>
+<!-- <div style="text-align: right;">
+    <a class="btn btn-primary" routerLink="/customer/add"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+        </svg> 
+      Add New Record
+    </a>
+</div> -->
+<br>
+
+<form [formGroup]="searchForm" (ngSubmit)="searchOrder()">
+    <div class="row col-md-12">
+        <div class="form-group row mx-sm-3">
+            <label for="fromDate" class="col-sm-4 col-form-label">From Date</label>
+            <div class="col-sm-8">
+                <input type="date" formControlName="FromDate" class="form-control" id="fromDate" placeholder="From date">
+            </div>
+        </div>
+        <div class="form-group row mx-sm-3">
+            <label for="toDate" class="col-sm-4 col-form-label">To Date</label>
+            <div class="col-sm-8">
+                <input type="date" formControlName="ToDate" class="form-control" id="toDate" placeholder="To date">
+            </div>
+        </div>
+        <div>
+            <button type="submit" class="btn btn-primary" [disabled]="!searchForm.valid">Search</button>&nbsp;&nbsp;
+
+            <button type="reset" class="btn btn-danger" (click)="reset()">Cancle</button>
+        </div>
+    </div>
+</form>
+
+<br>
+<div *ngIf="order !== null">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr style="text-align: center;">
+                <th>SrNo</th>
+                <!-- <th scope="col">Action</th> -->
+                <th scope="col">Customer Name</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Total Price</th>
+                <th scope="col" type="button" style="width: 100%;" (click)="ascDesc()">
+                    Order Date <i class="fas fa-sort"></i>
+                </th>
+                <th scope="col">Order Type</th>
+                <th scope="col">Creation Date</th>
+                <th scope="col">Updation Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let ord of order | paginate: { id: 'pagination', itemsPerPage: itemsPerPage, currentPage: page, totalItems: totalRecords }; let i=index">
+                <td>{{ itemsPerPage * (page - 1) + i+1 }}</td>
+                <!-- <td>
+                <a class="btn btn-warning" [routerLink]="['/order/edit',ord.OrderID]"><i class="fas fa-edit"></i> Edit</a> &nbsp;
+                <button class="btn btn-danger" (click)="deleteOrder(ord.OrderID)"><i class="as fa-trash"></i> Delete</button>
+            </td> -->
+                <td> {{ ord.CustomerName }} </td>
+                <td> {{ ord.ProductName }} </td>
+                <td> {{ ord.Quantity }} </td>
+                <td> {{ ord.TotalPrice }} </td>
+                <td> {{ ord.OrderDate | date: 'short' }} </td>
+                <td> {{ ord.Name }} </td>
+                <td> {{ ord.CreatedDate | date: 'short' }} </td>
+                <td *ngIf="ord.UpdatedDate !== null"> {{ ord.UpdatedDate | date: 'short' }} </td>
+                <td *ngIf="ord.UpdatedDate === null">Currently Not Updated</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="text-right">
+        <pagination-controls id="pagination" (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>
+
+<div *ngIf="order === null">
+    <div class="alert alert-danger">Order Not Found</div>
+</div>

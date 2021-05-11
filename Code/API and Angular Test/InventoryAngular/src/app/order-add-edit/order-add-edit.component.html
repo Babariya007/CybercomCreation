@@ -1,0 +1,37 @@
+<h2>Add New Order</h2>
+<!-- <h2 *ngIf="id!==null">Edit Employee</h2> -->
+<hr>
+<br>
+<form [formGroup]="form" (ngSubmit)="onsubmit()">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="customerName">Customer Name</label>
+            <input type="text" class="form-control" id="customerName" placeholder="Enter Customer Name">
+            <!-- <div *ngIf="_form.CustomerName.touched && _form.CustomerName.invalid" class="alert alert-danger">
+                <div *ngIf="_form.CustomerName.errors?.required">Please Enter Customer Name</div>
+            </div> -->
+        </div>
+        <div class="form-group col-md-6">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email">
+            <!-- <div *ngIf="_form.Email.touched && _form.Email.invalid" class="alert alert-danger">
+                <div *ngIf="_form.Email.errors?.required">Please Enter Email</div>
+            </div> -->
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="phoneNo">Phone No</label>
+            <input type="text" class="form-control" id="phoneNo" placeholder="Enter Phone No">
+            <!-- <div *ngIf="_form.Phone.touched && _form.Phone.invalid" class="alert alert-danger">
+                <div *ngIf="_form.Phone.errors?.required">Please Enter Phone</div>
+            </div> -->
+        </div>
+    </div>
+
+    <div style="text-align: right;">
+        <button type="submit" class="btn btn-primary">Save</button>&nbsp;&nbsp;
+        <!-- <button type="submit" class="btn btn-primary" *ngIf="id!==null">Update</button>&nbsp;&nbsp; -->
+        <a class="btn btn-danger" routerLink="/EmployeeList">Cancle</a>
+    </div>
+</form>

@@ -1,0 +1,30 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light" *ngIf="UserName !== null">
+    <a class="navbar-brand" routeLink="#">Inventory Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="./dashbord">Dash Bord</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="./customers">Customer</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="./products">Product</a>
+            </li>
+            <li class="nav-item" [routerLinkActive]="['active']">
+                <a class="nav-link" routerLink="./orders">Order</a>
+            </li>
+        </ul>
+    </div>
+    <div class="row">
+        <div>
+            <span>Hii... {{ UserName }}</span>&nbsp;&nbsp;&nbsp;&nbsp;
+
+            <input type="button" value="Log Out" class="btn btn-danger pull-right mr-20" (click)="logOut()">
+        </div>
+    </div>
+
+</nav>

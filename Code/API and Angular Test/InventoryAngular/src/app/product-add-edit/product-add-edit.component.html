@@ -1,0 +1,44 @@
+<h2 *ngIf="id==null">Add New Product</h2>
+<h2 *ngIf="id!=null">Edit Product</h2>
+<hr>
+<br>
+<div *ngIf="success === true" class="p-3 mb-2 bg-success text-white">
+    Data Inserted Successfully...
+</div>
+
+
+<form [formGroup]="productForm" (ngSubmit)="onsubmit()">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="productName">Product Name</label>
+            <input type="text" class="form-control" formControlName="ProductName" id="productName" placeholder="Enter Product Name" autofocus>
+            <div *ngIf="_form.ProductName?.touched && _form.ProductName?.invalid" class="alert alert-danger">
+                <div *ngIf="_form.ProductName.errors?.required">Please Enter Product Name</div>
+            </div>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="stock">Stock</label>
+            <input type="number" class="form-control" formControlName="Stock" id="stock" placeholder="Enter Stock">
+            <div *ngIf="_form.Stock?.touched && _form.Stock?.invalid" class="alert alert-danger">
+                <div *ngIf="_form.Stock.errors?.required">Please Enter Stock</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="price">Price</label>
+            <input type="number" class="form-control" formControlName="Price" id="price" placeholder="Enter Price No">
+            <div *ngIf="_form.Price?.touched && _form.Price?.invalid" class="alert alert-danger">
+                <div *ngIf="_form.Price.errors?.required">Please Enter Price</div>
+                <!-- <div *ngIf="_form.Price.errors?.minlength">Price shube be in Digit</div>
+                <div *ngIf="_form.Price.errors?.pattern">Please Enter Digit</div> -->
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: right;">
+        <button type="submit" class="btn btn-primary" *ngIf="id==null" [disabled]="!productForm.valid">Save</button>
+        <button type="submit" class="btn btn-primary" *ngIf="id!=null" [disabled]="!productForm.valid">Update</button>&nbsp;&nbsp;
+        <a class="btn btn-danger" routerLink="/products">Cancle</a>
+    </div>
+</form>

@@ -1,0 +1,25 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+.ma-5 {
+    margin: 5px;
+    width: 22rem;
+}
+
+.card-center {
+    justify-content: center;
+}
+
+.bg-blue {
+    background-color: #5d78ff;
+}
+
+.bg-green {
+    background-color: #0abb87;
+}
+
+.bg-yellow {
+    background-color: #ffb822;
+}
+
+.txt-white {
+    color: white;
+}

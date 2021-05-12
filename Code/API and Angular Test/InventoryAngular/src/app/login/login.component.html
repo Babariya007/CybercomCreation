@@ -9,7 +9,7 @@
         <input type="email" class="form-control" formControlName="UserName" id="UserName" placeholder="Enter UserName" autofocus>
         <div *ngIf="_form.UserName?.touched && _form.UserName?.invalid" class="alert alert-danger">
             <div *ngIf="_form.UserName.errors?.required">Please Enter UserName</div>
-            <!-- <div *ngIf="_form.UserName.errors?.required">Please Enter UserName</div> -->
+            <div *ngIf="_form.UserName.errors?.email">Please Enter Valid EmailID</div>
         </div>
     </div>
     <div class="form-group">

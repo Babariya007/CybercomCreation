@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
   InitializeFormControls(){
     this.loginForm = this.fb.group({
       UserName : ['', [
-        Validators.required
-        // Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
+        Validators.required,
+        Validators.email
         ]
       ],
       Password : ['', Validators.required]
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   onsubmit(){
     if(this.loginForm.valid){
       //Check UserName Password Valid or not
-      if(this.loginForm.value.UserName === "a" && this.loginForm.value.Password === "a"){
+      if(this.loginForm.value.UserName === "Admin@user.com" && this.loginForm.value.Password === "Admin@12345"){
         sessionStorage.setItem('UserName', this.loginForm.value.UserName)
         this.router.navigate(['/dashbord']);
       }

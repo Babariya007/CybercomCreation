@@ -1,0 +1,57 @@
+﻿@model CategoryViewModel
+
+@{
+    ViewBag.Title = "Edit Category";
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<h3>Edit Category</h3>
+
+<div class="card">
+    @if (@ViewBag.Success != null)
+    {
+        <h4 class="alert alert-success">@ViewBag.Success</h4>
+    }
+    @if (@ViewBag.Error != null)
+    {
+        <h4 class="alert alert-danger">@ViewBag.Error</h4>
+    }
+
+    <form method="post">
+        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+        <input hidden asp-for="CategoryID" />
+        <div class="card-body">
+            <div class="form-group row">
+                <label asp-for="CategoryName" class="col-sm-2 col-form-label">Category Name</label>
+                <div class="col-sm-5">
+                    @if (@ViewBag.Error != "Record Not Found")
+                    {
+                        <input type="text" asp-for="CategoryName" class="form-control" placeholder="No Record Found">
+                    }
+                    else
+                    {
+                        <input type="text" disabled class="form-control" placeholder="Enter Category Name">
+                    }
+                    <span asp-validation-for="CategoryName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-5 row">
+                    <div class="col-md-6">
+                        @if (@ViewBag.Error != "Record Not Found")
+                        {
+                            <button type="submit" class="form-control btn btn-primary">Update</button>
+                        }
+                    </div>
+                    <div class="col-md-6">
+                        <a class="form-control btn btn-success" asp-area="Admin" asp-action="" asp-controller="Category">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,110 @@
+﻿@model RegisterViewModel
+@inject SignInManager<Spice.Models.ApplicationUser> signInManager;
+
+@{
+    ViewBag.Title = "Register - Spice";
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<h3>Create New Account</h3>
+
+<div class="card">
+    <form method="post">
+        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+        <div class="card-body">
+            <div class="form-group row">
+                <label asp-for="Name" class="col-sm-2 col-form-label">Name</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Enter Your Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="Email" class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="Email" class="form-control" placeholder="Enter Your Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PhoneNumber" class="col-sm-2 col-form-label">PhoneNumber</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="PhoneNumber" class="form-control" placeholder="Enter Your Phone Number">
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Name" asp-for="StreetAddress" class="col-sm-2 col-form-label">StreetAddress</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="StreetAddress" class="form-control" placeholder="Enter Your Street Address">
+                    <span asp-validation-for="StreetAddress" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="City" class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="City" class="form-control" placeholder="Enter Your City">
+                    <span asp-validation-for="City" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="State" class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="State" class="form-control" placeholder="Enter Your State">
+                    <span asp-validation-for="State" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="PostalCode" class="col-sm-2 col-form-label">PostalCode</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="PostalCode" class="form-control" placeholder="Enter Your Postal Code">
+                    <span asp-validation-for="PostalCode" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Name" asp-for="Password" class="col-sm-2 col-form-label">Password</label>
+                <div class="col-sm-5">
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Enter Your Password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label asp-for="ConfirmPassword" class="col-sm-2 col-form-label">ConfirmPassword</label>
+                <div class="col-sm-5">
+                    <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Enter Your ConfirmPassword">
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+            </div>
+
+            @if (signInManager.IsSignedIn(User) && User.IsInRole("Admin"))
+            {
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label"></label>&nbsp;&nbsp;
+
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" asp-for="RoleName" type="radio" value="Kitchen" id="Kitchen">
+                        <label class="form-check-label" asp-for="RoleName" for="Kitchen">Kitchen</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" asp-for="RoleName" type="radio" value="FrontDesk" id="FrontDesk">
+                        <label class="form-check-label" for="FrontDesk">FrontDesk</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" asp-for="RoleName" type="radio" value="Manager" id="Manager">
+                        <label class="form-check-label" for="Manager">Manager</label>
+                    </div>
+                </div>
+            }
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-5">
+                    <button type="submit" class="form-control btn btn-primary">Register</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

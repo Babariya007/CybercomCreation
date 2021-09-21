@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "cIjcRuaSSlw+XOdeVVU+HktLGWo913YZihP1bUdFXpLZduNOXY2BBGhUroYXHfCLv2hRZEpc3HHXIMgrQXQg+w==",
+  "dgSpecHash": "ZOkQvwmqFjB4sjaAtq9b/PAI9UT070/J3XvUIDBEI/9vpUnVHlm5C42KDCA4/peTVMg3IYTlteZdiSrDaNkVvw==",
   "success": true,
   "projectFilePath": "D:\\CybercomCreation\\Prectice\\DotNetCorePractice\\DotNetCorePractice\\DotNetCorePractice.csproj",
   "expectedPackageFiles": [
@@ -110,8 +110,7 @@
     "C:\\Users\\Asus\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
     "C:\\Users\\Asus\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512",
-    "C:\\Users\\Asus\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.13\\microsoft.netcore.app.host.win-x64.3.1.13.nupkg.sha512"
+    "C:\\Users\\Asus\\.nuget\\packages\\system.xml.xmlserializer\\4.3.0\\system.xml.xmlserializer.4.3.0.nupkg.sha512"
   ],
   "logs": []
 }

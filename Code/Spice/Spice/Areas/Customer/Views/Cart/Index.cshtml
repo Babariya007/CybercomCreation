@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Cart>
+@using System.Text.RegularExpressions;
+
+
+@{
+    ViewBag.Title = "Cart";
+}
+
+<br />
+<br />
+
+<div class="card p-3">
+    @if (Model.Count() != 0)
+    {
+        <div class="card">
+            <div class="card-header bg-dark text-white">
+                <div class="row p-l-r-30">
+                    <div>
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>&nbsp;&nbsp;&nbsp;
+                    <div>
+                        <h5>Shopping Cart</h5>
+                    </div>
+                    <div class="ml-auto">
+                        <a class="btn btn-outline-info" asp-area="" asp-action="" asp-controller="Home">Continue Shopping</a>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                @foreach (var cart in Model)
+                {
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img src="~/images/@cart.ManuItem.Image" style="width: 100px;height: 100px;" />
+                        </div>
+                        <div class="col-md-5">
+                            <h4>@cart.ManuItem.Name</h4>
+                            <p>@Regex.Replace(cart.ManuItem.Decription, "<.*?>", String.Empty)</p>
+                        </div>
+                        <div class="row col-md-2">
+                            <h5><i class="fas fa-dollar-sign fa-2"></i></h5><h5 id="itemPrice">@cart.ManuItem.Price</h5>&nbsp; x &nbsp;<h5 id="itemQuantitys">@cart.Quantity</h5>
+                        </div>
+                        <div class="col-md-2">
+                            <a class="btn btn-danger" asp-route-id="@cart.CartID"><i class="fas fa-minus"></i></a>
+                            <a class="btn btn-primary" asp-route-id="@cart.CartID"><i class="fas fa-plus"></i></a>
+                        </div>
+                        <div class="col-md-1">
+                            <a class="btn btn-outline-danger" asp-area="Customer" asp-action="DeleteCartItem" asp-controller="Cart" asp-route-id="@cart.CartID"><i class="fas fa-trash"></i></a>
+                        </div>
+                    </div>
+                    <br />
+                }
+                <hr />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div>
+                            <input type="text" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <a class="btn btn-outline-success">Apply</a>
+                        @*<a class="btn btn-outline-danger">Remove</a>*@
+                    </div>
+                    <div class="col-md-4">
+                        <div class="col-sm-11">
+                            <input type="text" class="form-control txt-cart-style" id="total" disabled />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-right">
+                <div class="p-l-r-30">
+                    <a class="btn btn-success" asp-action="" asp-controller="">Summary</a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="text-center">
+            <img src="~/images/No_Item_In_Cart.png" class="img-fluid" style="width: 40%;" />
+        </div>
+        <br /><br />
+        <div class="text-center">
+            <a asp-area="" asp-action="" asp-controller="Home" class="btn btn-primary"> Add to Cart </a>
+        </div>
+    }
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            debugger
+            var price = $('#itemPrice').html();
+            var quantity = $('#itemQuantitys').html();
+            var total = 0;
+
+            total = price * quantity
+
+            $('#total').val("Total (USD)   " + total.toFixed(2));
+        });
+    </script>
+}

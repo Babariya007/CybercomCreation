@@ -1,0 +1,100 @@
+﻿@model SubCategoryViewModel
+
+@{
+    ViewBag.Title = "Add New Sub Category";
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<h3>Create Sub Category</h3>
+
+<div class="card">
+    @if (@ViewBag.Success != null)
+    {
+        <h4 class="alert alert-success">@ViewBag.Success</h4>
+    }
+    @if (@ViewBag.Error != null)
+    {
+        <h4 class="alert alert-danger">@ViewBag.Error</h4>
+    }
+
+    <div class="row">
+        <div class="col-md-8">
+            <form method="post">
+                @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+                <div class="card-body">
+
+                    <div class="form-group row">
+                        <label asp-for="CategoryID" class="col-sm-3 col-form-label">Category</label>
+                        <div class="col-sm-7">
+                            <select class="form-control" id="ddlCategory" asp-for="CategoryID" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryID","CategoryName"))">
+                                <option value="-1" disabled selected>-- Select Category --</option>
+                            </select>
+                            <span asp-validation-for="CategoryID" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="SubCategoryName" class="col-sm-3 col-form-label">Sub Category Name</label>
+                        <div class="col-sm-7">
+                            <input type="text" asp-for="SubCategoryName" class="form-control" placeholder="Enter Sub Category Name">
+                            <span asp-validation-for="SubCategoryName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-7 row">
+                            <div class="col-md-6">
+                                <button type="submit" class="form-control btn btn-primary">Create</button>
+                            </div>
+                            <div class="col-md-6">
+                                <a class="form-control btn btn-success" asp-area="Admin" asp-action="" asp-controller="SubCategory">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="vertical-line"></div>
+        <div class="col-md-3">
+            <p>Existing SubCategory</p>
+            <table id="subCategoryList" class="table table-bordered">
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#ddlCategory").change(function () {
+                $("#subCategoryList").empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("SubCategoryList")',
+                    dataType: 'JSON',
+                    data: { categotyId: $("#ddlCategory").val() },
+                    success: function (subCategory) {
+                        //debugger;
+                        if (subCategory.length == 0) {
+                            var message = "No Have any Sub Category";
+                            $('#subCategoryList').append('<tr><td>' + message + '</td></tr>');
+                        }
+                        $.each(subCategory, function (index, item) {
+                            var subCat = item.subCategoryName;
+                            $('#subCategoryList').append('<tr><td>' + subCat + '</td></tr>');
+                        })
+                    },
+                    error: function (err) {
+                        $(".alert-danger") = err.val();
+                    }
+                })
+            })
+        })
+    </script>
+}

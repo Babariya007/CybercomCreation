@@ -1,0 +1,77 @@
+﻿@model ManuItemViewModel
+
+@{
+    ViewBag.Title = "Manu Item Details";
+    var photoPath = "~/images/" + (Model.ExsistingPhoto);
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<h3>Manu Item Details</h3>
+
+<div class="card">
+    <h4 class="alert-success">@ViewBag.Success</h4>
+    <h4 class="alert-danger">@ViewBag.Error</h4>
+
+    <div class="row">
+        <div class="col-md-8">
+                @*<div asp-validation-summary="All" class="text-danger"></div>*@
+                <div class="card-body">
+                    <div class="form-group row">
+                        <label asp-for="Name" class="col-sm-3 col-form-label">Category Name</label>
+                        <div class="col-sm-7">
+                            <input type="text" asp-for="Name" class="form-control" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Decription" class="col-sm-3 col-form-label">Description</label>
+                        <div class="col-sm-7">
+                            <textarea type="text" asp-for="Decription" class="form-control" disabled></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="Price" class="col-sm-3 col-form-label">Price</label>
+                        <div class="col-sm-7">
+                            <input type="number" asp-for="Price" class="form-control" disabled>
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="CategoryName" class="col-sm-3 col-form-label">Category</label>
+                        <div class="col-sm-7">
+                            <input asp-for="CategoryName" class="form-control" disabled />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="SubCategoryName" class="col-sm-3 col-form-label">SubCategory</label>
+                        <div class="col-sm-7">
+                            <input asp-for="SubCategoryName" class="form-control" disabled />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label asp-for="SpicynessName" class="col-sm-3 col-form-label">Spicyness</label>
+                        <div class="col-sm-7">
+                            <input asp-for="SpicynessName" class="form-control" disabled />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"></label>&nbsp;&nbsp;&nbsp;
+                        <div class="col-sm-7 row">
+                            <a class="form-control btn btn-success" asp-area="Admin" asp-action="" asp-controller="ManuItem">Back to List</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="col-md-4">
+            <img src="@photoPath" asp-append-version="true" style="height: 256px;width: 256px;" />
+        </div>
+    </div>
+</div>

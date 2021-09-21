@@ -1,0 +1,68 @@
+﻿@model CouponViewModel
+
+@{
+    ViewBag.Title = "Coupon Detail";
+    var photoPath = "~/images/" + Model.ExsistingPhoto;
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<h3>Coupon Details</h3>
+
+<div class="card">
+    <h4 class="alert-success">@ViewBag.Success</h4>
+    <h4 class="alert-danger">@ViewBag.Error</h4>
+
+    @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+    <div class="card-body">
+        <div class="form-group row">
+            <label asp-for="Name" class="col-sm-2 col-form-label">Category Name</label>
+            <div class="col-sm-5">
+                <input type="text" asp-for="Name" class="form-control" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="CouponTypeName" class="col-sm-2 col-form-label">CouponType</label>
+            <div class="col-sm-5">
+                <input type="text" asp-for="CouponTypeName" class="form-control" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="Discount" class="col-sm-2 col-form-label">Discount</label>
+            <div class="col-sm-5">
+                <input type="text" asp-for="Discount" class="form-control" disabled />
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="MinimumAmount" class="col-sm-2 col-form-label">Price</label>
+            <div class="col-sm-5">
+                <input type="number" asp-for="MinimumAmount" class="form-control" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label asp-for="IsActive" class="col-sm-2 col-form-label">Is Active</label>&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="col-sm-5">
+                <input type="checkbox" asp-for="IsActive" class="form-check-input" disabled>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+            <div class="col-sm-5 row">
+                <div class="col-md-12">
+                    <a class="form-control btn btn-success" asp-area="Admin" asp-action="" asp-controller="Coupon">Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-2">
+        <img src="@photoPath" asp-append-version="true" style="height: 87px;width: 1070px;" />
+    </div>
+</div>

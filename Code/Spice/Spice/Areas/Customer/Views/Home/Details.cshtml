@@ -1,0 +1,90 @@
+﻿@model Spice.Areas.Admin.ViewModels.ManuItem.ManuItemViewModel
+@using System.Text.RegularExpressions;
+
+@{
+    ViewBag.Title = "Manu Item Details";
+    var photoPath = "~/images/" + Model.ExsistingPhoto;
+}
+
+<h3>Manu Item Details</h3>
+
+<div class="card">
+    <h4 class="alert-success">@ViewBag.Success</h4>
+    <h4 class="alert-danger">@ViewBag.Error</h4>
+
+    <div class="row">
+        <div class="col-md-8">
+            @*<div asp-validation-summary="All" class="text-danger"></div>*@
+            <div class="card-body">
+                <div class="form-group row">
+                    <label asp-for="Name" class="col-sm-3 col-form-label">Category Name</label>
+                    <div class="col-sm-7">
+                        <input asp-for="Name" class="form-control" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="Decription" class="col-sm-3 col-form-label">Description</label>
+                    <div class="col-sm-7">
+                        <textarea type="text" name="Decription" class="form-control" disabled>@Regex.Replace(Model.Decription, "<.*?>", String.Empty)</textarea>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="Price" class="col-sm-3 col-form-label">Price</label>
+                    <div class="col-sm-7">
+                        <input type="number" asp-for="Price" class="form-control" disabled>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="CategoryName" class="col-sm-3 col-form-label">Category</label>
+                    <div class="col-sm-7">
+                        <input asp-for="CategoryName" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="SubCategoryName" class="col-sm-3 col-form-label">SubCategory</label>
+                    <div class="col-sm-7">
+                        <input asp-for="SubCategoryName" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label asp-for="SpicynessName" class="col-sm-3 col-form-label">Spicyness</label>
+                    <div class="col-sm-7">
+                        <input asp-for="SpicynessName" class="form-control" disabled />
+                    </div>
+                </div>
+
+                <form method="post" asp-area="Customer" asp-action="AddCart" asp-controller="Cart">
+                    <input hidden asp-for="ManuItemID" />
+                    <div class="form-group row">
+                        <label asp-for="Quantity" class="col-sm-3 col-form-label">Price</label>
+                        <div class="col-sm-7">
+                            <input type="number" asp-for="Quantity" class="form-control" value="1" min="1" required />
+                            <span asp-validation-for="Quantity" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-3 col-form-label"></label>
+                        <div class="col-sm-7 row">
+                            <div class="col-md-6">
+                                <a class="form-control btn btn-success" asp-area="" asp-action="Index" asp-controller="Home">Back to List</a>
+                            </div>
+                            <div class="col-md-6">
+                                <button type="submit" class="form-control btn btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img src="@photoPath" asp-append-version="true" style="height: 256px;width: 256px;" />
+        </div>
+    </div>
+</div>

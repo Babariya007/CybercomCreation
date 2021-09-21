@@ -250,7 +250,6 @@ namespace ATM_Transection
     #region Main
     class Program
     {
-
         static void Main(string[] args)
         {
             int NewOrExit;
@@ -281,9 +280,6 @@ namespace ATM_Transection
                 } while (NewOrExit == 1 && NewOrExit == 2);
             } while (NewOrExit !=1 && NewOrExit != 2);
         }
-
-
-        
     }
     #endregion Main
 

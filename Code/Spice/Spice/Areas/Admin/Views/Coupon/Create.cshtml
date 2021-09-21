@@ -1,0 +1,105 @@
+﻿@model CouponViewModel
+
+@{
+    ViewBag.Title = "Add New Coupon";
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+}
+
+<h3>Create Coupon</h3>
+
+<div class="card">
+    @if (@ViewBag.Success != null)
+    {
+        <h4 class="alert alert-success">@ViewBag.Success</h4>
+    }
+    @if (@ViewBag.Error != null)
+    {
+        <h4 class="alert alert-danger">@ViewBag.Error</h4>
+    }
+
+    <form enctype="multipart/form-data" asp-action="Create" method="post">
+        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+        <div class="card-body">
+            <div class="form-group row">
+                <label asp-for="Name" class="col-sm-2 col-form-label">Category Name</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Enter Item Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Picture" class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-5">
+                    <div class="custom-file">
+                        <input asp-for="Picture" id="customFile" class="form-control custom-file-input" required>
+                        <label class="custom-file-label">Chose File...</label>
+                    </div>
+                    <span asp-validation-for="Picture" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="CouponTypeID" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-5">
+                    <select class="form-control" id="ddlCategory" asp-for="CouponTypeID" asp-items="@(new SelectList(ViewBag.CouponType,"CouponTypeID","CouponTypeName"))">
+                        <option value="-1" disabled selected>-- Select Coupon Type --</option>
+                    </select>
+                    <span asp-validation-for="CouponTypeID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Discount" class="col-sm-2 col-form-label">Discount</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="Discount" class="form-control" placeholder="Enter Discount" />
+                    <span asp-validation-for="Discount" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="MinimumAmount" class="col-sm-2 col-form-label">Price</label>
+                <div class="col-sm-5">
+                    <input type="number" asp-for="MinimumAmount" class="form-control" placeholder="Enter Item Price">
+                    <span asp-validation-for="MinimumAmount" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="IsActive" class="col-sm-2 col-form-label">Is Active</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="col-sm-5">
+                    <input type="checkbox" asp-for="IsActive" class="form-check-input">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-5 row">
+                    <div class="col-md-6">
+                        <button type="submit" class="form-control btn btn-primary">Create</button>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="form-control btn btn-success" asp-area="Admin" asp-action="" asp-controller="Coupon">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Select File Lable Name
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+        })
+    </script>
+}

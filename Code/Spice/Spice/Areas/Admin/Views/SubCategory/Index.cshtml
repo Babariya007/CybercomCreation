@@ -1,0 +1,59 @@
+﻿@model IEnumerable<SubCategory>
+
+@{
+    ViewBag.Title = "SubCategory List";
+}
+
+
+<br />
+<br />
+
+<div class="card p-3">
+    <div class="row">
+        <div class="pl-3">
+            <h3>Sub Category List</h3>
+        </div>
+        <div class="ml-auto create-btn">
+            <a class="btn btn-info text-white" asp-area="Admin" asp-action="Create" asp-controller="SubCategory"><i class="fas fa-plus"></i> Create New</a>
+        </div>
+    </div>
+    <br />
+    <h4 class="text-danger">@ViewBag.NoData</h4>
+    <p class="text-danger">@ViewBag.Error</p>
+    <div>
+        @if (Model.Count() != 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col">Sub Category Name</th>
+                        <th scope="col">Category Name</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var category in Model)
+                    {
+                        <tr>
+                            <td>
+                                @category.SubCategoryName
+                            </td>
+                            <td>
+                                @category.Category.CategoryName
+                            </td>
+                            <td class="text-right text-white">
+                                <a class="btn btn-primary" asp-area="Admin" asp-controller="SubCategory" asp-action="Edit" asp-route-Id="@category.SubCategoryID" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-success" asp-action="Details" asp-controller="SubCategory" asp-area="Admin" asp-route-id="@category.SubCategoryID" title="View"><i class="fas fa-newspaper"></i></a>
+                                <a class="btn btn-danger" title="Delete" asp-area="Admin" asp-action="Delete" asp-controller="SubCategory" asp-route-id="@category.SubCategoryID" onclick="return confirm('Are you Sure Delete Record ?')"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="alert alert-danger">No have Any Data</p>
+        }
+    </div>
+</div>

@@ -1,0 +1,150 @@
+﻿@model ManuItemViewModel
+
+@{
+    ViewBag.Title = "Add New Manu Item";
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <script src="https://cdn.ckeditor.com/ckeditor5/28.0.0/classic/ckeditor.js"></script>
+}
+
+<h3>Create Manu Item</h3>
+
+<div class="card">
+    @if (@ViewBag.Success != null)
+    {
+        <h4 class="alert alert-success">@ViewBag.Success</h4>
+    }
+    @if (@ViewBag.Error != null)
+    {
+        <h4 class="alert alert-danger">@ViewBag.Error</h4>
+    }
+
+    <form enctype="multipart/form-data" asp-action="Create" method="post">
+        @*<div asp-validation-summary="All" class="text-danger"></div>*@
+
+        <div class="card-body">
+            <div class="form-group row">
+                <label asp-for="Name" class="col-sm-2 col-form-label">Category Name</label>
+                <div class="col-sm-5">
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Enter Item Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Decription" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-5">
+                    <textarea type="text" asp-for="Decription" class="form-control" id="editor" placeholder="Enter Description"></textarea>
+                    <span asp-validation-for="Decription" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Price" class="col-sm-2 col-form-label">Price</label>
+                <div class="col-sm-5">
+                    <input type="number" asp-for="Price" class="form-control" placeholder="Enter Item Price" min="1">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Image" class="col-sm-2 col-form-label">Image</label>
+                <div class="col-sm-5">
+                    <div class="custom-file">
+                        <input asp-for="Image" id="customFile" class="form-control custom-file-input" required>
+                        <label class="custom-file-label">Chose File...</label>
+                    </div>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="CategoryID" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-5">
+                    <select class="form-control" id="ddlCategory" asp-for="CategoryID" asp-items="@(new SelectList(ViewBag.CategoryList,"CategoryID","CategoryName"))">
+                        <option value="-1" disabled selected>-- Select Category --</option>
+                    </select>
+                    <span asp-validation-for="CategoryID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="SubCategoryID" class="col-sm-2 col-form-label">SubCategory</label>
+                <div class="col-sm-5">
+                    <select class="form-control" id="ddlSubCategory" asp-for="SubCategoryID">
+                        <option value="-1" disabled selected>-- Select Sub Category --</option>
+                    </select>
+                    <span asp-validation-for="SubCategoryID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="SpicynessID" class="col-sm-2 col-form-label">Spicyness</label>
+                <div class="col-sm-5">
+                    <select class="form-control" id="ddlCategory" asp-for="SpicynessID" asp-items="@(new SelectList(ViewBag.SpicynessList,"SpicynessID","SpicynessName"))">
+                        <option value="-1" disabled selected>-- Select Spicyness --</option>
+                    </select>
+                    <span asp-validation-for="SpicynessID" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-5 row">
+                    <div class="col-md-6">
+                        <button type="submit" class="form-control btn btn-primary">Create</button>
+                    </div>
+                    <div class="col-md-6">
+                        <a class="form-control btn btn-success" asp-area="Admin" asp-action="" asp-controller="ManuItem">Back to List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+
+    @*Test Editor*@
+    <script src="~/js/textEditor.js"></script>
+
+    @*Cascading Dropdown*@
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //Select File Lable Name
+            $(document).ready(function () {
+                $('.custom-file-input').on("change", function () {
+                    var fileName = $(this).val().split("\\").pop();
+                    $(this).next('.custom-file-label').html(fileName);
+                });
+            });
+
+            //Get SubCategory Select On Category
+            $("#ddlCategory").change(function () {
+                $("#ddlSubCategory").empty();
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("SubCategoryDropDownList")',
+                    dataType: 'JSON',
+                    data: { categoryId: $("#ddlCategory").val() },
+                    success: function (subCategory) {
+                        debugger;
+                        if (subCategory.length == 0) {
+                            var message = "No Have any Sub Category";
+                            $('#ddlSubCategory').append('<option value="-1" disabled selected>' + message + '</option>');
+                        }
+                        $.each(subCategory, function (index, item) {
+                            var subCatName = item.subCategoryName;
+                            var subCatId = item.subCategoryID;
+                            $('#ddlSubCategory').append('<option value="' + subCatId + '">' + subCatName + '</option>');
+                        })
+                    },
+                    error: function (err) {
+                        $(".alert-danger") = err.val();
+                    }
+                })
+            })
+        })
+    </script>
+}

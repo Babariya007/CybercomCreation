@@ -8,7 +8,6 @@ D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\bin\Debug\net
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\bin\Debug\netcoreapp3.1\DotNetCorePractice.pdb
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\bin\Debug\netcoreapp3.1\DotNetCorePractice.Views.dll
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\bin\Debug\netcoreapp3.1\DotNetCorePractice.Views.pdb
-D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\netcoreapp3.1\DotNetCorePractice.csprojAssemblyReference.cache
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\netcoreapp3.1\DotNetCorePractice.AssemblyInfoInputs.cache
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\netcoreapp3.1\DotNetCorePractice.AssemblyInfo.cs
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\netcoreapp3.1\DotNetCorePractice.csproj.CoreCompileInputs.cache
@@ -114,3 +113,4 @@ D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\net
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\netcoreapp3.1\Razor\Views\Account\AddPassword.cshtml.g.cs
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\netcoreapp3.1\Razor\Views\Account\AddPasswordConfirmation.cshtml.g.cs
 D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\netcoreapp3.1\Razor\Views\Account\AccountLocked.cshtml.g.cs
+D:\CybercomCreation\Prectice\DotNetCorePractice\DotNetCorePractice\obj\Debug\netcoreapp3.1\DotNetCorePractice.csproj.AssemblyReference.cache

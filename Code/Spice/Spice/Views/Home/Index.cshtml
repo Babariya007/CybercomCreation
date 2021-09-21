@@ -1,0 +1,112 @@
+﻿@model IEnumerable<ManuItem>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<img id="CouponImage" class="img-fluid" />
+
+<div class="card">
+    <div class="card-body">
+
+        <section>
+            <ul class="row">
+                <li class="list active" data-filter="all">Show All</li>
+                @foreach (var categoryName in ViewBag.CategoryList)
+                {
+                    <li class="list" data-filter="@categoryName.CategoryName.Replace(" ", "")">@categoryName.CategoryName</li>
+                }
+            </ul>
+
+            @foreach (var manuItem in Model)
+            {
+                <div class="cat @manuItem.Category.CategoryName.Replace(" ", "")">
+                    <h4 class="text-success">@manuItem.Category.CategoryName</h4>
+                    <div class="category row">
+                        <div class="col-md-3">
+                            <img src="~/images/@manuItem.Image" loading="lazy" />
+                        </div>
+                        <div class="col-md-7">
+                            <h4 class="text-primary">@manuItem.Name</h4>
+                            @Html.Raw(@manuItem.Decription)
+                        </div>
+                        <div class="col-md-2 text-right">
+                            <h4 class="text-danger"><i class="fas fa-dollar-sign"></i> @manuItem.Price</h4>
+                            <div class="pt-50per">
+                                <a asp-area="Customer" asp-action="Details" asp-controller="Home" asp-route-id="@manuItem.ManuItemID" class="btn btn-success" style="color: #fff;">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+
+    </div>
+</div>
+
+@section Scripts{
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+    <script>
+        //this variables use for images
+        var imageList = [];
+        var i = 0;
+
+        //Click by Category and show category data
+        $(document).ready(function () {
+            $('.list').click(function () {
+                const value = $(this).attr('data-filter');
+                if (value == 'all') {
+                    $('.cat').show('1000')
+                }
+                else {
+                    $('.cat').not('.' + value).hide(1000);
+                    $('.cat').filter('.' + value).show(1000);
+
+                }
+            })
+
+            //add active class on selected item
+            $('.list').click(function () {
+                $(this).addClass('active').siblings().removeClass('active');
+            })
+
+            FillImageList();
+            doSlideshow();
+        });
+
+        //Use for show image after some time
+        function doSlideshow() {
+            $('#CouponImage').fadeOut(400, function () {
+                $('#CouponImage').attr('src', "/images/" + imageList[i]);
+                $('#CouponImage').fadeIn(400);
+                i = i === imageList.length-1 ? 0 : i + 1;
+                setTimeout('doSlideshow()', 5000);
+            });
+        }
+
+        //Get images from database
+        function FillImageList () {
+                $.ajax({
+                    type: 'GET',
+                    url: '@Url.Action("CouponImage")',
+                    dataType: 'JSON',
+                    async: false,
+                    success: function (couponImg) {
+                        //debugger;
+                        if (couponImg.length == 0) {
+                            $('#CouponImage').hide();
+                        }
+                        else {
+                            imageList = couponImg;
+                        }
+                    },
+                    error: function (err) {
+                        $(".alert-danger") = err.val();
+                    }
+                })
+        };
+
+    </script>
+}

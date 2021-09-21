@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ManuItem>
+
+@{
+    ViewBag.Title = "Manu Item List";
+}
+
+
+<br />
+<br />
+
+<div class="card p-3">
+    <div class="row">
+        <div class="pl-3">
+            <h3>Manu Item List</h3>
+        </div>
+        <div class="ml-auto create-btn">
+            <a class="btn btn-info text-white" asp-area="Admin" asp-action="Create" asp-controller="ManuItem"><i class="fas fa-plus"></i> Create New</a>
+        </div>
+    </div>
+    <br />
+    <h4 class="text text-danger">@ViewBag.NoData</h4>
+    <p class="text text-danger">@ViewBag.Error</p>
+    <div>
+        @if (Model.Count() != 0)
+        {
+            <table class="table table-striped">
+                <thead>
+                    <tr class="table-active">
+                        <th scope="col">Name</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">SubCategory</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var manuItem in Model)
+                    {
+                        <tr>
+                            <td>
+                                @manuItem.Name
+                            </td>
+                            <td>
+                                @manuItem.Price
+                            </td>
+                            <td>
+                                @manuItem.Category.CategoryName
+                            </td>
+                            <td>
+                                @manuItem.SubCategory.SubCategoryName
+                            </td>
+                            <td class="text-right text-white">
+                                <a class="btn btn-primary" asp-area="Admin" asp-controller="ManuItem" asp-action="Edit" asp-route-Id="@manuItem.ManuItemID" title="Edit"><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-success" asp-action="Details" asp-controller="ManuItem" asp-area="Admin" asp-route-id="@manuItem.ManuItemID" title="View"><i class="fas fa-newspaper"></i></a>
+                                <a class="btn btn-danger" title="Delete" asp-area="Admin" asp-action="Delete" asp-controller="ManuItem" asp-route-id="@manuItem.ManuItemID" onclick="return confirm('Are you Sure Delete Record ?')"><i class="fas fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+        else
+        {
+            <p class="alert alert-danger">No have Any Data</p>
+        }
+    </div>
+</div>

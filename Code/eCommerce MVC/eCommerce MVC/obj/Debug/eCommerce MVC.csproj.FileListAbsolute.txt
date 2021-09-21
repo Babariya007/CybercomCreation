@@ -14,7 +14,6 @@ D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Webpages.Dep
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Webpages.Razor.xml
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Helpers.xml
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\System.Web.Mvc.xml
-D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\obj\Debug\eCommerce MVC.csprojAssemblyReference.cache
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\obj\Debug\eCommerce MVC.csproj.CoreCompileInputs.cache
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\obj\Debug\eCommerce MVC.csproj.CopyComplete
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\obj\Debug\eCommerce MVC.dll
@@ -32,3 +31,4 @@ D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\PagedList.xml
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\PagedList.Mvc.xml
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\Newtonsoft.Json.dll
 D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\bin\Newtonsoft.Json.xml
+D:\CybercomCreation\Code\eCommerce MVC\eCommerce MVC\obj\Debug\eCommerce MVC.csproj.AssemblyReference.cache
